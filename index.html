@@ -154,9 +154,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
 
 /* ══ HERO ════════════════════════════════════════════════════ */
 .hero{
-  position:relative;min-height:100svh;
+  position:relative;
+  min-height:100svh;
+  margin-top:var(--nav-h);
   display:flex;flex-direction:column;justify-content:flex-end;
-  padding:calc(var(--nav-h) + var(--sp-xl)) var(--side-pad) var(--sp-xl);
+  padding:var(--sp-xl) var(--side-pad) var(--sp-xl);
   overflow:hidden;
 }
 .hero__bg{
