@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Siskin Projects Private Limited | Infrastructure & Real Estate, India</title>
+<meta name="description" content="Siskin Projects Private Limited — Building India's infrastructure and real estate future through civil construction, land development, and integrated project delivery."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#0B1A2E;
+  --navy2:#0f2240;
+  --gold:#C9A84C;
+  --gold-light:#e8c97a;
+  --offwhite:#F5F0E8;
+  --gray:#8A8A8A;
+  --light-gray:#D4D0C8;
+  --white:#ffffff;
+  --section-pad:6rem 5%;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--navy);color:var(--offwhite);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:999;padding:1.4rem 5%;display:flex;justify-content:space-between;align-items:center;background:rgba(11,26,46,0.92);backdrop-filter:blur(12px);border-bottom:0.5px solid rgba(201,168,76,0.18);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;color:var(--gold);letter-spacing:0.04em;}
+.nav-logo span{color:var(--offwhite);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--light-gray);text-decoration:none;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.3s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--gold);color:var(--navy);padding:0.5rem 1.4rem;border-radius:2px;font-size:0.78rem;font-weight:500;text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;transition:background 0.3s;}
+.nav-cta:hover{background:var(--gold-light);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.hamburger span{width:24px;height:1.5px;background:var(--offwhite);display:block;transition:0.3s;}
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:100%;left:0;width:100%;background:var(--navy2);flex-direction:column;padding:1.5rem 5%;gap:1.2rem;border-bottom:0.5px solid rgba(201,168,76,0.2);}
+  .nav-links.open{display:flex;}
+  .hamburger{display:flex;}
+  .nav-cta{display:none;}
+}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 5% 6rem;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;z-index:0;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px);background-size:60px 60px;}
+.hero-lines{position:absolute;bottom:0;left:0;width:100%;height:60%;background:linear-gradient(to top,var(--navy) 30%,transparent);}
+.hero-accent{position:absolute;right:5%;top:20%;width:280px;height:280px;border:0.5px solid rgba(201,168,76,0.12);border-radius:50%;}
+.hero-accent2{position:absolute;right:8%;top:24%;width:180px;height:180px;border:0.5px solid rgba(201,168,76,0.08);border-radius:50%;}
+.hero-content{position:relative;z-index:2;max-width:780px;}
+.hero-eyebrow{font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;}
+.hero-eyebrow::before{content:'';display:block;width:40px;height:0.5px;background:var(--gold);}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:300;line-height:1.05;color:var(--white);margin-bottom:1.5rem;letter-spacing:-0.01em;}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero-sub{font-size:1rem;color:var(--light-gray);line-height:1.7;max-width:480px;margin-bottom:2.5rem;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--gold);color:var(--navy);padding:0.85rem 2rem;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;font-weight:500;border-radius:2px;transition:background 0.3s;}
+.btn-primary:hover{background:var(--gold-light);}
+.btn-outline{border:0.5px solid rgba(201,168,76,0.5);color:var(--offwhite);padding:0.85rem 2rem;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:border-color 0.3s,color 0.3s;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.hero-stats{position:relative;z-index:2;display:flex;gap:3rem;margin-top:4rem;padding-top:2rem;border-top:0.5px solid rgba(201,168,76,0.15);}
+
+.stat-label{font-size:0.72rem;color:var(--gray);letter-spacing:0.08em;text-transform:uppercase;margin-top:2px;}
+
+/* SECTIONS */
+section{padding:var(--section-pad);}
+.section-eyebrow{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:0.8rem;}
+.section-eyebrow::before{content:'';display:block;width:28px;height:0.5px;background:var(--gold);}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.2;color:var(--white);margin-bottom:1rem;}
+.section-title em{font-style:italic;color:var(--gold);}
+.section-body{color:var(--light-gray);font-size:0.95rem;line-height:1.75;max-width:560px;}
+
+/* WHAT WE DO */
+.services{background:var(--navy2);}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;margin-top:4rem;border:1px solid rgba(201,168,76,0.1);}
+.service-card{padding:2.5rem 2rem;border:0.5px solid rgba(201,168,76,0.08);transition:background 0.4s;}
+.service-card:hover{background:rgba(201,168,76,0.04);}
+.service-icon{width:44px;height:44px;border:0.5px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:1.8rem;color:var(--gold);font-size:1.2rem;}
+.service-card h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--white);margin-bottom:0.8rem;}
+.service-card p{font-size:0.85rem;color:var(--gray);line-height:1.7;}
+.service-card ul{list-style:none;margin-top:1rem;}
+.service-card ul li{font-size:0.8rem;color:var(--light-gray);padding:0.35rem 0;border-bottom:0.5px solid rgba(255,255,255,0.05);display:flex;align-items:flex-start;gap:0.6rem;}
+.service-card ul li::before{content:'—';color:var(--gold);flex-shrink:0;}
+
+/* WHY SISKIN */
+.why{background:var(--navy);}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:4rem;}
+.why-item{padding:2.5rem;border:0.5px solid rgba(201,168,76,0.08);}
+.why-number{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:rgba(201,168,76,0.15);line-height:1;}
+.why-item h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--white);margin:0.8rem 0 0.6rem;}
+.why-item p{font-size:0.83rem;color:var(--gray);line-height:1.7;}
+@media(max-width:600px){.why-grid{grid-template-columns:1fr;}}
+
+/* LEADERSHIP */
+.leadership{background:var(--navy2);}
+.leadership-intro{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:4rem;}
+@media(max-width:768px){.leadership-intro{grid-template-columns:1fr;gap:2rem;}}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;}
+.team-card{padding:2rem 1.5rem;border:0.5px solid rgba(201,168,76,0.08);transition:background 0.3s;}
+.team-card:hover{background:rgba(201,168,76,0.04);}
+.team-avatar{width:56px;height:56px;border-radius:50%;background:rgba(201,168,76,0.1);border:0.5px solid rgba(201,168,76,0.25);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold);margin-bottom:1.2rem;font-weight:500;}
+.team-card h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;color:var(--white);margin-bottom:0.2rem;}
+.team-role{font-size:0.72rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.8rem;}
+.team-bio{font-size:0.8rem;color:var(--gray);line-height:1.6;}
+
+/* INVESTOR */
+.investor{background:var(--navy);border-top:0.5px solid rgba(201,168,76,0.1);}
+.investor-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:4rem;}
+@media(max-width:768px){.investor-layout{grid-template-columns:1fr;gap:2rem;}}
+.info-block{margin-bottom:2rem;}
+.info-label{font-size:0.68rem;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.5rem;}
+.info-value{font-size:0.9rem;color:var(--offwhite);line-height:1.6;}
+.info-value a{color:var(--gold);text-decoration:none;}
+.info-value a:hover{text-decoration:underline;}
+.rating-badge{display:inline-block;border:0.5px solid var(--gold);color:var(--gold);padding:0.4rem 1rem;font-size:0.8rem;letter-spacing:0.1em;border-radius:2px;margin-top:0.3rem;}
+.investor-links{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;}
+.investor-links li a{display:block;padding:0.7rem 1rem;border:0.5px solid rgba(201,168,76,0.12);color:var(--light-gray);text-decoration:none;font-size:0.8rem;border-radius:2px;transition:border-color 0.3s,color 0.3s;}
+.investor-links li a:hover{border-color:rgba(201,168,76,0.4);color:var(--gold);}
+
+/* CONTACT */
+.contact{background:var(--navy2);border-top:0.5px solid rgba(201,168,76,0.1);}
+.contact-layout{display:grid;grid-template-columns:1fr 1.3fr;gap:5rem;margin-top:4rem;align-items:start;}
+@media(max-width:768px){.contact-layout{grid-template-columns:1fr;gap:2rem;}}
+.contact-info .info-block{margin-bottom:1.8rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+@media(max-width:500px){.form-row{grid-template-columns:1fr;}}
+.form-group{margin-bottom:1rem;}
+.form-group label{display:block;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);margin-bottom:0.5rem;}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:rgba(255,255,255,0.04);border:0.5px solid rgba(201,168,76,0.2);color:var(--offwhite);padding:0.8rem 1rem;font-family:'DM Sans',sans-serif;font-size:0.88rem;border-radius:2px;outline:none;transition:border-color 0.3s;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:rgba(201,168,76,0.6);}
+.form-group select option{background:var(--navy2);color:var(--offwhite);}
+.form-group textarea{resize:vertical;min-height:120px;}
+.submit-btn{background:var(--gold);color:var(--navy);border:none;padding:0.9rem 2.5rem;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background 0.3s;width:100%;margin-top:0.5rem;}
+.submit-btn:hover{background:var(--gold-light);}
+.submit-btn:disabled{opacity:0.6;cursor:not-allowed;}
+.form-msg{margin-top:1rem;font-size:0.85rem;padding:0.8rem 1rem;border-radius:2px;display:none;}
+.form-msg.success{background:rgba(29,158,117,0.15);border:0.5px solid rgba(29,158,117,0.3);color:#5DCAA5;display:block;}
+.form-msg.error{background:rgba(226,75,74,0.1);border:0.5px solid rgba(226,75,74,0.25);color:#F09595;display:block;}
+
+/* FOOTER */
+footer{background:var(--navy);border-top:0.5px solid rgba(201,168,76,0.15);padding:3rem 5%;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+@media(max-width:768px){.footer-top{grid-template-columns:1fr;gap:2rem;}}
+.footer-brand .nav-logo{font-size:1.3rem;display:block;margin-bottom:0.8rem;}
+.footer-brand p{font-size:0.8rem;color:var(--gray);line-height:1.6;max-width:280px;}
+.footer-col h4{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:0.5rem;}
+.footer-col ul li a{color:var(--gray);text-decoration:none;font-size:0.82rem;transition:color 0.3s;}
+.footer-col ul li a:hover{color:var(--gold);}
+.footer-bottom{border-top:0.5px solid rgba(201,168,76,0.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-bottom p{font-size:0.75rem;color:var(--gray);}
+.cin-line{font-size:0.72rem;color:rgba(138,138,138,0.6);}
+
+/* ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+.stagger-1{transition-delay:0.1s;}
+.stagger-2{transition-delay:0.2s;}
+.stagger-3{transition-delay:0.3s;}
+.stagger-4{transition-delay:0.4s;}
+
+/* EMAILJS CONFIG NOTICE */
+.email-config-banner{background:rgba(201,168,76,0.08);border:0.5px solid rgba(201,168,76,0.25);border-radius:2px;padding:0.8rem 1rem;margin-bottom:1.2rem;font-size:0.78rem;color:var(--gold);display:flex;align-items:flex-start;gap:0.6rem;line-height:1.5;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Siskin<span> Projects</span></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#services">What We Do</a></li>
+    <li><a href="#why">Why Siskin</a></li>
+    <li><a href="#leadership">Leadership</a></li>
+    <li><a href="#investor">Investors</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Connect With Us</a>
+  <div class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <div class="hero-lines"></div>
+    <div class="hero-accent"></div>
+    <div class="hero-accent2"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Est. 2025 &mdash; Gurgaon, India</div>
+    <h1>Building India's<br/><em>Tomorrow,</em> Today.</h1>
+    <p class="hero-sub">Integrated infrastructure development, real estate creation, and land development — delivered with precision across India's fastest-growing markets.</p>
+    <div class="hero-btns">
+      <a href="#services" class="btn-primary">Explore Our Work</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-number">3+</div>
+      <div class="stat-label">Business Verticals</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">27<span style="font-size:1.2rem">yr</span></div>
+      <div class="stat-label">Leadership Experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">IVR BB</div>
+      <div class="stat-label">Credit Rating — Stable</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">Pan-IN</div>
+      <div class="stat-label">Geographical Reach</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section class="services" id="services">
+  <div class="fade-in">
+    <div class="section-eyebrow">What We Do</div>
+    <h2 class="section-title">An Integrated Vision<br/>for <em>Infrastructure</em></h2>
+    <p class="section-body">From land acquisition to landmark delivery — Siskin Projects participates across the full value chain of infrastructure and real estate development in India.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-in stagger-1">
+      <div class="service-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 21h18M6 21V10l6-7 6 7v11M9 21v-6h6v6"/></svg>
+      </div>
+      <h3>Civil Construction &amp; Infrastructure</h3>
+      <p>Delivering engineering excellence across residential, commercial, industrial, and public infrastructure sectors.</p>
+      <ul>
+        <li>Roads &amp; urban infrastructure</li>
+        <li>Industrial &amp; commercial structures</li>
+        <li>Project management &amp; EPC services</li>
+        <li>Public utility &amp; engineering projects</li>
+      </ul>
+    </div>
+    <div class="service-card fade-in stagger-2">
+      <div class="service-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="2" y="7" width="20" height="14" rx="1"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2M12 12v4M10 14h4"/></svg>
+      </div>
+      <h3>Real Estate Development</h3>
+      <p>Creating residential, commercial, and industrial properties designed for long-term value and urban demand.</p>
+      <ul>
+        <li>Residential apartments &amp; villas</li>
+        <li>Commercial complexes &amp; office parks</li>
+        <li>Warehouses &amp; industrial facilities</li>
+        <li>Mixed-use &amp; retail developments</li>
+      </ul>
+    </div>
+    <div class="service-card fade-in stagger-3">
+      <div class="service-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+      </div>
+      <h3>Land &amp; Township Development</h3>
+      <p>Strategic land acquisition, aggregation, and development for plotted schemes and integrated townships.</p>
+      <ul>
+        <li>Plotted layouts &amp; townships</li>
+        <li>Large-scale land aggregation</li>
+        <li>Community infrastructure &amp; amenities</li>
+        <li>Joint development &amp; monetization</li>
+      </ul>
+    </div>
+    <div class="service-card fade-in stagger-4">
+      <div class="service-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+      </div>
+      <h3>Consultancy &amp; Advisory</h3>
+      <p>Technical expertise and strategic counsel across the infrastructure lifecycle — from feasibility to delivery.</p>
+      <ul>
+        <li>Project planning &amp; feasibility studies</li>
+        <li>Design coordination &amp; oversight</li>
+        <li>Cost management &amp; estimation</li>
+        <li>Infrastructure advisory services</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WHY SISKIN -->
+<section class="why" id="why">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:4rem;" class="fade-in">
+    <div>
+      <div class="section-eyebrow">Why Siskin</div>
+      <h2 class="section-title">Built on <em>Integrity,</em><br/>Driven by Excellence</h2>
+    </div>
+    <p class="section-body">Every project we undertake reflects our commitment to quality, ethical practice, and results that stand the test of time. Here's what sets us apart.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-item fade-in stagger-1">
+      <div class="why-number">01</div>
+      <h3>Integrated Delivery Model</h3>
+      <p>We operate across the full infrastructure value chain — construction, real estate, and land development — under a single, disciplined execution framework. No handoff risk. Total accountability.</p>
+    </div>
+    <div class="why-item fade-in stagger-2">
+      <div class="why-number">02</div>
+      <h3>Quality-First Approach</h3>
+      <p>From material procurement to structural delivery, we set and maintain exacting quality standards. Our leadership has built landmark projects that have redefined benchmarks in their markets.</p>
+    </div>
+    <div class="why-item fade-in stagger-3">
+      <div class="why-number">03</div>
+      <h3>Ethical Business Practices</h3>
+      <p>Transparency, compliance, and investor protection are not afterthoughts — they are foundational. We operate with the same standards we would demand of any partner.</p>
+    </div>
+    <div class="why-item fade-in stagger-4">
+      <div class="why-number">04</div>
+      <h3>Rated &amp; Regulated Credibility</h3>
+      <p>Siskin Projects carries an IVR BB / Stable credit rating from Infomerics Valuation and Rating Limited, and operates under full SEBI-compliant listed entity disclosure norms.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section class="leadership" id="leadership">
+  <div class="leadership-intro fade-in">
+    <div>
+      <div class="section-eyebrow">Leadership</div>
+      <h2 class="section-title">The <em>People</em><br/>Behind the Projects</h2>
+    </div>
+    <p class="section-body">Our leadership team brings decades of combined experience in construction, real estate, finance, and corporate governance — united by a shared commitment to building India's future.</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card fade-in stagger-1">
+      <div class="team-avatar">DS</div>
+      <h3>Mr. Daljeet Singh</h3>
+      <div class="team-role">Director</div>
+      <p class="team-bio">Guiding force with 27 years in real estate. Punjab University graduate with international education. Pioneer in transforming commercial real estate standards in India.</p>
+    </div>
+    <div class="team-card fade-in stagger-2">
+      <div class="team-avatar">HS</div>
+      <h3>Mr. Harinder Singh</h3>
+      <div class="team-role">Director</div>
+      <p class="team-bio">22 years in hands-on construction and delivery. Known for meticulous attention to quality at every stage — from conceptualization to final handover.</p>
+    </div>
+    <div class="team-card fade-in stagger-3">
+      <div class="team-avatar">GS</div>
+      <h3>Mr. Gurdeep Singh</h3>
+      <div class="team-role">Director</div>
+      <p class="team-bio">Astute procurement professional driving best-in-class project execution. His sharp negotiation and quality controls form the backbone of Siskin's delivery engine.</p>
+    </div>
+    <div class="team-card fade-in stagger-1">
+      <div class="team-avatar">HK</div>
+      <h3>Mr. Himanshu Khurana</h3>
+      <div class="team-role">Chief Financial Officer</div>
+      <p class="team-bio">Qualified Chartered Accountant with a master's in commerce and over 15 years of expertise in finance, accounting, and corporate financial strategy.</p>
+    </div>
+    <div class="team-card fade-in stagger-2">
+      <div class="team-avatar">MJ</div>
+      <h3>Ms. Manju</h3>
+      <div class="team-role">Company Secretary &amp; Compliance Officer</div>
+      <p class="team-bio">Associate member of ICSI with a degree in commerce and law. Over 5 years of experience in corporate secretarial practice and regulatory compliance.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTOR INFORMATION -->
+<section class="investor" id="investor">
+  <div class="fade-in">
+    <div class="section-eyebrow">Investor Information</div>
+    <h2 class="section-title">Transparency You Can<br/><em>Trust</em></h2>
+  </div>
+  <div class="investor-layout">
+    <div class="fade-in">
+      <div class="info-block">
+        <div class="info-label">Credit Rating</div>
+        <div class="info-value">Infomerics Valuation and Rating Limited<br/>Senior Secured Non-Convertible Debentures</div>
+        <div class="rating-badge">IVR BB / Stable &mdash; Jan 2026</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Debenture Trustee</div>
+        <div class="info-value">Catalyst Trusteeship Limited<br/>Peninsula Business Park, Lower Parel, Mumbai &mdash; 400013<br/>
+        <a href="mailto:ComplianceCTLMumbai@ctltrustee.com">ComplianceCTLMumbai@ctltrustee.com</a></div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Registrar &amp; Transfer Agent</div>
+        <div class="info-value">Beacon Investor Holdings Pvt. Ltd.<br/>Akshar Business Park, Vashi, Navi Mumbai &mdash; 400703<br/>
+        Contact: Ms. Sonal Bhosle &mdash; <a href="mailto:compliance@beaconrta.co.in">compliance@beaconrta.co.in</a></div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Grievance Officer</div>
+        <div class="info-value">Ms. Manju, Company Secretary<br/>
+        <a href="mailto:siskinppl@outlook.com">siskinppl@outlook.com</a> &nbsp;|&nbsp; +91 92111 60000</div>
+      </div>
+    </div>
+    <div class="fade-in stagger-2">
+      <p style="font-size:0.8rem;color:var(--gray);margin-bottom:1.5rem;line-height:1.7;">Access regulatory filings, financial disclosures, and compliance documents below.</p>
+      <ul class="investor-links">
+        <li><a href="#">Annual Reports</a></li>
+        <li><a href="#">Financial Results</a></li>
+        <li><a href="#">Board Meetings</a></li>
+        <li><a href="#">General Meetings</a></li>
+        <li><a href="#">Quarterly Compliance</a></li>
+        <li><a href="#">Annual Compliance</a></li>
+        <li><a href="#">Half-Yearly Filings</a></li>
+        <li><a href="#">Event Disclosures</a></li>
+        <li><a href="#">Deviation Statements</a></li>
+        <li><a href="#">Annual Return</a></li>
+        <li><a href="#">Press Releases</a></li>
+        <li><a href="#">Notice / Default</a></li>
+      </ul>
+      <div style="margin-top:2rem;padding:1.2rem;border:0.5px solid rgba(201,168,76,0.15);border-radius:2px;">
+        <div style="font-size:0.68rem;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.4rem;">Codes &amp; Policies</div>
+        <p style="font-size:0.8rem;color:var(--gray);">All corporate codes and governance policies are available for download from this section.</p>
+        <a href="#" style="display:inline-block;margin-top:0.8rem;font-size:0.78rem;color:var(--gold);text-decoration:none;border-bottom:0.5px solid rgba(201,168,76,0.4);padding-bottom:2px;">Download All Documents →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="fade-in">
+    <div class="section-eyebrow">Get In Touch</div>
+    <h2 class="section-title">Let's Build<br/><em>Something</em> Together</h2>
+  </div>
+  <div class="contact-layout">
+    <div class="fade-in">
+      <p style="font-size:0.9rem;color:var(--light-gray);line-height:1.75;margin-bottom:2rem;">Whether you're an investor, partner, or potential client — we'd love to hear from you. Our team responds within one business day.</p>
+      <div class="info-block">
+        <div class="info-label">Office</div>
+        <div class="info-value">AIPL Business Club, Fifth Floor<br/>Badshahpur, Gurgaon, Haryana &mdash; 122101</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Phone</div>
+        <div class="info-value"><a href="tel:+919211160000" style="color:var(--offwhite);text-decoration:none;">+91 92111 60000</a></div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Email</div>
+        <div class="info-value"><a href="mailto:siskinppl@outlook.com" style="color:var(--gold);text-decoration:none;">siskinppl@outlook.com</a></div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Incorporation Date</div>
+        <div class="info-value">23 February 2025</div>
+      </div>
+    </div>
+
+    <div class="fade-in stagger-2">
+      <!-- EMAILJS CONFIG BANNER — replace with your keys -->
+      <div class="email-config-banner" id="configBanner">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="flex-shrink:0;margin-top:1px;"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        <span>To activate Gmail delivery: add your <strong>EmailJS Public Key</strong>, <strong>Service ID</strong>, and <strong>Template ID</strong> in the script below. <a href="https://www.emailjs.com" target="_blank" style="color:var(--gold-light);">Get free keys at emailjs.com →</a></span>
+      </div>
+
+      <div class="form-wrap">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="first_name" placeholder="Rajesh" required/>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="last_name" placeholder="Kumar" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="rajesh@company.com" required/>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210"/>
+        </div>
+        <div class="form-group">
+          <label for="enquiry">Nature of Enquiry</label>
+          <select id="enquiry" name="enquiry_type">
+            <option value="">Select an option</option>
+            <option>Investment / Debentures</option>
+            <option>Project Partnership</option>
+            <option>Real Estate Development</option>
+            <option>Civil Construction Contract</option>
+            <option>Land Development</option>
+            <option>Consultancy Services</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us about your project or query..."></textarea>
+        </div>
+        <button type="button" class="submit-btn" id="submitBtn" onclick="handleSubmit()">Send Message</button>
+        <div class="form-msg" id="formMsg"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="nav-logo">Siskin<span> Projects</span></span>
+      <p>Building India's infrastructure and real estate future through integrated delivery, ethical practices, and lasting quality.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#services">What We Do</a></li>
+        <li><a href="#why">Why Siskin</a></li>
+        <li><a href="#leadership">Leadership</a></li>
+        <li><a href="#investor">Investors</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Compliance</h4>
+      <ul>
+        <li><a href="#">Press Releases</a></li>
+        <li><a href="#">Notice / Default</a></li>
+        <li><a href="#">Codes &amp; Policies</a></li>
+        <li><a href="#">Annual Return</a></li>
+        <li><a href="#">Financial Results</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Siskin Projects Private Limited. All rights reserved.</p>
+    <p class="cin-line">Regd. Office: AIPL Business Club, Fifth Floor, Badshahpur, Gurgaon &mdash; 122101 &nbsp;|&nbsp; Inc. 23 Feb 2025</p>
+  </div>
+</footer>
+
+<script>
+/* ── EmailJS Configuration ─────────────────────────────────
+   STEP 1: Go to https://www.emailjs.com and create a free account
+   STEP 2: Add a Gmail service and note your Service ID
+   STEP 3: Create an email template — use variables:
+           {{first_name}}, {{last_name}}, {{email}}, {{phone}},
+           {{enquiry_type}}, {{message}}
+   STEP 4: Replace the three values below with your own keys
+   ─────────────────────────────────────────────────────────── */
+const EMAILJS_PUBLIC_KEY  = 'id9e9F78QZT0sekBK';
+const EMAILJS_SERVICE_ID  = 'service_31wplmd';
+const EMAILJS_TEMPLATE_ID = 'template_glkb2yv';
+const RECIPIENT_EMAIL     = 'c92177354@gmail.com'; // your Gmail
+
+(function(){
+  if(EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY_HERE'){
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+    document.getElementById('configBanner').style.display = 'none';
+  }
+})();
+
+function handleSubmit(){
+  const btn = document.getElementById('submitBtn');
+  const msg = document.getElementById('formMsg');
+  msg.className = 'form-msg';
+  msg.style.display = 'none';
+
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName  = document.getElementById('lastName').value.trim();
+  const email     = document.getElementById('email').value.trim();
+  const message   = document.getElementById('message').value.trim();
+
+  if(!firstName || !email || !message){
+    msg.textContent = 'Please fill in your name, email, and message.';
+    msg.className = 'form-msg error';
+    return;
+  }
+
+  if(EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY_HERE'){
+    msg.textContent = 'Form is ready! Add your EmailJS keys in the script to activate Gmail delivery. (Demo mode — submission not sent.)';
+    msg.className = 'form-msg success';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  const params = {
+    first_name:   firstName,
+    last_name:    lastName,
+    email:        email,
+    phone:        document.getElementById('phone').value,
+    enquiry_type: document.getElementById('enquiry').value || 'Not specified',
+    message:      message,
+    to_email:     RECIPIENT_EMAIL,
+  };
+
+  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params)
+    .then(() => {
+      msg.textContent = 'Thank you! Your message has been sent. We\'ll be in touch within one business day.';
+      msg.className = 'form-msg success';
+      ['firstName','lastName','email','phone','message'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('enquiry').selectedIndex = 0;
+      btn.textContent = 'Message Sent';
+    })
+    .catch(err => {
+      msg.textContent = 'Something went wrong. Please email us directly at siskinppl@outlook.com';
+      msg.className = 'form-msg error';
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+      console.error('EmailJS error:', err);
+    });
+}
+
+/* ── Scroll animations ────────────────────────────────────── */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
