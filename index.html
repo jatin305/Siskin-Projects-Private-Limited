@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -103,7 +103,7 @@ nav.sc2{height:62px;}
 /* HERO */
 .hero{position:relative;min-height:100svh;padding:calc(var(--nav-h) + clamp(2rem,5vw,5rem)) var(--pad) clamp(3rem,6vw,6rem);display:flex;flex-direction:column;justify-content:center;overflow:hidden;}
 .hbg{position:absolute;inset:0;background:url(\'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1800&q=80\') center/cover no-repeat;}
-.hov1{position:absolute;inset:0;background:linear-gradient(155deg,rgba(6,13,24,.3) 0%,rgba(15,10,5,.55) 40%,rgba(6,13,24,.82) 100%);z-index:1;}
+.hov1{position:absolute;inset:0;background:linear-gradient(155deg,rgba(6,13,24,.35) 0%,rgba(6,13,24,.5) 40%,rgba(6,13,24,.75) 100%);z-index:1;}
 .hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.018) 1px,transparent 1px);background-size:60px 60px;z-index:1;}
 .hft{position:absolute;top:0;left:0;width:100%;height:22%;background:linear-gradient(to bottom,#060D18,transparent);z-index:2;pointer-events:none;}
 .hfb{position:absolute;bottom:0;left:0;width:100%;height:42%;background:linear-gradient(to top,#060D18 5%,transparent);z-index:2;pointer-events:none;}
@@ -181,13 +181,13 @@ nav.sc2{height:62px;}
 @media(max-width:900px){.sg{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:480px){.sg{grid-template-columns:1fr;}}
 .sc{position:relative;overflow:hidden;aspect-ratio:.72;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(1.2rem,2.5vw,1.8rem);}
-.sci{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .65s cubic-bezier(.16,1,.3,1),filter .65s;filter:brightness(.28) saturate(.5);}
-.sc:hover .sci{transform:scale(1.09);filter:brightness(.44) saturate(.68);}
-.scov{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,13,24,.92) 30%,transparent);}
+.sci{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .65s cubic-bezier(.16,1,.3,1),filter .65s;filter:brightness(.62) saturate(.9) contrast(1.05);}
+.sc:hover .sci{transform:scale(1.09);filter:brightness(.82) saturate(1.1) contrast(1.08);}
+.scov{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,13,24,.88) 15%,rgba(6,13,24,.25) 55%,rgba(6,13,24,.08) 100%);}
 .scc{position:relative;z-index:2;}
-.sct{display:inline-block;border:.5px solid rgba(201,168,76,.35);color:var(--gold);font-size:.55rem;letter-spacing:.17em;text-transform:uppercase;padding:.28rem .65rem;border-radius:2px;margin-bottom:.7rem;}
-.sc h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,1.8vw,1.3rem);font-weight:400;color:#fff;margin-bottom:.5rem;}
-.sc p{font-size:.76rem;color:rgba(200,196,188,.65);line-height:1.65;max-height:0;overflow:hidden;transition:max-height .55s cubic-bezier(.16,1,.3,1);}
+.sct{display:inline-block;border:.5px solid rgba(201,168,76,.55);color:var(--gold);font-size:.55rem;letter-spacing:.17em;text-transform:uppercase;padding:.28rem .65rem;border-radius:2px;margin-bottom:.7rem;background:rgba(6,13,24,.5);backdrop-filter:blur(4px);text-shadow:0 0 8px rgba(201,168,76,.5);}
+.sc h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,1.8vw,1.3rem);font-weight:400;color:#fff;margin-bottom:.5rem;text-shadow:0 2px 8px rgba(0,0,0,.6);}
+.sc p{font-size:.76rem;color:rgba(220,216,208,.8);line-height:1.65;max-height:0;overflow:hidden;transition:max-height .55s cubic-bezier(.16,1,.3,1);text-shadow:0 1px 4px rgba(0,0,0,.5);}
 .sc:hover p{max-height:100px;}
 
 /* WHY */
@@ -328,6 +328,27 @@ footer{background:var(--bg);border-top:.5px solid var(--border);padding:clamp(2.
 #btt.show{opacity:1;transform:translateY(0);pointer-events:all;}
 #btt:hover{background:var(--gold);color:#060D18;box-shadow:var(--glow);}
 
+
+/* ═══ SECTION BACKGROUND IMAGES (k2infra style) ═══════════ */
+.sec-bg{position:absolute;inset:0;background-size:cover;background-position:center;pointer-events:none;z-index:0;}
+.sec-bg::after{content:'';position:absolute;inset:0;}
+.sec > .ct{position:relative;z-index:2;}
+
+/* About bg */
+#about .sec-bg::after{background:linear-gradient(135deg,rgba(10,21,37,.94),rgba(10,21,37,.88));}
+/* Why bg */
+#why .sec-bg::after{background:linear-gradient(135deg,rgba(10,21,37,.92),rgba(10,21,37,.85));}
+/* Leadership bg */
+#leadership .sec-bg::after{background:linear-gradient(to bottom,rgba(10,21,37,.95),rgba(10,21,37,.9));}
+/* Investor bg */
+#investor .sec-bg::after{background:linear-gradient(135deg,rgba(15,29,48,.93),rgba(15,29,48,.88));}
+/* Contact bg */
+#contact .sec-bg::after{background:linear-gradient(to right,rgba(10,21,37,.95),rgba(10,21,37,.88));}
+
+/* Decorative shape (like k2infra floating shapes) */
+.dec-shape{position:absolute;pointer-events:none;z-index:1;opacity:0.04;}
+.dec-shape svg{width:100%;height:100%;}
+
 /* SECTION BACKGROUNDS */
 .s1{background:var(--bg);}
 .s2{background:var(--bg2);}
@@ -397,7 +418,8 @@ footer{background:var(--bg);border-top:.5px solid var(--border);padding:clamp(2.
 <div class="ticker"><div class="ti" id="ti"></div></div>
 
 <!-- ABOUT -->
-<section class="sec s2" id="about" style="overflow:hidden;">
+<section class="sec s2" id="about" style="overflow:hidden;position:relative;">
+  <div class="sec-bg" style="background-image:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1400&q=80');"></div>
   <div class="ct"><div class="ag">
     <div class="aif rvl">
       <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=900&q=80" alt="Infrastructure" loading="lazy"/>
@@ -437,15 +459,16 @@ footer{background:var(--bg);border-top:.5px solid var(--border);padding:clamp(2.
     <p class="sb rv d2">From land acquisition to landmark delivery — Siskin Projects participates across the full value chain.</p>
   </div></div>
   <div class="sg">
-    <div class="sc rv d1"><div class="sci" style="background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=70')"></div><div class="scov"></div><div class="scc"><div class="sct">01</div><h3>Civil Construction &amp; Infrastructure</h3><p>Roads, urban infrastructure, industrial structures &amp; public utility engineering across India.</p></div></div>
-    <div class="sc rv d2"><div class="sci" style="background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=70')"></div><div class="scov"></div><div class="scc"><div class="sct">02</div><h3>Real Estate Development</h3><p>Residential, commercial &amp; industrial properties designed for long-term urban value.</p></div></div>
-    <div class="sc rv d3"><div class="sci" style="background-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=70')"></div><div class="scov"></div><div class="scc"><div class="sct">03</div><h3>Land &amp; Township Development</h3><p>Strategic land aggregation, plotted schemes &amp; integrated township delivery.</p></div></div>
-    <div class="sc rv d4"><div class="sci" style="background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=70')"></div><div class="scov"></div><div class="scc"><div class="sct">04</div><h3>Consultancy &amp; Advisory</h3><p>Technical expertise from feasibility through delivery — planning, design &amp; cost management.</p></div></div>
+    <div class="sc rv d1"><div class="sci" style="background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=85')"></div><div class="scov"></div><div class="scc"><div class="sct">01</div><h3>Civil Construction &amp; Infrastructure</h3><p>Roads, urban infrastructure, industrial structures &amp; public utility engineering across India.</p></div></div>
+    <div class="sc rv d2"><div class="sci" style="background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=85')"></div><div class="scov"></div><div class="scc"><div class="sct">02</div><h3>Real Estate Development</h3><p>Residential, commercial &amp; industrial properties designed for long-term urban value.</p></div></div>
+    <div class="sc rv d3"><div class="sci" style="background-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=900&q=85')"></div><div class="scov"></div><div class="scc"><div class="sct">03</div><h3>Land &amp; Township Development</h3><p>Strategic land aggregation, plotted schemes &amp; integrated township delivery.</p></div></div>
+    <div class="sc rv d4"><div class="sci" style="background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=900&q=85')"></div><div class="scov"></div><div class="scc"><div class="sct">04</div><h3>Consultancy &amp; Advisory</h3><p>Technical expertise from feasibility through delivery — planning, design &amp; cost management.</p></div></div>
   </div>
 </section>
 
 <!-- WHY -->
-<section class="sec s2" id="why">
+<section class="sec s2" id="why" style="position:relative;">
+  <div class="sec-bg" style="background-image:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1400&q=80');opacity:0.5;"></div>
   <div class="ct"><div class="why-head">
     <div class="rv"><div class="ew">Why Siskin</div><h2 class="st">Built on <em>Integrity,</em><br/>Driven by Excellence</h2><p class="sb" style="margin-top:.75rem;">Every project reflects our commitment to quality, ethical practice, and results that stand the test of time.</p></div>
     <div class="wg">
@@ -472,7 +495,8 @@ footer{background:var(--bg);border-top:.5px solid var(--border);padding:clamp(2.
 </section>
 
 <!-- LEADERSHIP -->
-<section class="sec s2" id="leadership">
+<section class="sec s2" id="leadership" style="position:relative;">
+  <div class="sec-bg" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1400&q=80');opacity:0.35;"></div>
   <div class="ct">
     <div class="ldr-top rv">
       <div class="ew">Leadership</div>
@@ -529,7 +553,8 @@ footer{background:var(--bg);border-top:.5px solid var(--border);padding:clamp(2.
 </section>
 
 <!-- INVESTOR -->
-<section class="sec s3" id="investor" style="border-top:.5px solid var(--border);">
+<section class="sec s3" id="investor" style="position:relative;border-top:.5px solid var(--border);">
+  <div class="sec-bg" style="background-image:url('https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=1400&q=80');opacity:0.3;"></div>
   <div class="ct">
     <div class="rv"><div class="ew">Investor Information</div><h2 class="st">Transparency You Can<br/><em>Trust</em></h2></div>
     <div class="invg">
@@ -570,7 +595,8 @@ footer{background:var(--bg);border-top:.5px solid var(--border);padding:clamp(2.
 </section>
 
 <!-- CONTACT -->
-<section class="sec s2" id="contact" style="border-top:.5px solid var(--border);">
+<section class="sec s2" id="contact" style="position:relative;border-top:.5px solid var(--border);">
+  <div class="sec-bg" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80');opacity:0.25;"></div>
   <div class="ct">
     <div class="rv"><div class="ew">Get In Touch</div><h2 class="st">Let's Build<br/><em>Something</em> Together</h2></div>
     <div class="cog">
@@ -720,7 +746,7 @@ document.querySelectorAll('a,button,.sc,.lc,.gc,.wi,.amn,.aif').forEach(el=>{
 /* ── SIMPLE INTRO DISMISS ─────────────────────────────────── */
 setTimeout(()=>document.getElementById('intro').classList.add('out'),2800);
 
-/* ── HERO 3D TRUCK — DETAILED SOLID MODEL ─────────────────── */
+/* ── HERO 3D — FUTURISTIC INFRASTRUCTURE ──────────────────── */
 (function(){
   const cv = document.getElementById('hero-truck-gl');
   if(!cv) return;
@@ -729,371 +755,178 @@ setTimeout(()=>document.getElementById('intro').classList.add('out'),2800);
   rdr.setPixelRatio(Math.min(devicePixelRatio, 2));
   rdr.setSize(W(), H());
   rdr.setClearColor(0x000000, 0);
-  rdr.shadowMap.enabled = true;
-  rdr.shadowMap.type = THREE.PCFSoftShadowMap;
   rdr.toneMapping = THREE.ACESFilmicToneMapping;
-  rdr.toneMappingExposure = 1.1;
+  rdr.toneMappingExposure = 0.9;
 
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x0A0808, 0.012);
+  scene.fog = new THREE.FogExp2(0x060D18, 0.015);
 
-  const cam = new THREE.PerspectiveCamera(40, W()/H(), 0.1, 300);
-  cam.position.set(12, 5, 16);
+  const cam = new THREE.PerspectiveCamera(50, W()/H(), 0.1, 200);
+  cam.position.set(0, 8, 20);
   cam.lookAt(0, 2, 0);
 
-  // ── MATERIALS ──────────────────────────────────────────
-  const bodyM = new THREE.MeshStandardMaterial({
-    color:0xC8C8D0, metalness:0.85, roughness:0.18
-  });
-  const cabM = new THREE.MeshStandardMaterial({
-    color:0xF0E8D8, metalness:0.7, roughness:0.22
-  });
-  const trailerM = new THREE.MeshStandardMaterial({
-    color:0x9090A0, metalness:0.75, roughness:0.2
-  });
-  const darkM = new THREE.MeshStandardMaterial({
-    color:0x1A1A22, metalness:0.4, roughness:0.6
-  });
-  const chromeM = new THREE.MeshStandardMaterial({
-    color:0xEEEEFF, metalness:0.95, roughness:0.05
-  });
-  const tireM = new THREE.MeshStandardMaterial({
-    color:0x111111, metalness:0.1, roughness:0.85
-  });
-  const hubM = new THREE.MeshStandardMaterial({
-    color:0xCCCCDD, metalness:0.9, roughness:0.1
-  });
-  const glassM = new THREE.MeshStandardMaterial({
-    color:0x445566, metalness:0.95, roughness:0.05,
-    transparent:true, opacity:0.45
-  });
-  const headlightM = new THREE.MeshStandardMaterial({
-    color:0xFFEECC, emissive:0xFFDD88, emissiveIntensity:2.0
-  });
-  const tailM = new THREE.MeshStandardMaterial({
-    color:0xFF2222, emissive:0xFF1111, emissiveIntensity:0.8
-  });
-  const underM = new THREE.MeshStandardMaterial({
-    color:0x222228, metalness:0.5, roughness:0.5
-  });
-  const groundM = new THREE.MeshStandardMaterial({
-    color:0x0E0A08, metalness:0.15, roughness:0.92
-  });
-  const roadM = new THREE.MeshStandardMaterial({
-    color:0x181418, metalness:0.08, roughness:0.88
-  });
-  const lineM = new THREE.MeshStandardMaterial({
-    color:0xC9A84C, emissive:0xC9A84C, emissiveIntensity:0.3
-  });
+  // ── MATERIALS ──
+  const wireGold = new THREE.MeshBasicMaterial({color:0xC9A84C, wireframe:true, transparent:true, opacity:0.22});
+  const wireGold2 = new THREE.MeshBasicMaterial({color:0xC9A84C, wireframe:true, transparent:true, opacity:0.12});
+  const solidGold = new THREE.MeshStandardMaterial({color:0xC9A84C, metalness:0.8, roughness:0.2, transparent:true, opacity:0.35});
+  const solidDark = new THREE.MeshStandardMaterial({color:0x0D1A2E, metalness:0.6, roughness:0.3, transparent:true, opacity:0.5});
+  const glowM = new THREE.MeshBasicMaterial({color:0xC9A84C, transparent:true, opacity:0.6});
+  const edgeM = new THREE.LineBasicMaterial({color:0xC9A84C, transparent:true, opacity:0.35});
+  const edgeDim = new THREE.LineBasicMaterial({color:0xC9A84C, transparent:true, opacity:0.12});
 
-  // ── BUILD TRUCK ────────────────────────────────────────
-  function buildTruck(){
-    const T = new THREE.Group();
-    const wheels = [];
-
-    // === TRACTOR ===
-    // Hood / engine block
-    const hood = new THREE.Mesh(new THREE.BoxGeometry(2.8, 1.3, 2.5), cabM);
-    hood.position.set(7.4, 1.5, 0); hood.castShadow=true; T.add(hood);
-    // Hood slope
-    const hoodTop = new THREE.Mesh(new THREE.BoxGeometry(2.8, 0.12, 2.55), chromeM);
-    hoodTop.position.set(7.4, 2.18, 0); T.add(hoodTop);
-
-    // Cab body
-    const cab = new THREE.Mesh(new THREE.BoxGeometry(3.0, 2.6, 2.6), cabM);
-    cab.position.set(5.0, 2.4, 0); cab.castShadow=true; cab.receiveShadow=true; T.add(cab);
-    // Cab roof
-    const cabRoof = new THREE.Mesh(new THREE.BoxGeometry(3.1, 0.1, 2.7), chromeM);
-    cabRoof.position.set(5.0, 3.75, 0); T.add(cabRoof);
-    // Roof fairing (aero)
-    const fairing = new THREE.Mesh(new THREE.BoxGeometry(1.0, 1.0, 2.65), bodyM);
-    fairing.position.set(3.8, 4.15, 0); fairing.rotation.z=-0.35; T.add(fairing);
-    // Side fairing panels
-    [-1.35,1.35].forEach(z=>{
-      const sf = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.7, 0.08), bodyM);
-      sf.position.set(3.6, 3.95, z); T.add(sf);
-    });
-
-    // Windshield (angled)
-    const ws = new THREE.Mesh(new THREE.BoxGeometry(0.08, 2.1, 2.3), glassM);
-    ws.position.set(6.55, 2.5, 0); ws.rotation.z=0.18; T.add(ws);
-    // Side windows
-    [-1.32,1.32].forEach(z=>{
-      const sw = new THREE.Mesh(new THREE.BoxGeometry(2.2, 1.1, 0.06), glassM);
-      sw.position.set(5.0, 2.9, z); T.add(sw);
-    });
-
-    // Grille
-    const grille = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.9, 2.2), chromeM);
-    grille.position.set(8.85, 1.35, 0); T.add(grille);
-    // Grille slats
-    for(let i=0;i<6;i++){
-      const slat = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.06, 2.1), darkM);
-      slat.position.set(8.88, 1.0+i*0.16, 0); T.add(slat);
-    }
-
-    // Bumper
-    const bumper = new THREE.Mesh(new THREE.BoxGeometry(0.25, 0.45, 2.7), chromeM);
-    bumper.position.set(8.92, 0.7, 0); T.add(bumper);
-    // Step bumper detail
-    const step = new THREE.Mesh(new THREE.BoxGeometry(0.15, 0.06, 2.5), darkM);
-    step.position.set(8.95, 0.5, 0); T.add(step);
-
-    // Headlights
-    [-0.85,0.85].forEach(z=>{
-      const hl = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.35, 0.45), headlightM);
-      hl.position.set(8.88, 1.6, z); T.add(hl);
-      // Headlight bezels
-      const bz = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.4, 0.5), chromeM);
-      bz.position.set(8.86, 1.6, z); T.add(bz);
-    });
-
-    // Mirrors
-    [-1.55,1.55].forEach(z=>{
-      const mirArm = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.08, 0.5), chromeM);
-      mirArm.position.set(6.3, 3.0, z*0.9); T.add(mirArm);
-      const mirHead = new THREE.Mesh(new THREE.BoxGeometry(0.35, 0.5, 0.08), darkM);
-      mirHead.position.set(6.3, 3.0, z); T.add(mirHead);
-    });
-
-    // Exhaust stacks
-    [-1.15,1.15].forEach(z=>{
-      const exh = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.09, 2.8, 10), chromeM);
-      exh.position.set(4.0, 3.1, z); T.add(exh);
-      // Top cap
-      const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.09, 0.15, 10), chromeM);
-      cap.position.set(4.0, 4.55, z); T.add(cap);
-    });
-
-    // Fuel tanks
-    [-1.45,1.45].forEach(z=>{
-      const tank = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.4, 1.5, 12), bodyM);
-      tank.rotation.z=Math.PI/2; tank.position.set(3.2, 0.9, z);
-      tank.castShadow=true; T.add(tank);
-      // Tank straps
-      [-.4,.4].forEach(ox=>{
-        const strap = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.85, 0.04), chromeM);
-        strap.position.set(3.2+ox, 0.9, z); T.add(strap);
-      });
-    });
-
-    // Cab steps
-    [-1.35,1.35].forEach(z=>{
-      const cstep = new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.08, 0.3), chromeM);
-      cstep.position.set(5.8, 0.85, z); T.add(cstep);
-    });
-
-    // === CHASSIS FRAME ===
-    [-0.45,0.45].forEach(z=>{
-      const rail = new THREE.Mesh(new THREE.BoxGeometry(18.0, 0.22, 0.15), underM);
-      rail.position.set(-1.5, 0.72, z); T.add(rail);
-    });
-    // Crossmembers
-    for(let i=0;i<8;i++){
-      const cm = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.12, 1.0), underM);
-      cm.position.set(-7+i*2.2, 0.65, 0); T.add(cm);
-    }
-
-    // Fifth wheel
-    const fw = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.12, 16), darkM);
-    fw.position.set(2.5, 0.88, 0); T.add(fw);
-
-    // === TRAILER ===
-    // Floor
-    const tFloor = new THREE.Mesh(new THREE.BoxGeometry(14.0, 0.15, 2.65), underM);
-    tFloor.position.set(-5.5, 0.92, 0); T.add(tFloor);
-
-    // Trailer body
-    const tBody = new THREE.Mesh(new THREE.BoxGeometry(13.6, 3.8, 2.7), trailerM);
-    tBody.position.set(-5.5, 3.0, 0);
-    tBody.castShadow=true; tBody.receiveShadow=true; T.add(tBody);
-
-    // Trailer roof
-    const tRoof = new THREE.Mesh(new THREE.BoxGeometry(13.7, 0.06, 2.75), bodyM);
-    tRoof.position.set(-5.5, 4.92, 0); T.add(tRoof);
-
-    // Side panel ribs (visual detail)
-    for(let i=0;i<10;i++){
-      [-1.37,1.37].forEach(z=>{
-        const rib = new THREE.Mesh(new THREE.BoxGeometry(0.04, 3.7, 0.03), darkM);
-        rib.position.set(-11.0+i*1.5, 3.0, z); T.add(rib);
-      });
-    }
-    // Bottom rail trim
-    [-1.38,1.38].forEach(z=>{
-      const trim = new THREE.Mesh(new THREE.BoxGeometry(13.6, 0.08, 0.06), chromeM);
-      trim.position.set(-5.5, 1.05, z); T.add(trim);
-    });
-
-    // Rear doors
-    const rDoor1 = new THREE.Mesh(new THREE.BoxGeometry(0.08, 3.6, 1.25), trailerM);
-    rDoor1.position.set(-12.32, 3.0, -0.65); rDoor1.castShadow=true; T.add(rDoor1);
-    const rDoor2 = new THREE.Mesh(new THREE.BoxGeometry(0.08, 3.6, 1.25), trailerM);
-    rDoor2.position.set(-12.32, 3.0, 0.65); T.add(rDoor2);
-    // Door hinges
-    [-0.1,1.25,-1.25].forEach(z=>{
-      const h = new THREE.Mesh(new THREE.CylinderGeometry(0.04,0.04,0.2,6), chromeM);
-      h.rotation.x=Math.PI/2; h.position.set(-12.34, 2.5, z); T.add(h);
-    });
-    // Door handles
-    [-0.3,0.3].forEach(z=>{
-      const dh = new THREE.Mesh(new THREE.BoxGeometry(0.04,0.3,0.06), chromeM);
-      dh.position.set(-12.38, 2.2, z); T.add(dh);
-    });
-
-    // Taillights
-    [-1.1,1.1].forEach(z=>{
-      const tl = new THREE.Mesh(new THREE.BoxGeometry(0.06,0.25,0.35), tailM);
-      tl.position.set(-12.36, 1.5, z); T.add(tl);
-    });
-
-    // Mud flaps
-    [-1.45,1.45].forEach(z=>{
-      const mf = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.6, 0.4), darkM);
-      mf.position.set(-12.2, 0.55, z); T.add(mf);
-    });
-
-    // Under-trailer ICC bar
-    const icc = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.12, 2.4), chromeM);
-    icc.position.set(-12.0, 0.55, 0); T.add(icc);
-
-    // Landing gear
-    [-0.9,0.9].forEach(z=>{
-      const lg = new THREE.Mesh(new THREE.BoxGeometry(0.12, 1.2, 0.12), darkM);
-      lg.position.set(0.8, 0.5, z); T.add(lg);
-    });
-
-    // === WHEELS ===
-    function addWheel(x, z, dual){
-      const grp = new THREE.Group();
-      const w = dual ? 0.55 : 0.28;
-      const tire = new THREE.Mesh(new THREE.CylinderGeometry(0.52, 0.52, w, 24), tireM);
-      tire.rotation.x = Math.PI/2; tire.castShadow=true; grp.add(tire);
-      // Tire sidewall detail (torus)
-      const side = new THREE.Mesh(new THREE.TorusGeometry(0.52, 0.06, 6, 24), tireM);
-      side.position.z = w/2 - 0.03; grp.add(side);
-      const side2 = side.clone(); side2.position.z = -(w/2 - 0.03); grp.add(side2);
-      // Hub
-      const hub = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.2, w+0.04, 12), hubM);
-      hub.rotation.x = Math.PI/2; grp.add(hub);
-      // Hub cap
-      const hcap = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.22, 0.06, 12), chromeM);
-      hcap.rotation.x = Math.PI/2; hcap.position.z = w/2+0.02; grp.add(hcap);
-      // Lug nuts
-      for(let i=0;i<8;i++){
-        const a=(i/8)*Math.PI*2;
-        const ln = new THREE.Mesh(new THREE.SphereGeometry(0.025, 6, 6), chromeM);
-        ln.position.set(Math.cos(a)*0.14, Math.sin(a)*0.14, w/2+0.03); grp.add(ln);
-      }
-      grp.position.set(x, 0.52, z);
-      T.add(grp); wheels.push(grp);
-    }
-    // Front steer
-    addWheel(7.2, 1.42, false); addWheel(7.2, -1.42, false);
-    // Drive axle 1
-    addWheel(3.0, 1.42, true); addWheel(3.0, -1.42, true);
-    // Drive axle 2
-    addWheel(1.8, 1.42, true); addWheel(1.8, -1.42, true);
-    // Trailer axle 1
-    addWheel(-9.0, 1.42, true); addWheel(-9.0, -1.42, true);
-    // Trailer axle 2
-    addWheel(-10.2, 1.42, true); addWheel(-10.2, -1.42, true);
-
-    return {group:T, wheels};
+  function addEdges(mesh, mat){
+    const e = new THREE.LineSegments(new THREE.EdgesGeometry(mesh.geometry), mat || edgeM);
+    mesh.add(e);
+    return mesh;
   }
 
-  // ── CREATE TRUCKS ──
-  const mainTruck = buildTruck();
-  mainTruck.group.position.set(-30, 0, 0);
-  scene.add(mainTruck.group);
+  // ═══ FLOATING CITY / INFRASTRUCTURE ═══
+  const city = new THREE.Group();
 
-  // Second truck (far lane, opposite direction)
-  const truck2 = buildTruck();
-  truck2.group.position.set(40, 0, -8);
-  truck2.group.scale.set(-0.85, 0.85, 0.85);
-  truck2.group.traverse(c=>{
-    if(c.material){c.material=c.material.clone();c.material.metalness*=0.7;}
-  });
-  scene.add(truck2.group);
+  // Central tower (hero piece)
+  const tower = new THREE.Mesh(new THREE.BoxGeometry(2, 14, 2), solidDark);
+  tower.position.set(0, 7, -3);
+  addEdges(tower, edgeM);
+  city.add(tower);
+  // Tower crown
+  const crown = new THREE.Mesh(new THREE.BoxGeometry(2.5, 0.5, 2.5), solidGold);
+  crown.position.set(0, 14.2, -3);
+  addEdges(crown, edgeM);
+  city.add(crown);
+  // Antenna
+  const ant = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 4, 6), glowM);
+  ant.position.set(0, 16.5, -3);
+  city.add(ant);
 
-  // ── GROUND ──
-  const ground = new THREE.Mesh(new THREE.PlaneGeometry(300, 80), groundM);
-  ground.rotation.x=-Math.PI/2; ground.receiveShadow=true; scene.add(ground);
+  // Surrounding buildings (wireframe futuristic)
+  const bldgs = [
+    {x:-5, z:-4, w:1.8, h:9, d:1.8},
+    {x:5, z:-5, w:2.2, h:11, d:1.5},
+    {x:-8, z:-6, w:1.5, h:7, d:2},
+    {x:8, z:-7, w:2, h:8, d:1.8},
+    {x:-3, z:-8, w:1.6, h:6, d:1.6},
+    {x:3, z:-9, w:1.4, h:10, d:1.4},
+    {x:-11, z:-5, w:2.5, h:5, d:2.5},
+    {x:11, z:-4, w:2, h:6, d:2},
+    {x:-6, z:-10, w:1.8, h:8, d:1.5},
+    {x:7, z:-11, w:1.5, h:7, d:1.8},
+    {x:0, z:-12, w:3, h:5, d:2},
+    {x:-13, z:-8, w:1.2, h:4, d:1.2},
+    {x:13, z:-9, w:1.5, h:5, d:1.5},
+  ];
+  bldgs.forEach((b,i) => {
+    const m = i%3===0 ? wireGold : wireGold2;
+    const mesh = new THREE.Mesh(new THREE.BoxGeometry(b.w, b.h, b.d), m);
+    mesh.position.set(b.x, b.h/2, b.z);
+    if(i%2===0) addEdges(mesh, i%3===0 ? edgeM : edgeDim);
+    city.add(mesh);
 
-  // Road
-  const road = new THREE.Mesh(new THREE.PlaneGeometry(300, 7), roadM);
-  road.rotation.x=-Math.PI/2; road.position.y=0.01; scene.add(road);
-
-  // Far lane
-  const road2 = new THREE.Mesh(new THREE.PlaneGeometry(300, 5), roadM);
-  road2.rotation.x=-Math.PI/2; road2.position.set(0, 0.01, -8); scene.add(road2);
-
-  // Road markings
-  for(let i=-60;i<60;i+=3){
-    const d = new THREE.Mesh(new THREE.BoxGeometry(1.5,0.015,0.08), lineM);
-    d.position.set(i*1.5, 0.015, 0); scene.add(d);
-  }
-  [-3.5, 3.5, -5.5, -10.5].forEach(z=>{
-    const e = new THREE.Mesh(new THREE.BoxGeometry(300, 0.015, 0.05), lineM);
-    e.position.set(0, 0.015, z); scene.add(e);
-  });
-
-  // ── BUILDINGS/STRUCTURES ──
-  const bldgM1 = new THREE.MeshStandardMaterial({color:0x0A0A12,metalness:0.3,roughness:0.7});
-  const bldgM2 = new THREE.MeshStandardMaterial({color:0x12101A,metalness:0.25,roughness:0.75});
-  [
-    [-30,12,12,8,8], [-15,14,8,6,6], [5,13,15,10,7], [25,11,10,7,9], [45,12,7,9,6],
-    [-20,-16,9,5,7], [0,-15,12,7,8], [20,-14,8,8,5], [40,-16,11,6,7]
-  ].forEach(([x,z,w,h,d],i)=>{
-    const m = i%2===0 ? bldgM1 : bldgM2;
-    const b = new THREE.Mesh(new THREE.BoxGeometry(w,h,d), m);
-    b.position.set(x,h/2,z); b.castShadow=true; b.receiveShadow=true; scene.add(b);
-    // Lit windows
-    const winM = new THREE.MeshStandardMaterial({color:0xC9A84C, emissive:0xC9A84C, emissiveIntensity:0.5+Math.random()*0.5});
-    for(let wy=0;wy<Math.floor(h/1.2);wy++){
-      for(let wx=0;wx<Math.floor(w/1.8);wx++){
-        if(Math.random()>0.55){
-          const win = new THREE.Mesh(new THREE.PlaneGeometry(0.5,0.4), winM);
-          const face = i<5 ? -1 : 1;
-          win.position.set(x-w/2+1+wx*1.6, 1.5+wy*1.2, z+face*(d/2+0.01));
-          win.rotation.y = face<0 ? Math.PI : 0;
-          scene.add(win);
-        }
+    // Random lit windows
+    const winM = new THREE.MeshBasicMaterial({color:0xC9A84C, transparent:true, opacity:0.15+Math.random()*0.3});
+    for(let wy=0; wy<Math.floor(b.h/1.5); wy++){
+      if(Math.random()>0.45){
+        const win = new THREE.Mesh(new THREE.PlaneGeometry(0.3, 0.25), winM);
+        win.position.set(b.x + (Math.random()-0.5)*b.w*0.6, 1+wy*1.4, b.z + b.d/2 + 0.01);
+        city.add(win);
       }
     }
   });
 
-  // ── LIGHTING (golden hour sunset feel) ──
-  scene.add(new THREE.AmbientLight(0x1A1220, 0.5));
+  // ── FLOATING GEOMETRIC SHAPES ──
+  const floaters = [];
 
-  // Warm sunset directional
-  const sun = new THREE.DirectionalLight(0xFFAA55, 1.8);
-  sun.position.set(-20, 15, -10);
-  sun.castShadow=true;
-  sun.shadow.mapSize.set(2048, 2048);
-  sun.shadow.camera.near=0.5; sun.shadow.camera.far=80;
-  sun.shadow.camera.left=-40; sun.shadow.camera.right=40;
-  sun.shadow.camera.top=20; sun.shadow.camera.bottom=-5;
-  scene.add(sun);
+  // Octahedrons
+  for(let i=0; i<6; i++){
+    const g = new THREE.OctahedronGeometry(0.4+Math.random()*0.5, 0);
+    const m = new THREE.Mesh(g, solidGold.clone());
+    m.material.opacity = 0.2 + Math.random()*0.15;
+    addEdges(m, edgeM);
+    m.position.set(
+      (Math.random()-0.5)*20,
+      4+Math.random()*10,
+      -2+Math.random()*-8
+    );
+    city.add(m);
+    floaters.push({mesh:m, sy:0.3+Math.random()*0.5, sx:0.15+Math.random()*0.2, ry:0.005+Math.random()*0.01, phase:Math.random()*Math.PI*2});
+  }
 
-  // Cool fill
-  const fill = new THREE.DirectionalLight(0x3355AA, 0.4);
-  fill.position.set(10, 8, 15); scene.add(fill);
+  // Icosahedrons
+  for(let i=0; i<4; i++){
+    const g = new THREE.IcosahedronGeometry(0.3+Math.random()*0.4, 0);
+    const m = new THREE.Mesh(g, wireGold.clone());
+    m.material.opacity = 0.25 + Math.random()*0.15;
+    m.position.set(
+      (Math.random()-0.5)*18,
+      3+Math.random()*8,
+      -1+Math.random()*-10
+    );
+    city.add(m);
+    floaters.push({mesh:m, sy:0.4+Math.random()*0.3, sx:0.1+Math.random()*0.15, ry:0.008+Math.random()*0.012, phase:Math.random()*Math.PI*2});
+  }
 
-  // Gold rim light
-  const rim = new THREE.PointLight(0xC9A84C, 2.0, 50);
-  rim.position.set(0, 8, 4); scene.add(rim);
+  // Torus rings orbiting
+  for(let i=0; i<3; i++){
+    const g = new THREE.TorusGeometry(1.2+i*0.8, 0.03, 8, 40);
+    const m = new THREE.Mesh(g, glowM.clone());
+    m.material.opacity = 0.15 - i*0.03;
+    m.position.set(0, 10+i*2, -3);
+    m.rotation.x = Math.PI/2 + (i-1)*0.3;
+    city.add(m);
+    floaters.push({mesh:m, sy:0, sx:0, ry:0.003+i*0.002, phase:i*1.5, isRing:true});
+  }
 
-  // Ground bounce
-  const bounce = new THREE.PointLight(0x886633, 0.6, 30);
-  bounce.position.set(0, 0.5, 2); scene.add(bounce);
+  // ── GROUND GRID ──
+  const gridGeo = new THREE.PlaneGeometry(80, 80, 40, 40);
+  const gridMat = new THREE.MeshBasicMaterial({color:0xC9A84C, wireframe:true, transparent:true, opacity:0.04});
+  const grid = new THREE.Mesh(gridGeo, gridMat);
+  grid.rotation.x = -Math.PI/2;
+  grid.position.y = -0.1;
+  city.add(grid);
 
-  // Headlight glow on main truck
-  const hlGlow = new THREE.SpotLight(0xFFEECC, 3, 25, Math.PI/5, 0.6);
-  hlGlow.position.set(9, 1.6, 0);
-  hlGlow.target.position.set(25, 0, 0);
-  mainTruck.group.add(hlGlow);
-  mainTruck.group.add(hlGlow.target);
+  // Glowing horizon line
+  const hLine = new THREE.Mesh(new THREE.BoxGeometry(80, 0.02, 0.02), glowM.clone());
+  hLine.material.opacity = 0.25;
+  hLine.position.set(0, 0, -2);
+  city.add(hLine);
+
+  // ── PARTICLE SWARM (data flow / connections) ──
+  const pN = 300;
+  const pGeo = new THREE.BufferGeometry();
+  const pPos = new Float32Array(pN*3);
+  const pVel = [];
+  for(let i=0; i<pN; i++){
+    pPos[i*3] = (Math.random()-0.5)*30;
+    pPos[i*3+1] = Math.random()*18;
+    pPos[i*3+2] = -Math.random()*15;
+    pVel.push({
+      x:(Math.random()-0.5)*0.02,
+      y:(Math.random()-0.5)*0.015,
+      z:(Math.random()-0.5)*0.01
+    });
+  }
+  pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+  const pMat = new THREE.PointsMaterial({color:0xC9A84C, size:0.06, transparent:true, opacity:0.45, sizeAttenuation:true});
+  const particles = new THREE.Points(pGeo, pMat);
+  city.add(particles);
+
+  // Connection lines between nearby particles
+  const lineGeo = new THREE.BufferGeometry();
+  const linePos = new Float32Array(pN*6);
+  lineGeo.setAttribute('position', new THREE.BufferAttribute(linePos, 3));
+  const lineMat = new THREE.LineBasicMaterial({color:0xC9A84C, transparent:true, opacity:0.06});
+  const lines = new THREE.LineSegments(lineGeo, lineMat);
+  city.add(lines);
+
+  scene.add(city);
+
+  // ── LIGHTS ──
+  scene.add(new THREE.AmbientLight(0x1A1830, 0.4));
+  const pl1 = new THREE.PointLight(0xC9A84C, 1.5, 40);
+  pl1.position.set(0, 15, 2); scene.add(pl1);
+  const pl2 = new THREE.PointLight(0x3366CC, 0.8, 35);
+  pl2.position.set(-10, 8, 5); scene.add(pl2);
+  const pl3 = new THREE.PointLight(0xC9A84C, 0.6, 30);
+  pl3.position.set(10, 5, 8); scene.add(pl3);
 
   // ── MOUSE ──
   let mx=0, my=0;
@@ -1102,44 +935,65 @@ setTimeout(()=>document.getElementById('intro').classList.add('out'),2800);
   });
 
   // ── ANIMATION ──
-  const t1Start=-35, t1End=50, t1Speed=0.065;
-  const t2Start=50, t2End=-45, t2Speed=0.05;
-  let t1x=t1Start, t2x=t2Start, t=0;
-
+  let t=0;
   function animate(){
     requestAnimationFrame(animate);
-    t+=0.016;
+    t+=0.008;
 
-    // Move truck 1 (right)
-    t1x += t1Speed;
-    if(t1x > t1End) t1x = t1Start;
-    mainTruck.group.position.x = t1x;
-    mainTruck.group.position.y = Math.sin(t*4)*0.015;
+    // Rotate city slowly
+    city.rotation.y = Math.sin(t*0.15)*0.12 + mx*0.08;
 
-    // Move truck 2 (left)
-    t2x -= t2Speed;
-    if(t2x < t2End) t2x = t2Start;
-    truck2.group.position.x = t2x;
-    truck2.group.position.y = Math.sin(t*3.5+2)*0.012;
-
-    // Spin wheels
-    const wSpeed1 = 0.18;
-    const wSpeed2 = 0.14;
-    mainTruck.wheels.forEach(w=>{
-      w.children.forEach(c=>{c.rotation.y-=wSpeed1;});
-    });
-    truck2.wheels.forEach(w=>{
-      w.children.forEach(c=>{c.rotation.y+=wSpeed2;});
+    // Float geometric shapes
+    floaters.forEach(f => {
+      if(f.isRing){
+        f.mesh.rotation.z += f.ry;
+        f.mesh.rotation.x += f.ry * 0.3;
+      } else {
+        f.mesh.position.y += Math.sin(t*f.sy + f.phase)*0.008;
+        f.mesh.position.x += Math.cos(t*f.sx + f.phase)*0.003;
+        f.mesh.rotation.y += f.ry;
+        f.mesh.rotation.x += f.ry * 0.5;
+      }
     });
 
-    // Camera follows mouse subtly
-    cam.position.x = 12 + mx*3;
-    cam.position.y = 5 - my*1.5;
-    cam.lookAt(mainTruck.group.position.x*0.15, 2, 0);
+    // Move particles
+    const pp = pGeo.attributes.position.array;
+    for(let i=0; i<pN; i++){
+      pp[i*3] += pVel[i].x;
+      pp[i*3+1] += pVel[i].y;
+      pp[i*3+2] += pVel[i].z;
+      // Bounds
+      if(Math.abs(pp[i*3])>15) pVel[i].x *= -1;
+      if(pp[i*3+1]<0 || pp[i*3+1]>18) pVel[i].y *= -1;
+      if(pp[i*3+2]>0 || pp[i*3+2]<-15) pVel[i].z *= -1;
+    }
+    pGeo.attributes.position.needsUpdate = true;
 
-    // Rim light follows main truck
-    rim.position.x = mainTruck.group.position.x;
-    bounce.position.x = mainTruck.group.position.x;
+    // Update connection lines (nearest pairs)
+    const lp = lineGeo.attributes.position.array;
+    let li = 0;
+    for(let i=0; i<Math.min(pN, 80); i++){
+      const ax=pp[i*3], ay=pp[i*3+1], az=pp[i*3+2];
+      for(let j=i+1; j<Math.min(pN, 80); j++){
+        const dx=pp[j*3]-ax, dy=pp[j*3+1]-ay, dz=pp[j*3+2]-az;
+        const d=dx*dx+dy*dy+dz*dz;
+        if(d<6 && li<pN*2-2){
+          lp[li*3]=ax; lp[li*3+1]=ay; lp[li*3+2]=az;
+          lp[li*3+3]=pp[j*3]; lp[li*3+4]=pp[j*3+1]; lp[li*3+5]=pp[j*3+2];
+          li+=2;
+        }
+      }
+    }
+    for(let k=li*3; k<lp.length; k++) lp[k]=0;
+    lineGeo.attributes.position.needsUpdate = true;
+
+    // Camera
+    cam.position.x = mx*4;
+    cam.position.y = 8 - my*2;
+    cam.lookAt(0, 4, -3);
+
+    // Light pulse
+    pl1.intensity = 1.5 + Math.sin(t*2)*0.3;
 
     rdr.render(scene, cam);
   }
@@ -1169,7 +1023,7 @@ for(let i=0;i<14;i++){const p=document.createElement('div');p.className='fp';con
 
 /* ── HERO IMAGE ───────────────────────────────────────────── */
 const hbg=document.getElementById('hbg');
-hbg.style.cssText='position:absolute;inset:0;z-index:0;background:url(\'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1800&q=80\') center/cover no-repeat;filter:brightness(0.7) saturate(1.2);';
+hbg.style.cssText='position:absolute;inset:0;z-index:0;background:url(\'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1800&q=80\') center/cover no-repeat;filter:brightness(0.35) saturate(0.8);';
 
 /* ── HERO PARALLAX ────────────────────────────────────────── */
 addEventListener('scroll',()=>{
