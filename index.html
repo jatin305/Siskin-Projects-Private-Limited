@@ -304,7 +304,7 @@ nav.sc2{height:62px;}
 .ctabtns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
 
 /* CONTACT */
-.cog{display:grid;grid-template-columns:1fr 1.5fr;gap:clamp(2rem,6vw,5rem);margin-top:2.5rem;align-items:start;}
+.cog{display:none;}
 @media(max-width:760px){.cog{grid-template-columns:1fr;}}
 .coinfo p{font-size:clamp(.95rem,1.6vw,1.1rem);color:rgba(230,225,215,0.9);line-height:1.82;margin-bottom:2rem;}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:.85rem;}
@@ -733,6 +733,29 @@ body.cream-mode #contact .coinfo p{color:#3D3830 !important;}
 .cta .bo{border-color:rgba(255,255,255,.45) !important;color:rgba(255,255,255,.9) !important;}
 .cta .bo:hover{border-color:#fff !important;color:#fff !important;background:rgba(255,255,255,.08) !important;}
 
+
+/* ═══ INVESTOR RIGHT COLUMN — bright white text ════════ */
+#investor p, #investor div > p{color:rgba(242,237,227,.95) !important;}
+#investor [style*="font-size:.88rem"]{color:rgba(242,237,227,.95) !important;}
+#investor [style*="font-size:.6rem;letter-spacing:.18em"]{color:#C9A84C !important;}
+#investor .rv.d2 p{color:#F2EDE3 !important;font-size:.92rem !important;line-height:1.82 !important;text-shadow:0 1px 3px rgba(0,0,0,.4);}
+#investor .rv.d2 div{color:rgba(242,237,227,.92) !important;}
+/* Both info card paragraphs */
+#investor .rv.d2 [style*="padding:1.5rem"] p{
+  color:#F0EBE0 !important;
+  font-size:.92rem !important;
+  line-height:1.82 !important;
+  font-weight:400 !important;
+}
+/* Card label */
+#investor .rv.d2 [style*="padding:1.5rem"] > div:first-child{
+  color:#C9A84C !important;
+  opacity:1 !important;
+  font-size:.62rem !important;
+  letter-spacing:.2em !important;
+  font-weight:500 !important;
+}
+
 </style>
 </head>
 <body>
@@ -762,7 +785,7 @@ body.cream-mode #contact .coinfo p{color:#3D3830 !important;}
       <li><a href="#about">About</a></li><li><a href="#services">Services</a></li>
       <li><a href="#why">Why Us</a></li><li><a href="#leadership">Leadership</a></li>
       <li style="position:relative;" id="investorNavItem">
-      <a href="#investor" id="investorNavLink" onclick="return false;" style="display:flex;align-items:center;gap:.3rem;">
+      <a href="#investor" id="investorNavLink" onclick="openInvestorPage(event,null);return false;" style="display:flex;align-items:center;gap:.3rem;">
         Investors <svg width="9" height="6" viewBox="0 0 9 6" fill="none" stroke="currentColor" stroke-width="1.5" style="transition:transform .3s;flex-shrink:0;"><path d="M1 1l3.5 4L8 1"/></svg>
       </a>
       <div id="investorDropdown" style="
@@ -777,16 +800,16 @@ body.cream-mode #contact .coinfo p{color:#3D3830 !important;}
         z-index:600;
       ">
         <div style="padding:.4rem 1rem .6rem;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,168,76,.5);border-bottom:.5px solid rgba(201,168,76,.1);margin-bottom:.3rem;">Regulatory Filings</div>
-        <a href="#" onclick="openInvestorPage(event)" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;color:rgba(220,215,205,.85);font-size:.8rem;transition:all .2s;" onmouseover="this.style.color='var(--gold)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.color='rgba(220,215,205,.85)';this.style.background='transparent'">Annual Reports <span style="color:rgba(201,168,76,.4);font-size:.7rem;">→</span></a>
-        <a href="#" onclick="openInvestorPage(event)" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;color:rgba(220,215,205,.85);font-size:.8rem;transition:all .2s;" onmouseover="this.style.color='var(--gold)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.color='rgba(220,215,205,.85)';this.style.background='transparent'">Financial Results <span style="color:rgba(201,168,76,.4);font-size:.7rem;">→</span></a>
-        <a href="#" onclick="openInvestorPage(event)" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;color:rgba(220,215,205,.85);font-size:.8rem;transition:all .2s;" onmouseover="this.style.color='var(--gold)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.color='rgba(220,215,205,.85)';this.style.background='transparent'">Board Meetings <span style="color:rgba(201,168,76,.4);font-size:.7rem;">→</span></a>
-        <a href="#" onclick="openInvestorPage(event)" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;color:rgba(220,215,205,.85);font-size:.8rem;transition:all .2s;" onmouseover="this.style.color='var(--gold)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.color='rgba(220,215,205,.85)';this.style.background='transparent'">General Meetings <span style="color:rgba(201,168,76,.4);font-size:.7rem;">→</span></a>
-        <a href="#" onclick="openInvestorPage(event)" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;color:rgba(220,215,205,.85);font-size:.8rem;transition:all .2s;" onmouseover="this.style.color='var(--gold)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.color='rgba(220,215,205,.85)';this.style.background='transparent'">Quarterly Compliance <span style="color:rgba(201,168,76,.4);font-size:.7rem;">→</span></a>
-        <a href="#" onclick="openInvestorPage(event)" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;color:rgba(220,215,205,.85);font-size:.8rem;transition:all .2s;" onmouseover="this.style.color='var(--gold)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.color='rgba(220,215,205,.85)';this.style.background='transparent'">Half-Yearly Filings <span style="color:rgba(201,168,76,.4);font-size:.7rem;">→</span></a>
-        <a href="#" onclick="openInvestorPage(event)" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;color:rgba(220,215,205,.85);font-size:.8rem;transition:all .2s;" onmouseover="this.style.color='var(--gold)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.color='rgba(220,215,205,.85)';this.style.background='transparent'">Event Disclosures <span style="color:rgba(201,168,76,.4);font-size:.7rem;">→</span></a>
-        <a href="#" onclick="openInvestorPage(event)" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;color:rgba(220,215,205,.85);font-size:.8rem;transition:all .2s;" onmouseover="this.style.color='var(--gold)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.color='rgba(220,215,205,.85)';this.style.background='transparent'">Codes &amp; Policies <span style="color:rgba(201,168,76,.4);font-size:.7rem;">→</span></a>
+        <a href="#" onclick="openInvestorPage(event,'Annual Reports')" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;color:rgba(220,215,205,.85);font-size:.8rem;transition:all .2s;" onmouseover="this.style.color='var(--gold)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.color='rgba(220,215,205,.85)';this.style.background='transparent'">Annual Reports <span style="color:rgba(201,168,76,.4);font-size:.7rem;">→</span></a>
+        <a href="#" onclick="openInvestorPage(event,'Financial Results')" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;color:rgba(220,215,205,.85);font-size:.8rem;transition:all .2s;" onmouseover="this.style.color='var(--gold)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.color='rgba(220,215,205,.85)';this.style.background='transparent'">Financial Results <span style="color:rgba(201,168,76,.4);font-size:.7rem;">→</span></a>
+        <a href="#" onclick="openInvestorPage(event,'Board Meetings')" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;color:rgba(220,215,205,.85);font-size:.8rem;transition:all .2s;" onmouseover="this.style.color='var(--gold)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.color='rgba(220,215,205,.85)';this.style.background='transparent'">Board Meetings <span style="color:rgba(201,168,76,.4);font-size:.7rem;">→</span></a>
+        <a href="#" onclick="openInvestorPage(event,'General Meetings')" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;color:rgba(220,215,205,.85);font-size:.8rem;transition:all .2s;" onmouseover="this.style.color='var(--gold)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.color='rgba(220,215,205,.85)';this.style.background='transparent'">General Meetings <span style="color:rgba(201,168,76,.4);font-size:.7rem;">→</span></a>
+        <a href="#" onclick="openInvestorPage(event,'Quarterly Compliance')" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;color:rgba(220,215,205,.85);font-size:.8rem;transition:all .2s;" onmouseover="this.style.color='var(--gold)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.color='rgba(220,215,205,.85)';this.style.background='transparent'">Quarterly Compliance <span style="color:rgba(201,168,76,.4);font-size:.7rem;">→</span></a>
+        <a href="#" onclick="openInvestorPage(event,'Half-Yearly Filings')" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;color:rgba(220,215,205,.85);font-size:.8rem;transition:all .2s;" onmouseover="this.style.color='var(--gold)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.color='rgba(220,215,205,.85)';this.style.background='transparent'">Half-Yearly Filings <span style="color:rgba(201,168,76,.4);font-size:.7rem;">→</span></a>
+        <a href="#" onclick="openInvestorPage(event,'Event Disclosures')" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;color:rgba(220,215,205,.85);font-size:.8rem;transition:all .2s;" onmouseover="this.style.color='var(--gold)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.color='rgba(220,215,205,.85)';this.style.background='transparent'">Event Disclosures <span style="color:rgba(201,168,76,.4);font-size:.7rem;">→</span></a>
+        <a href="#" onclick="openInvestorPage(event,'Codes & Policies')" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;color:rgba(220,215,205,.85);font-size:.8rem;transition:all .2s;" onmouseover="this.style.color='var(--gold)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.color='rgba(220,215,205,.85)';this.style.background='transparent'">Codes &amp; Policies <span style="color:rgba(201,168,76,.4);font-size:.7rem;">→</span></a>
         <div style="padding:.6rem 1rem .4rem;margin-top:.3rem;border-top:.5px solid rgba(201,168,76,.1);">
-          <button onclick="openInvestorPage(event)" style="width:100%;background:var(--gold);color:#060D18;border:none;padding:.55rem;border-radius:3px;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s;" onmouseover="this.style.background='var(--gold2)'" onmouseout="this.style.background='var(--gold)'">
+          <button onclick="openInvestorPage(event,null)" style="width:100%;background:var(--gold);color:#060D18;border:none;padding:.55rem;border-radius:3px;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s;" onmouseover="this.style.background='var(--gold2)'" onmouseout="this.style.background='var(--gold)'">
             Open Investor Page
           </button>
         </div>
@@ -950,13 +973,13 @@ body.cream-mode #contact .coinfo p{color:#3D3830 !important;}
       </div>
       <div class="rv d2" style="display:flex;flex-direction:column;justify-content:center;gap:1.5rem;">
         <div style="padding:1.5rem;border:.5px solid rgba(201,168,76,.2);border-radius:6px;background:rgba(255,255,255,.03);">
-          <div style="font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;">SEBI Compliance</div>
+          <div style="font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#A87A2C;margin-bottom:.5rem;font-weight:500;">SEBI Compliance</div>
           <p style="font-size:.88rem;color:rgba(220,215,205,.88);line-height:1.75;">Siskin Projects Private Limited operates under full SEBI-listed entity disclosure norms. All regulatory filings and compliance documents are maintained as per applicable provisions of the Companies Act 2013 and SEBI (LODR) Regulations 2015.</p>
         </div>
         <div style="padding:1.5rem;border:.5px solid rgba(201,168,76,.2);border-radius:6px;background:rgba(255,255,255,.03);">
-          <div style="font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;">Document Access</div>
+          <div style="font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#A87A2C;margin-bottom:.5rem;font-weight:500;">Document Access</div>
           <p style="font-size:.88rem;color:rgba(220,215,205,.88);line-height:1.75;margin-bottom:1rem;">All regulatory filings, financial disclosures, board meeting minutes, and governance documents are available through our Investor Relations portal.</p>
-          <button onclick="openInvestorPage(event)" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:#060D18;padding:.75rem 1.8rem;border-radius:3px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all .25s;" onmouseover="this.style.background='var(--gold2)'" onmouseout="this.style.background='var(--gold)'">
+          <button onclick="openInvestorPage(event,null)" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:#060D18;padding:.75rem 1.8rem;border-radius:3px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all .25s;" onmouseover="this.style.background='var(--gold2)'" onmouseout="this.style.background='var(--gold)'">
             View All Documents →
           </button>
         </div>
@@ -980,40 +1003,375 @@ body.cream-mode #contact .coinfo p{color:#3D3830 !important;}
 </section>
 
 <!-- CONTACT -->
-<section class="sec" id="contact" style="position:relative;">
+<section class="sec" id="contact" style="position:relative;background:#FAF7F2 !important;min-height:600px;">
   <div class="ct">
-    <div class="rv"><div class="ew">Get In Touch</div><h2 class="st">Find Your<br/><em>Perfect</em> Property</h2></div>
-    <div class="cog">
-      <div class="coinfo rv d1">
-        <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:300;color:rgba(252,248,240,1);margin-bottom:1rem;">We'd Love to<br/><em style="color:var(--gold);">Hear From You</em></h3>
-        <p style="color:rgba(220,215,205,0.88);font-size:.96rem;line-height:1.8;margin-bottom:1.5rem;">Our real estate advisors respond within one business day. Whether you're buying your first home or exploring investment opportunities — we're here to help.</p>
-        <div style="display:flex;flex-direction:column;gap:.5rem;">
-          <a href="tel:+919211160000" style="display:flex;align-items:center;gap:.7rem;color:rgba(220,215,205,0.85);font-size:.9rem;padding:.6rem 0;border-bottom:.5px solid rgba(201,168,76,.1);transition:color .2s;">
-            <span style="color:var(--gold);font-size:.65rem;letter-spacing:.15em;">CALL</span>+91 92111 60000
-          </a>
-          <a href="mailto:siskinppl@outlook.com" style="display:flex;align-items:center;gap:.7rem;color:var(--gold);font-size:.9rem;padding:.6rem 0;border-bottom:.5px solid rgba(201,168,76,.1);transition:color .2s;">
-            <span style="color:var(--gold);font-size:.65rem;letter-spacing:.15em;">MAIL</span>siskinppl@outlook.com
-          </a>
-          <div style="display:flex;align-items:center;gap:.7rem;color:rgba(220,215,205,0.75);font-size:.9rem;padding:.6rem 0;">
-            <span style="color:var(--gold);font-size:.65rem;letter-spacing:.15em;">VISIT</span>AIPL Business Club, 5th Floor, Sector 62, Gurugram
+    <!-- ═══ ADVANCED LETTER / FORM EXPERIENCE ═══════════════ -->
+    <div id="letterSection" style="position:relative;z-index:2;">
+
+      <!-- Section heading -->
+      <div class="rv" style="text-align:center;margin-bottom:3rem;">
+        <div class="ew" style="justify-content:center;">Get In Touch</div>
+        <h2 class="st" style="text-align:center;">Find Your <em>Perfect</em> Property</h2>
+        <p style="font-size:.95rem;color:#5A5248;margin-top:.65rem;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.78;">Our advisors respond within one business day. Open the envelope to send us a message.</p>
+      </div>
+
+      <!-- ── STAGE ─────────────────────────────────────────── -->
+      <div id="stage" style="display:flex;justify-content:center;align-items:center;min-height:420px;perspective:1000px;">
+
+        <!-- ── ENVELOPE ──────────────────────────────────── -->
+        <div id="envelope" onclick="handleEnvelopeClick()" style="
+          position:relative;
+          width:clamp(260px,36vw,360px);
+          cursor:pointer;
+          transform-style:preserve-3d;
+          transition:transform .6s cubic-bezier(.34,1.56,.64,1);
+          animation:envFloat 4s ease-in-out infinite;
+        ">
+          <!-- Hint -->
+          <div id="envHint" style="
+            text-align:center;margin-bottom:1.2rem;
+            font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;
+            color:#A87A2C;opacity:.75;
+            animation:hintPulse 2.4s ease-in-out infinite;
+          ">✉ &nbsp; Click to open &nbsp; ✉</div>
+
+          <!-- Body -->
+          <div id="envBody" style="
+            width:100%;aspect-ratio:1.65/1;
+            background:linear-gradient(145deg,#E8D8B0,#D4B870,#C9A84C);
+            border-radius:6px;
+            position:relative;overflow:visible;
+            box-shadow:0 16px 50px rgba(168,122,44,.35),0 4px 12px rgba(0,0,0,.15);
+            transition:box-shadow .4s;
+          ">
+            <!-- Side folds -->
+            <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.04) 0,transparent 15%,transparent 85%,rgba(0,0,0,.04) 100%);border-radius:6px;pointer-events:none;"></div>
+            <!-- Bottom-left V fold -->
+            <div style="position:absolute;bottom:0;left:0;width:0;height:0;border-style:solid;border-width:0 0 clamp(55px,10vw,80px) clamp(90px,18vw,130px);border-color:transparent transparent rgba(168,122,44,.22) transparent;pointer-events:none;"></div>
+            <!-- Bottom-right V fold -->
+            <div style="position:absolute;bottom:0;right:0;width:0;height:0;border-style:solid;border-width:0 clamp(90px,18vw,130px) clamp(55px,10vw,80px) 0;border-color:transparent rgba(168,122,44,.22) transparent transparent;pointer-events:none;"></div>
+            <!-- Center fold line -->
+            <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:rgba(255,255,255,.25);pointer-events:none;"></div>
+            <!-- Wax seal -->
+            <div id="seal" style="
+              position:absolute;top:50%;left:50%;transform:translate(-50%,-35%);
+              width:clamp(42px,7vw,54px);height:clamp(42px,7vw,54px);
+              border-radius:50%;
+              background:radial-gradient(135deg,#1A1208,#2E1E0A);
+              border:2px solid rgba(201,168,76,.7);
+              display:flex;align-items:center;justify-content:center;
+              font-family:'Cormorant Garamond',serif;font-size:clamp(.9rem,2vw,1.1rem);
+              color:#C9A84C;
+              box-shadow:0 3px 12px rgba(0,0,0,.35),inset 0 1px 2px rgba(255,255,255,.1);
+              transition:transform .4s,opacity .4s;
+              z-index:2;
+            ">S</div>
+            <!-- Top flap -->
+            <div id="envFlap" style="
+              position:absolute;top:0;left:0;width:100%;
+              height:0;border-style:solid;
+              border-width:clamp(60px,12vw,85px) clamp(90px,18vw,130px) 0 clamp(90px,18vw,130px);
+              border-color:#D4B060 transparent transparent transparent;
+              transform-origin:top center;
+              transition:transform .65s cubic-bezier(.16,1,.3,1),filter .3s;
+              filter:drop-shadow(0 4px 8px rgba(0,0,0,.12));
+              z-index:3;
+            "></div>
+          </div>
+          <!-- Label under envelope -->
+          <div style="text-align:center;margin-top:1rem;font-family:'Cormorant Garamond',serif;font-size:.88rem;letter-spacing:.25em;color:#A87A2C;text-transform:uppercase;opacity:.7;">Siskin Projects</div>
+        </div>
+
+        <!-- ── CONTACT FORM (hidden inside envelope) ─────── -->
+        <div id="formWrap" style="
+          position:absolute;
+          width:clamp(300px,90vw,600px);
+          opacity:0;pointer-events:none;
+          transform:translateY(40px) scale(.97);
+          transition:opacity .55s .15s cubic-bezier(.16,1,.3,1), transform .55s .1s cubic-bezier(.16,1,.3,1);
+          will-change:transform,opacity;
+          display:none;
+        ">
+          <div style="
+            background:#FFFFFF;
+            border-radius:10px;
+            border:.5px solid rgba(168,122,44,.22);
+            box-shadow:0 16px 60px rgba(0,0,0,.14),0 4px 20px rgba(168,122,44,.1);
+            overflow:hidden;
+          ">
+            <!-- Form header -->
+            <div style="
+              padding:1.4rem 1.8rem;
+              background:linear-gradient(135deg,#F8F4EC,#F0E8D8);
+              border-bottom:.5px solid rgba(168,122,44,.15);
+              display:flex;align-items:center;justify-content:space-between;
+            ">
+              <div>
+                <div style="font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:#A87A2C;margin-bottom:.2rem;">Siskin Projects</div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#12100C;font-weight:400;line-height:1.2;">Send Us a Message</div>
+              </div>
+              <button onclick="closeForm(event)" style="
+                background:none;border:none;cursor:pointer;
+                color:#A87A2C;font-size:1.1rem;padding:.3rem;
+                opacity:.6;transition:opacity .2s;
+              " onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.6">✕</button>
+            </div>
+            <!-- Form body -->
+            <div style="padding:1.5rem 1.8rem 1.8rem;" id="formBody">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:.9rem;">
+                <div><label style="display:block;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#6A6058;margin-bottom:.4rem;">First Name</label><input id="cf_fn" type="text" placeholder="Rajesh" style="width:100%;padding:.75rem .9rem;border:.5px solid rgba(168,122,44,.22);border-radius:4px;font-size:.88rem;color:#1A1510;background:rgba(0,0,0,.02);font-family:'DM Sans',sans-serif;outline:none;transition:border-color .25s;" onfocus="this.style.borderColor='rgba(168,122,44,.6)'" onblur="this.style.borderColor='rgba(168,122,44,.22)'"/></div>
+                <div><label style="display:block;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#6A6058;margin-bottom:.4rem;">Last Name</label><input id="cf_ln" type="text" placeholder="Kumar" style="width:100%;padding:.75rem .9rem;border:.5px solid rgba(168,122,44,.22);border-radius:4px;font-size:.88rem;color:#1A1510;background:rgba(0,0,0,.02);font-family:'DM Sans',sans-serif;outline:none;transition:border-color .25s;" onfocus="this.style.borderColor='rgba(168,122,44,.6)'" onblur="this.style.borderColor='rgba(168,122,44,.22)'"/></div>
+              </div>
+              <div style="margin-bottom:.9rem;"><label style="display:block;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#6A6058;margin-bottom:.4rem;">Email</label><input id="cf_em" type="email" placeholder="rajesh@company.com" style="width:100%;padding:.75rem .9rem;border:.5px solid rgba(168,122,44,.22);border-radius:4px;font-size:.88rem;color:#1A1510;background:rgba(0,0,0,.02);font-family:'DM Sans',sans-serif;outline:none;transition:border-color .25s;" onfocus="this.style.borderColor='rgba(168,122,44,.6)'" onblur="this.style.borderColor='rgba(168,122,44,.22)'"/></div>
+              <div style="margin-bottom:.9rem;"><label style="display:block;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#6A6058;margin-bottom:.4rem;">Phone</label><input id="cf_ph" type="tel" placeholder="+91 98765 43210" style="width:100%;padding:.75rem .9rem;border:.5px solid rgba(168,122,44,.22);border-radius:4px;font-size:.88rem;color:#1A1510;background:rgba(0,0,0,.02);font-family:'DM Sans',sans-serif;outline:none;transition:border-color .25s;" onfocus="this.style.borderColor='rgba(168,122,44,.6)'" onblur="this.style.borderColor='rgba(168,122,44,.22)'"/></div>
+              <div style="margin-bottom:.9rem;">
+                <label style="display:block;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#6A6058;margin-bottom:.4rem;">Enquiry Type</label>
+                <select id="cf_enq" style="width:100%;padding:.75rem .9rem;border:.5px solid rgba(168,122,44,.22);border-radius:4px;font-size:.88rem;color:#1A1510;background:#fff;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .25s;-webkit-appearance:none;background-image:url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'12\' height=\'8\'%3E%3Cpath d=\'M1 1l5 5 5-5\' stroke=\'%23A87A2C\' stroke-width=\'1.5\' fill=\'none\'/%3E%3C/svg%3E');background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;">
+                  <option value="">Select an option</option>
+                  <option>Residential Property</option>
+                  <option>Commercial / Office Space</option>
+                  <option>Plotted Development</option>
+                  <option>Investment Opportunity</option>
+                  <option>NRI Investment</option>
+                  <option>Site Visit Request</option>
+                  <option>General Enquiry</option>
+                </select>
+              </div>
+              <div style="margin-bottom:1.2rem;"><label style="display:block;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#6A6058;margin-bottom:.4rem;">Message</label><textarea id="cf_msg" placeholder="Tell us about your project or requirement…" rows="3" style="width:100%;padding:.75rem .9rem;border:.5px solid rgba(168,122,44,.22);border-radius:4px;font-size:.88rem;color:#1A1510;background:rgba(0,0,0,.02);font-family:'DM Sans',sans-serif;outline:none;transition:border-color .25s;resize:vertical;line-height:1.6;" onfocus="this.style.borderColor='rgba(168,122,44,.6)'" onblur="this.style.borderColor='rgba(168,122,44,.22)'"></textarea></div>
+              <button id="cf_submit" onclick="submitContactForm()" style="
+                width:100%;padding:1rem;
+                background:linear-gradient(135deg,#C9A84C,#A87A2C);
+                color:#fff;border:none;border-radius:4px;
+                font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;
+                letter-spacing:.12em;text-transform:uppercase;
+                cursor:pointer;
+                transition:all .3s;
+                box-shadow:0 4px 20px rgba(168,122,44,.35);
+              " onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 8px 28px rgba(168,122,44,.45)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(168,122,44,.35)'">
+                Send Message ✉
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="gc rv d2">
-        <div class="frow">
-          <div class="fg"><label>First Name</label><input type="text" placeholder="Rajesh" autocomplete="given-name"/></div>
-          <div class="fg"><label>Last Name</label><input type="text" placeholder="Kumar" autocomplete="family-name"/></div>
+
+        <!-- ── THANK YOU CARD ──────────────────────────── -->
+        <div id="thankWrap" style="
+          position:absolute;
+          width:clamp(280px,70vw,480px);
+          text-align:center;
+          opacity:0;pointer-events:none;
+          transform:translateY(20px) scale(.95);
+          transition:opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);
+          display:none;
+        ">
+          <div id="sentStamp" style="
+            width:80px;height:80px;border-radius:50%;
+            background:linear-gradient(135deg,#C9A84C,#A87A2C);
+            display:flex;align-items:center;justify-content:center;
+            margin:0 auto 1.5rem;
+            font-size:2rem;
+            box-shadow:0 8px 30px rgba(168,122,44,.4);
+            transform:scale(0);
+            transition:transform .6s cubic-bezier(.34,1.56,.64,1);
+          ">✓</div>
+          <div id="tyText" style="
+            font-family:'Cormorant Garamond',serif;
+            font-size:clamp(1.8rem,4vw,2.8rem);
+            font-weight:300;color:#12100C;
+            line-height:1.15;margin-bottom:.8rem;
+            overflow:hidden;
+          ">
+            <span id="tyLine1" style="display:block;opacity:0;transform:translateY(20px);transition:opacity .5s .3s,transform .5s .3s cubic-bezier(.16,1,.3,1);">Thanks for</span>
+            <span id="tyLine2" style="display:block;opacity:0;transform:translateY(20px);transition:opacity .5s .5s,transform .5s .5s cubic-bezier(.16,1,.3,1);"><em style="color:#A87A2C;">contacting us!</em></span>
+          </div>
+          <p id="tyLine3" style="
+            font-size:1rem;color:#5A5248;line-height:1.75;
+            opacity:0;transform:translateY(12px);
+            transition:opacity .5s .7s,transform .5s .7s cubic-bezier(.16,1,.3,1);
+          ">Have a wonderful day. Our team will reach out to you within one business day.</p>
+          <div id="tyLine4" style="
+            margin-top:1.4rem;
+            font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:#A87A2C;
+            opacity:0;transition:opacity .5s 1s;
+          ">— Siskin Projects</div>
         </div>
-        <div class="fg"><label>Email</label><input type="email" placeholder="rajesh@company.com"/></div>
-        <div class="fg"><label>Phone</label><input type="tel" placeholder="+91 98765 43210"/></div>
-        <div class="fg"><label>Nature of Enquiry</label>
-          <select><option value="">Select an option</option><option>Residential Property</option><option>Commercial / Office Space</option><option>Plotted Development</option><option>Investment Opportunity</option><option>NRI Investment</option><option>Site Visit Request</option><option>General Enquiry</option></select>
-        </div>
-        <div class="fg"><label>Message</label><textarea placeholder="Tell us about your project or query…"></textarea></div>
-        <button class="subbtn" id="subBtn" onclick="handleSend(this)">Send Message</button>
-        <div class="fmsg" id="fmsg"></div>
-      </div>
+
+      </div><!-- /stage -->
     </div>
+
+    <!-- ─── CSS for letter ─────────────────────────────── -->
+    <style>
+    @keyframes envFloat{0%,100%{transform:translateY(0) rotate(-.5deg);}50%{transform:translateY(-10px) rotate(.5deg);}}
+    @keyframes hintPulse{0%,100%{opacity:.6;transform:translateY(0);}50%{opacity:1;transform:translateY(-3px);}}
+    @keyframes sealShake{0%,100%{transform:translate(-50%,-35%) rotate(0deg);}20%{transform:translate(-50%,-35%) rotate(-8deg);}40%{transform:translate(-50%,-35%) rotate(8deg);}60%{transform:translate(-50%,-35%) rotate(-4deg);}80%{transform:translate(-50%,-35%) rotate(4deg);}}
+    @keyframes envBounce{0%,100%{transform:scale(1);}40%{transform:scale(1.06);}70%{transform:scale(.97);}}
+    @keyframes formFoldIn{
+      0%{transform:translateY(0) scale(1) rotateX(0deg);opacity:1;}
+      40%{transform:translateY(-10px) scale(.98) rotateX(8deg);opacity:.9;}
+      80%{transform:translateY(30px) scale(.7) rotateX(25deg);opacity:.3;}
+      100%{transform:translateY(60px) scale(.4) rotateX(45deg);opacity:0;}
+    }
+    #envelope:hover #envFlap{transform:rotateX(-40deg);}
+    #envelope:hover{animation-play-state:paused;}
+    #envelope:hover #envBody{box-shadow:0 22px 60px rgba(168,122,44,.45),0 6px 18px rgba(0,0,0,.18);}
+    </style>
+
+    <!-- ─── JS for letter interactions ─────────────────── -->
+    <script>
+    let _formOpen=false, _submitted=false;
+
+    function handleEnvelopeClick(){
+      if(_submitted) return;
+      if(_formOpen) return;
+      _formOpen=true;
+      const flap=document.getElementById('envFlap');
+      const seal=document.getElementById('seal');
+      const env=document.getElementById('envelope');
+      const formWrap=document.getElementById('formWrap');
+      const hint=document.getElementById('envHint');
+
+      // 1. Flap opens wide
+      flap.style.transform='rotateX(-170deg)';
+      // 2. Seal disappears
+      seal.style.transform='translate(-50%,-35%) scale(0)';
+      seal.style.opacity='0';
+      // 3. Envelope bounces
+      env.style.animation='none';
+      env.style.transform='translateY(-8px) scale(1.04)';
+      setTimeout(()=>{env.style.transform='translateY(0) scale(1)'; env.style.transition='transform .5s cubic-bezier(.34,1.56,.64,1)';},100);
+      // 4. Hint fades
+      if(hint){ hint.style.opacity='0'; hint.style.transition='opacity .3s'; }
+      // 5. Show form, hide envelope after brief delay
+      setTimeout(()=>{
+        env.style.opacity='0';
+        env.style.transform='translateY(-20px) scale(.92)';
+        env.style.transition='all .5s cubic-bezier(.16,1,.3,1)';
+        setTimeout(()=>{ env.style.display='none'; },450);
+      },280);
+      setTimeout(()=>{
+        formWrap.style.display='block';
+        requestAnimationFrame(()=>requestAnimationFrame(()=>{
+          formWrap.style.opacity='1';
+          formWrap.style.transform='translateY(0) scale(1)';
+          formWrap.style.pointerEvents='all';
+        }));
+        formWrap.scrollIntoView({behavior:'smooth',block:'center'});
+      },380);
+    }
+
+    function closeForm(e){
+      if(e) e.stopPropagation();
+      const formWrap=document.getElementById('formWrap');
+      const env=document.getElementById('envelope');
+      const flap=document.getElementById('envFlap');
+      const seal=document.getElementById('seal');
+      const hint=document.getElementById('envHint');
+      formWrap.style.opacity='0';
+      formWrap.style.transform='translateY(30px) scale(.96)';
+      formWrap.style.pointerEvents='none';
+      setTimeout(()=>{
+        formWrap.style.display='none';
+        env.style.display='block';
+        env.style.animation='envFloat 4s ease-in-out infinite';
+        requestAnimationFrame(()=>requestAnimationFrame(()=>{
+          env.style.opacity='1';
+          env.style.transform='translateY(0) scale(1)';
+          env.style.transition='all .5s cubic-bezier(.16,1,.3,1)';
+          flap.style.transform='rotateX(0deg)';
+          seal.style.transform='translate(-50%,-35%) scale(1)';
+          seal.style.opacity='1';
+          if(hint){ hint.style.opacity='.75'; }
+        }));
+      },350);
+      _formOpen=false;
+    }
+
+    function submitContactForm(){
+      const fn=document.getElementById('cf_fn').value.trim();
+      const em=document.getElementById('cf_em').value.trim();
+      if(!fn||!em){
+        document.getElementById('cf_fn').style.borderColor=fn?'rgba(168,122,44,.22)':'rgba(220,60,60,.6)';
+        document.getElementById('cf_em').style.borderColor=em?'rgba(168,122,44,.22)':'rgba(220,60,60,.6)';
+        return;
+      }
+      _submitted=true;
+      const btn=document.getElementById('cf_submit');
+      btn.textContent='Sending…';btn.style.opacity='.7';btn.disabled=true;
+      const formWrap=document.getElementById('formWrap');
+      const env=document.getElementById('envelope');
+      const thankWrap=document.getElementById('thankWrap');
+      const flap=document.getElementById('envFlap');
+      const seal=document.getElementById('seal');
+
+      // Step 1: Form folds into envelope animation
+      setTimeout(()=>{
+        formWrap.style.transition='all .6s cubic-bezier(.4,0,.2,1)';
+        formWrap.style.transform='translateY(40px) scale(.65) rotateX(20deg)';
+        formWrap.style.opacity='0';
+        formWrap.style.transformOrigin='center bottom';
+      },300);
+
+      // Step 2: Envelope appears and closes
+      setTimeout(()=>{
+        formWrap.style.display='none';
+        env.style.display='block';
+        env.style.opacity='1';
+        env.style.transform='scale(1)';
+        env.style.transition='all .4s cubic-bezier(.16,1,.3,1)';
+        env.style.animation='none';
+      },900);
+
+      // Step 3: Flap closes
+      setTimeout(()=>{
+        flap.style.transform='rotateX(0deg)';
+        seal.style.transform='translate(-50%,-35%) scale(1.2)';
+        seal.style.transition='transform .5s cubic-bezier(.34,1.56,.64,1)';
+      },1100);
+
+      // Step 4: Seal shake (sealed!)
+      setTimeout(()=>{
+        seal.style.animation='sealShake .5s ease';
+        seal.style.transform='translate(-50%,-35%) scale(1)';
+      },1600);
+
+      // Step 5: SENT stamp text
+      setTimeout(()=>{
+        const sealEl=document.getElementById('seal');
+        sealEl.innerHTML='✓';
+        sealEl.style.background='linear-gradient(135deg,#2E8B57,#1A6B3A)';
+        sealEl.style.borderColor='rgba(46,139,87,.7)';
+      },2000);
+
+      // Step 6: Envelope bounces then fades
+      setTimeout(()=>{
+        env.style.animation='envBounce .5s ease';
+      },2100);
+      setTimeout(()=>{
+        env.style.transition='all .6s cubic-bezier(.4,0,.2,1)';
+        env.style.transform='translateY(-30px) scale(.85)';
+        env.style.opacity='0';
+      },2700);
+
+      // Step 7: Thank you appears
+      setTimeout(()=>{
+        env.style.display='none';
+        thankWrap.style.display='block';
+        requestAnimationFrame(()=>requestAnimationFrame(()=>{
+          thankWrap.style.opacity='1';
+          thankWrap.style.transform='translateY(0) scale(1)';
+          thankWrap.style.pointerEvents='all';
+          // Animate stamp
+          setTimeout(()=>{ document.getElementById('sentStamp').style.transform='scale(1)'; },100);
+          // Animate text lines
+          setTimeout(()=>{ document.getElementById('tyLine1').style.opacity='1'; document.getElementById('tyLine1').style.transform='translateY(0)'; },300);
+          setTimeout(()=>{ document.getElementById('tyLine2').style.opacity='1'; document.getElementById('tyLine2').style.transform='translateY(0)'; },500);
+          setTimeout(()=>{ document.getElementById('tyLine3').style.opacity='1'; document.getElementById('tyLine3').style.transform='translateY(0)'; },700);
+          setTimeout(()=>{ document.getElementById('tyLine4').style.opacity='1'; },1000);
+        }));
+        thankWrap.scrollIntoView({behavior:'smooth',block:'center'});
+      },3200);
+    }
+    </script>
   </div>
 </section>
 
@@ -1746,85 +2104,96 @@ document.querySelectorAll('.nlinks a').forEach(el=>el.addEventListener('mouseent
 <!-- ═══ INVESTOR OVERLAY PAGE ═══════════════════════════════ -->
 <div id="investorPage" style="
   position:fixed;inset:0;z-index:2000;
-  background:#060D18;
+  background:#F5F0E8;
   opacity:0;pointer-events:none;
   transition:opacity .5s cubic-bezier(.16,1,.3,1);
   overflow-y:auto;
   display:flex;flex-direction:column;
 ">
+<!-- Investor page background — real meeting photo + light overlay -->
+<div style="position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;">
+  <!-- Real estate meeting / boardroom photo -->
+  <div style="position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1800&q=90') center/cover no-repeat;filter:brightness(.88) saturate(1.05);"></div>
+  <!-- Light warm overlay -->
+  <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(245,240,230,.92) 0%,rgba(240,234,222,.88) 40%,rgba(235,228,215,.92) 100%);"></div>
+  <!-- Subtle warm vignette -->
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 40%,rgba(160,130,80,.08) 100%);"></div>
+  <!-- Top fade for nav -->
+  <div style="position:absolute;top:0;left:0;width:100%;height:120px;background:linear-gradient(to bottom,rgba(245,240,230,.98),transparent);"></div>
+</div>
   <!-- Top bar -->
   <div style="
-    position:sticky;top:0;z-index:10;
-    background:rgba(6,13,24,.95);
+    position:sticky;top:0;z-index:20;
+    background:rgba(245,240,232,.96);
     backdrop-filter:blur(20px);
-    border-bottom:.5px solid rgba(201,168,76,.18);
+    border-bottom:.5px solid rgba(168,122,44,.2);
     padding:.9rem clamp(1.2rem,5vw,5rem);
     display:flex;align-items:center;justify-content:space-between;
   ">
-    <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold);">Siskin <span style="color:#F2EDE3;">Projects</span> <span style="font-size:.7rem;letter-spacing:.2em;color:rgba(201,168,76,.5);vertical-align:middle;"> · INVESTOR RELATIONS</span></div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#A87A2C;">Siskin <span style="color:#12100C;">Projects</span> <span style="font-size:.7rem;letter-spacing:.2em;color:rgba(168,122,44,.55);vertical-align:middle;"> · INVESTOR RELATIONS</span></div>
     <button onclick="closeInvestorPage()" style="
-      cursor:pointer;background:none;border:.5px solid rgba(201,168,76,.4);
-      color:var(--gold);padding:.45rem 1.2rem;border-radius:3px;
+      cursor:pointer;background:none;border:.5px solid rgba(168,122,44,.5);
+      color:#A87A2C;padding:.45rem 1.2rem;border-radius:3px;
       font-family:'DM Sans',sans-serif;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
       transition:all .25s;
-    " onmouseover="this.style.background='var(--gold)';this.style.color='#060D18'" onmouseout="this.style.background='none';this.style.color='var(--gold)'">
+    " onmouseover="this.style.background='#A87A2C';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#A87A2C'">
       ✕ Close
     </button>
   </div>
 
   <!-- Content -->
-  <div style="max-width:1200px;margin:0 auto;padding:clamp(2rem,6vw,5rem) clamp(1.2rem,5vw,5rem);width:100%;">
+  <div style="max-width:1200px;margin:0 auto;padding:clamp(2rem,6vw,5rem) clamp(1.2rem,5vw,5rem);width:100%;position:relative;z-index:5;">
 
     <!-- Hero row -->
-    <div style="margin-bottom:clamp(2.5rem,5vw,4rem);padding-bottom:2rem;border-bottom:.5px solid rgba(201,168,76,.12);">
-      <div style="font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;">— Investor Information</div>
-      <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,6vw,4.5rem);font-weight:300;color:#F2EDE3;line-height:1.05;margin-bottom:.8rem;">Transparency You Can <em style="font-style:italic;color:var(--gold);">Trust</em></h1>
-      <p style="font-size:1rem;color:rgba(210,205,195,0.85);max-width:600px;line-height:1.8;">Siskin Projects Private Limited operates under full regulatory compliance. All filings, disclosures, and governance documents are maintained in accordance with SEBI-listed entity norms.</p>
+    <div style="margin-bottom:clamp(2.5rem,5vw,4rem);padding-bottom:2rem;border-bottom:.5px solid rgba(168,122,44,.2);">
+      <div style="font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:#A87A2C;margin-bottom:.8rem;">— Investor Information</div>
+      <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,6vw,4.5rem);font-weight:300;color:#12100C;line-height:1.05;margin-bottom:.8rem;">Transparency You Can <em style="font-style:italic;color:#A87A2C;">Trust</em></h1>
+      <p style="font-size:1rem;color:rgba(45,38,28,.88);max-width:600px;line-height:1.8;font-weight:400;">Siskin Projects Private Limited operates under full regulatory compliance. All filings, disclosures, and governance documents are maintained in accordance with SEBI-listed entity norms.</p>
     </div>
 
     <!-- Key info grid -->
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin-bottom:3rem;">
 
       <!-- Credit Rating -->
-      <div class="inv-card" style="background:rgba(255,255,255,.03);border:.5px solid rgba(201,168,76,.18);border-radius:6px;padding:1.6rem;transition:border-color .3s,box-shadow .3s;" onmouseover="this.style.borderColor='rgba(201,168,76,.5)';this.style.boxShadow='0 0 30px rgba(201,168,76,.12)'" onmouseout="this.style.borderColor='rgba(201,168,76,.18)';this.style.boxShadow='none'">
-        <div style="font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;">Credit Rating</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#F2EDE3;margin-bottom:.3rem;">IVR BB / Stable</div>
-        <div style="font-size:.78rem;color:rgba(190,184,174,.75);line-height:1.6;">Infomerics Valuation and Rating Limited<br/>Senior Secured NCDs · January 2026</div>
+      <div class="inv-card" style="background:rgba(255,255,255,.85);border:.5px solid rgba(168,122,44,.2);border-radius:8px;padding:1.6rem;transition:border-color .3s,box-shadow .3s;backdrop-filter:blur(8px);" onmouseover="this.style.borderColor='rgba(168,122,44,.5)';this.style.boxShadow='0 8px 32px rgba(168,122,44,.18)'" onmouseout="this.style.borderColor='rgba(168,122,44,.2)';this.style.boxShadow='none'">
+        <div style="font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#A87A2C;margin-bottom:.5rem;font-weight:500;">Credit Rating</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.65rem;color:#12100C;text-shadow:none;margin-bottom:.3rem;">IVR BB / Stable</div>
+        <div style="font-size:.82rem;color:rgba(50,42,32,.85);line-height:1.65;font-weight:400;">Infomerics Valuation and Rating Limited<br/>Senior Secured NCDs · January 2026</div>
       </div>
 
       <!-- Debenture Trustee -->
-      <div class="inv-card" style="background:rgba(255,255,255,.03);border:.5px solid rgba(201,168,76,.18);border-radius:6px;padding:1.6rem;transition:border-color .3s,box-shadow .3s;" onmouseover="this.style.borderColor='rgba(201,168,76,.5)';this.style.boxShadow='0 0 30px rgba(201,168,76,.12)'" onmouseout="this.style.borderColor='rgba(201,168,76,.18)';this.style.boxShadow='none'">
-        <div style="font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;">Debenture Trustee</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:#F2EDE3;margin-bottom:.3rem;">Catalyst Trusteeship Ltd.</div>
-        <div style="font-size:.78rem;color:rgba(190,184,174,.75);line-height:1.6;">Peninsula Business Park, Lower Parel<br/>Mumbai — 400013<br/><a href="mailto:ComplianceCTLMumbai@ctltrustee.com" style="color:var(--gold);">ComplianceCTLMumbai@ctltrustee.com</a></div>
+      <div class="inv-card" style="background:rgba(255,255,255,.85);border:.5px solid rgba(168,122,44,.2);border-radius:8px;padding:1.6rem;transition:border-color .3s,box-shadow .3s;backdrop-filter:blur(8px);" onmouseover="this.style.borderColor='rgba(168,122,44,.5)';this.style.boxShadow='0 8px 32px rgba(168,122,44,.18)'" onmouseout="this.style.borderColor='rgba(168,122,44,.2)';this.style.boxShadow='none'">
+        <div style="font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#A87A2C;margin-bottom:.5rem;font-weight:500;">Debenture Trustee</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.18rem;color:#12100C;text-shadow:none;margin-bottom:.3rem;">Catalyst Trusteeship Ltd.</div>
+        <div style="font-size:.82rem;color:rgba(50,42,32,.85);line-height:1.65;font-weight:400;">Peninsula Business Park, Lower Parel<br/>Mumbai — 400013<br/><a href="mailto:ComplianceCTLMumbai@ctltrustee.com" style="color:#A87A2C;">ComplianceCTLMumbai@ctltrustee.com</a></div>
       </div>
 
       <!-- RTA -->
-      <div class="inv-card" style="background:rgba(255,255,255,.03);border:.5px solid rgba(201,168,76,.18);border-radius:6px;padding:1.6rem;transition:border-color .3s,box-shadow .3s;" onmouseover="this.style.borderColor='rgba(201,168,76,.5)';this.style.boxShadow='0 0 30px rgba(201,168,76,.12)'" onmouseout="this.style.borderColor='rgba(201,168,76,.18)';this.style.boxShadow='none'">
-        <div style="font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;">Registrar &amp; Transfer Agent</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:#F2EDE3;margin-bottom:.3rem;">Beacon Investor Holdings Pvt. Ltd.</div>
-        <div style="font-size:.78rem;color:rgba(190,184,174,.75);line-height:1.6;">Akshar Business Park, Vashi<br/>Navi Mumbai — 400703<br/><a href="mailto:compliance@beaconrta.co.in" style="color:var(--gold);">compliance@beaconrta.co.in</a></div>
+      <div class="inv-card" style="background:rgba(255,255,255,.85);border:.5px solid rgba(168,122,44,.2);border-radius:8px;padding:1.6rem;transition:border-color .3s,box-shadow .3s;backdrop-filter:blur(8px);" onmouseover="this.style.borderColor='rgba(168,122,44,.5)';this.style.boxShadow='0 8px 32px rgba(168,122,44,.18)'" onmouseout="this.style.borderColor='rgba(168,122,44,.2)';this.style.boxShadow='none'">
+        <div style="font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#A87A2C;margin-bottom:.5rem;font-weight:500;">Registrar &amp; Transfer Agent</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.18rem;color:#12100C;text-shadow:none;margin-bottom:.3rem;">Beacon Investor Holdings Pvt. Ltd.</div>
+        <div style="font-size:.82rem;color:rgba(50,42,32,.85);line-height:1.65;font-weight:400;">Akshar Business Park, Vashi<br/>Navi Mumbai — 400703<br/><a href="mailto:compliance@beaconrta.co.in" style="color:#A87A2C;">compliance@beaconrta.co.in</a></div>
       </div>
 
       <!-- Grievance -->
-      <div class="inv-card" style="background:rgba(255,255,255,.03);border:.5px solid rgba(201,168,76,.18);border-radius:6px;padding:1.6rem;transition:border-color .3s,box-shadow .3s;" onmouseover="this.style.borderColor='rgba(201,168,76,.5)';this.style.boxShadow='0 0 30px rgba(201,168,76,.12)'" onmouseout="this.style.borderColor='rgba(201,168,76,.18)';this.style.boxShadow='none'">
-        <div style="font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;">Grievance Officer</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:#F2EDE3;margin-bottom:.3rem;">Ms. Manju</div>
-        <div style="font-size:.78rem;color:rgba(190,184,174,.75);line-height:1.6;">Company Secretary &amp; Compliance Officer<br/><a href="mailto:siskinppl@outlook.com" style="color:var(--gold);">siskinppl@outlook.com</a><br/><a href="tel:+919211160000" style="color:rgba(190,184,174,.75);">+91 92111 60000</a></div>
+      <div class="inv-card" style="background:rgba(255,255,255,.85);border:.5px solid rgba(168,122,44,.2);border-radius:8px;padding:1.6rem;transition:border-color .3s,box-shadow .3s;backdrop-filter:blur(8px);" onmouseover="this.style.borderColor='rgba(168,122,44,.5)';this.style.boxShadow='0 8px 32px rgba(168,122,44,.18)'" onmouseout="this.style.borderColor='rgba(168,122,44,.2)';this.style.boxShadow='none'">
+        <div style="font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#A87A2C;margin-bottom:.5rem;font-weight:500;">Grievance Officer</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.18rem;color:#12100C;text-shadow:none;margin-bottom:.3rem;">Ms. Manju</div>
+        <div style="font-size:.82rem;color:rgba(50,42,32,.85);line-height:1.65;font-weight:400;">Company Secretary &amp; Compliance Officer<br/><a href="mailto:siskinppl@outlook.com" style="color:var(--gold);">siskinppl@outlook.com</a><br/><a href="tel:+919211160000" style="color:rgba(190,184,174,.75);">+91 92111 60000</a></div>
       </div>
     </div>
 
     <!-- Document filings — with dropdown accordions -->
     <div style="margin-bottom:1rem;">
-      <div style="font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;">— Regulatory Filings &amp; Documents</div>
+      <div style="font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:#A87A2C;margin-bottom:1.5rem;">— Regulatory Filings &amp; Documents</div>
 
       <div id="docAccordions" style="display:flex;flex-direction:column;gap:.5rem;">
       </div>
     </div>
 
     <!-- Note about documents -->
-    <div style="margin-top:2rem;padding:1.2rem 1.5rem;border:.5px solid rgba(201,168,76,.18);border-radius:6px;background:rgba(201,168,76,.04);">
-      <p style="font-size:.84rem;color:rgba(190,184,174,.8);line-height:1.7;"><span style="color:var(--gold);font-weight:500;">Note:</span> All regulatory filings and financial documents will be available for download once the company's document portal is live. For immediate access, please contact <a href="mailto:siskinppl@outlook.com" style="color:var(--gold);">siskinppl@outlook.com</a> or call <a href="tel:+919211160000" style="color:var(--gold);">+91 92111 60000</a>.</p>
+    <div style="margin-top:2rem;padding:1.2rem 1.5rem;border:.5px solid rgba(168,122,44,.22);border-radius:6px;background:rgba(255,255,255,.7);backdrop-filter:blur(8px);">
+      <p style="font-size:.84rem;color:rgba(50,42,32,.85);line-height:1.7;"><span style="color:#A87A2C;font-weight:600;">Note:</span> All regulatory filings and financial documents will be available for download once the company's document portal is live. For immediate access, please contact <a href="mailto:siskinppl@outlook.com" style="color:#A87A2C;">siskinppl@outlook.com</a> or call <a href="tel:+919211160000" style="color:#A87A2C;">+91 92111 60000</a>.</p>
     </div>
 
   </div>
@@ -1833,27 +2202,29 @@ document.querySelectorAll('.nlinks a').forEach(el=>el.addEventListener('mouseent
 <style>
 /* Investor page accordion dropdowns */
 .doc-accordion{
-  border:.5px solid rgba(201,168,76,.15);
+  border:.5px solid rgba(168,122,44,.15);
   border-radius:5px;
   overflow:hidden;
-  transition:border-color .3s;
+  transition:border-color .3s,box-shadow .25s;
+  background:rgba(255,255,255,.75);
+  backdrop-filter:blur(6px);
 }
-.doc-accordion:hover{border-color:rgba(201,168,76,.4);}
+.doc-accordion:hover{border-color:rgba(168,122,44,.45);box-shadow:0 4px 16px rgba(168,122,44,.1);}
 .doc-acc-header{
   display:flex;align-items:center;justify-content:space-between;
   padding:1rem 1.4rem;
   cursor:pointer;
-  background:rgba(255,255,255,.025);
+  background:transparent;
   transition:background .25s;
   user-select:none;
 }
-.doc-acc-header:hover{background:rgba(201,168,76,.06);}
+.doc-acc-header:hover{background:rgba(168,122,44,.06);}
 .doc-acc-title{
-  font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:500;
-  color:rgba(235,230,220,.92);letter-spacing:.02em;
+  font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:500;
+  color:#1A1510;letter-spacing:.02em;
 }
 .doc-acc-arrow{
-  color:var(--gold);font-size:.75rem;
+  color:#A87A2C;font-size:.75rem;
   transition:transform .4s cubic-bezier(.16,1,.3,1);
   flex-shrink:0;
 }
@@ -1862,19 +2233,19 @@ document.querySelectorAll('.nlinks a').forEach(el=>el.addEventListener('mouseent
   max-height:0;overflow:hidden;
   transition:max-height .45s cubic-bezier(.16,1,.3,1), opacity .35s ease;
   opacity:0;
-  background:rgba(255,255,255,.015);
+  background:rgba(250,245,235,.5);
 }
 .doc-acc-body.open{opacity:1;}
-.doc-acc-inner{padding:.8rem 1.4rem 1.2rem;color:rgba(190,184,174,.75);font-size:.84rem;line-height:1.7;}
+.doc-acc-inner{padding:.8rem 1.4rem 1.2rem;color:rgba(50,42,32,.88);font-size:.86rem;line-height:1.72;font-weight:400;}
 /* Investor page scroll */
-#investorPage::-webkit-scrollbar{width:3px;}
-#investorPage::-webkit-scrollbar-track{background:transparent;}
-#investorPage::-webkit-scrollbar-thumb{background:rgba(201,168,76,.3);border-radius:2px;}
+#investorPage::-webkit-scrollbar{width:4px;}
+#investorPage::-webkit-scrollbar-track{background:rgba(245,240,230,.5);}
+#investorPage::-webkit-scrollbar-thumb{background:rgba(168,122,44,.4);border-radius:2px;}
 </style>
 
 <script>
 // ── INVESTOR PAGE OPEN/CLOSE ──────────────────────────────
-function openInvestorPage(e){
+function openInvestorPage(e, target){
   if(e) e.preventDefault();
   const pg = document.getElementById('investorPage');
   pg.style.opacity='0';
@@ -1887,6 +2258,36 @@ function openInvestorPage(e){
   }));
   document.body.style.overflow='hidden';
   buildAccordions();
+  // If a specific accordion target, open it after build
+  if(target){
+    setTimeout(()=>{
+      const headers = document.querySelectorAll('.doc-acc-header');
+      headers.forEach(h=>{
+        if(h.querySelector('.doc-acc-title') && h.querySelector('.doc-acc-title').textContent.trim() === target){
+          // Close all first
+          document.querySelectorAll('.doc-acc-body.open').forEach(b=>{
+            b.style.maxHeight='0'; b.classList.remove('open');
+            b.previousElementSibling.querySelector('.doc-acc-arrow').classList.remove('open');
+          });
+          // Open this one
+          const body = h.nextElementSibling;
+          const arrow = h.querySelector('.doc-acc-arrow');
+          body.classList.add('open');
+          arrow.classList.add('open');
+          body.style.maxHeight = body.scrollHeight + 'px';
+          // Scroll to it smoothly
+          setTimeout(()=>h.scrollIntoView({behavior:'smooth', block:'center'}), 200);
+          // Highlight flash
+          h.parentElement.style.borderColor='rgba(168,122,44,.6)';
+          h.parentElement.style.boxShadow='0 0 0 2px rgba(168,122,44,.25)';
+          setTimeout(()=>{
+            h.parentElement.style.borderColor='';
+            h.parentElement.style.boxShadow='';
+          }, 2000);
+        }
+      });
+    }, 300);
+  }
 }
 function closeInvestorPage(){
   const pg = document.getElementById('investorPage');
@@ -1909,13 +2310,14 @@ const docGroups = [
   {title:'Annual Return', content:'Annual return (MGT-7) filed with MCA within 60 days of AGM. Available for inspection per Section 92 of Companies Act.'},
   {title:'Press Releases', content:'Official press releases and media communications published for material corporate announcements.'},
   {title:'Notice / Default', content:'Any notices related to payment default or covenant breach will be disclosed immediately per SEBI LODR obligations.'},
+  {title:'Codes & Policies', content:'Code of Conduct for Board & Senior Management, Whistle Blower Policy, Related Party Transaction Policy, Nomination & Remuneration Policy, and all other Board-approved governance codes are maintained and available for inspection at the registered office or on request via siskinppl@outlook.com.'},
   {title:'Codes & Policies', content:'Code of Conduct, Whistle Blower Policy, Related Party Transaction Policy, and other governance documents available at registered office.'},
 ];
 
 function buildAccordions(){
   const container = document.getElementById('docAccordions');
   if(container.children.length > 0) return; // already built
-  docGroups.forEach((doc,i)=>{
+  window.docGroups.forEach((doc,i)=>{
     const acc = document.createElement('div');
     acc.className='doc-accordion';
     acc.innerHTML=`
