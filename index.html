@@ -573,6 +573,156 @@ body.cream-mode .vp h3{color:rgba(18,12,6,1)!important;}
 /* Dark mode vision */
 .vpa, .vpb{background:transparent;}
 
+
+/* ═══════════════════════════════════════════════════════
+   ALTERNATING SECTION DESIGN — remove all gray
+═══════════════════════════════════════════════════════ */
+
+/* ABOUT — clean white/cream with real estate image left */
+#about{
+  background:#FFFFFF !important;
+  position:relative;
+}
+#about .sec-bg{display:none;}
+#about .st{color:#12100C !important;}
+#about .sb{color:#3D3830 !important;}
+#about .ew{color:#A87A2C !important;}
+#about .ew::before{background:#A87A2C !important;}
+#about .alist li{color:#4A4238 !important;border-bottom-color:rgba(168,122,44,.15) !important;}
+#about .alist li::before{background:#A87A2C !important;}
+#about .aif{box-shadow:0 20px 60px rgba(0,0,0,.18);}
+/* About image — rich tinted */
+#about .aif img{filter:brightness(.92) saturate(1.1) contrast(1.05);}
+
+/* SERVICES — deep navy with image cards (already has them) */
+#services{background:#060D18 !important;}
+#services .st{color:#F2EDE3 !important;}
+#services .sb{color:rgba(220,215,205,.88) !important;}
+#services .ew{color:#C9A84C !important;}
+
+/* WHY — clean warm white */
+#why{background:#FAF7F2 !important;}
+#why .sec-bg{display:none !important;}
+#why .st{color:#12100C !important;}
+#why .wi h3{color:#1A1510 !important;font-size:clamp(1.2rem,2vw,1.55rem) !important;}
+#why .wi p{color:#5A5248 !important;font-size:.92rem !important;}
+#why .ew{color:#A87A2C !important;}
+#why .ew::before{background:#A87A2C !important;}
+#why .sb{color:#3D3830 !important;}
+#why .wi{border-color:rgba(168,122,44,.12) !important;}
+#why .wi:hover{background:rgba(168,122,44,.05) !important;}
+#why .wn{color:rgba(168,122,44,.08) !important;}
+
+/* VISION — full dark with real estate bg image */
+#vision{
+  background:#060D18 !important;
+  position:relative;overflow:hidden;
+}
+#vision::before{
+  content:'';position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1400&q=80') center/cover no-repeat;
+  opacity:.08;pointer-events:none;
+}
+#vision .vp{background:transparent !important;}
+#vision .vpa{background:rgba(6,13,24,.65) !important;backdrop-filter:blur(4px);}
+#vision .vpb{background:rgba(6,13,24,.5) !important;backdrop-filter:blur(4px);}
+#vision .vp h3{color:#F2EDE3 !important;}
+#vision .vp p{color:rgba(220,215,205,.9) !important;}
+#vision .ew{color:#C9A84C !important;}
+
+/* LEADERSHIP — clean bright white */
+#leadership{background:#FFFFFF !important;}
+#leadership .sec-bg{display:none !important;}
+#leadership .st{color:#12100C !important;}
+#leadership .sb{color:#3D3830 !important;}
+#leadership .ew{color:#A87A2C !important;}
+#leadership .ew::before{background:#A87A2C !important;}
+#leadership .lname{color:#12100C !important;}
+#leadership .lrole{color:#A87A2C !important;}
+#leadership .lbio{color:#5A5248 !important;}
+#leadership .lsep{background:rgba(168,122,44,.3) !important;}
+#leadership .lc{
+  background:rgba(250,247,242,.9) !important;
+  border-color:rgba(168,122,44,.18) !important;
+  box-shadow:0 2px 20px rgba(0,0,0,.06);
+}
+#leadership .lc:hover{
+  border-color:rgba(168,122,44,.45) !important;
+  box-shadow:0 8px 40px rgba(168,122,44,.15) !important;
+  transform:translateY(-6px) scale(1.012) !important;
+}
+#leadership .lc:hover .lbio{color:#3A3028 !important;}
+
+/* INVESTOR — dark with subtle architectural bg */
+#investor{
+  background:#060D18 !important;
+  position:relative;overflow:hidden;
+}
+#investor::before{
+  content:'';position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1400&q=80') center/cover no-repeat;
+  opacity:.06;pointer-events:none;
+}
+#investor .sec-bg{display:none !important;}
+#investor .st{color:#F2EDE3 !important;}
+#investor .ew{color:#C9A84C !important;}
+#investor .il3{color:#C9A84C !important;}
+#investor .iv3{color:rgba(220,215,205,.9) !important;}
+#investor .gc{background:rgba(255,255,255,.04) !important;border-color:rgba(201,168,76,.2) !important;}
+#investor .invlinks li .inv-item{color:rgba(220,215,205,.85) !important;border-color:rgba(201,168,76,.15) !important;}
+
+/* CONTACT — warm white with form */
+#contact{background:#FAF7F2 !important;}
+#contact .sec-bg{display:none !important;}
+#contact .st{color:#12100C !important;}
+#contact .ew{color:#A87A2C !important;}
+#contact .ew::before{background:#A87A2C !important;}
+#contact .coinfo p{color:#3D3830 !important;}
+#contact .coinfo a{color:#1A1510 !important;}
+#contact .coinfo span{color:#A87A2C !important;}
+#contact .gc{background:rgba(255,255,255,.95) !important;border-color:rgba(168,122,44,.2) !important;box-shadow:0 4px 30px rgba(0,0,0,.08);}
+#contact .fg label{color:#6A6058 !important;}
+#contact .fg input,#contact .fg select,#contact .fg textarea{
+  background:rgba(0,0,0,.03) !important;
+  border-color:rgba(168,122,44,.25) !important;
+  color:#1A1510 !important;
+}
+#contact .fg input:focus,#contact .fg select:focus,#contact .fg textarea:focus{
+  border-color:rgba(168,122,44,.6) !important;
+  background:rgba(0,0,0,.04) !important;
+}
+#contact .fg select option{background:#FAF7F2 !important;color:#1A1510 !important;}
+
+/* CTA — always dark with image */
+.cta{background:#060D18 !important;}
+
+/* ── SECTION HEADINGS — bigger visual impact ── */
+.sec .st em{text-decoration:none;}
+#about .st em,#why .st em,#leadership .st em,#contact .st em{color:#A87A2C !important;}
+
+/* ── SMOOTH SECTION DIVIDERS — subtle line, no gray band ── */
+section,#vision,.cta{border:none !important;outline:none !important;}
+
+/* ── ABOUT TWO-COL LAYOUT ENHANCEMENT ── */
+#about .aif{border-radius:8px;overflow:hidden;}
+#about .abadge{display:none;}
+
+/* ── WHY GRID VISUAL ── */
+#why .why-head > .rv > p.sb{color:#4A4238 !important;}
+
+/* ── LEADERSHIP desc text ── */
+#leadership .ldr-top .sb{color:#4A4238 !important;}
+
+/* Reset global cream-mode for these explicitly white sections */
+body.cream-mode #about .st,
+body.cream-mode #why .st,
+body.cream-mode #leadership .st,
+body.cream-mode #contact .st{color:#12100C !important;}
+body.cream-mode #about .sb,
+body.cream-mode #why .sb,
+body.cream-mode #leadership .sb,
+body.cream-mode #contact .coinfo p{color:#3D3830 !important;}
+
 </style>
 </head>
 <body>
@@ -632,8 +782,7 @@ body.cream-mode .vp h3{color:rgba(18,12,6,1)!important;}
 <div class="ticker"><div class="ti" id="ti"></div></div>
 
 <!-- ABOUT -->
-<section class="sec" id="about" style="overflow:hidden;position:relative;background:var(--bg);transition:background .4s;">
-  <div class="sec-bg" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1400&q=80');"></div>
+<section class="sec" id="about" style="overflow:hidden;position:relative;">
   <div class="ct"><div class="ag">
     <div class="aif rvl">
       <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=900&q=80" alt="Infrastructure" loading="lazy"/>
@@ -669,8 +818,7 @@ body.cream-mode .vp h3{color:rgba(18,12,6,1)!important;}
 </section>
 
 <!-- WHY -->
-<section class="sec" id="why" style="position:relative;background:var(--bg);transition:background .4s;">
-  <div class="sec-bg" style="background-image:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1400&q=80');opacity:0.5;"></div>
+<section class="sec" id="why" style="position:relative;">
   <div class="ct"><div class="why-head">
     <div class="rv"><div class="ew">Why Siskin</div><h2 class="st">Built on <em>Trust,</em><br/>Delivered with Excellence</h2><p class="sb" style="margin-top:.75rem;">Every development reflects our commitment to design, quality construction, and returns that endure across market cycles.</p></div>
     <div class="wg">
@@ -697,8 +845,7 @@ body.cream-mode .vp h3{color:rgba(18,12,6,1)!important;}
 </section>
 
 <!-- LEADERSHIP -->
-<section class="sec" id="leadership" style="position:relative;background:var(--bg);transition:background .4s;">
-  <div class="sec-bg" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1400&q=80');opacity:0.35;"></div>
+<section class="sec" id="leadership" style="position:relative;">
   <div class="ct">
     <div class="ldr-top rv">
       <div class="ew">Leadership</div>
@@ -792,8 +939,7 @@ body.cream-mode .vp h3{color:rgba(18,12,6,1)!important;}
 </section>
 
 <!-- CONTACT -->
-<section class="sec" id="contact" style="position:relative;background:var(--bg);transition:background .4s;">
-  <div class="sec-bg" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80');opacity:0.25;"></div>
+<section class="sec" id="contact" style="position:relative;">
   <div class="ct">
     <div class="rv"><div class="ew">Get In Touch</div><h2 class="st">Find Your<br/><em>Perfect</em> Property</h2></div>
     <div class="cog">
