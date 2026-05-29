@@ -133,7 +133,7 @@ h2.st em{font-style:italic;color:var(--gold);}
 .rg:nth-child(3){inset:26%;animation-duration:24s;border-color:rgba(201,168,76,.05);}
 .rdot{position:absolute;top:50%;left:50%;width:7px;height:7px;background:var(--gold);border-radius:50%;transform:translate(-50%,-50%);box-shadow:var(--glow);}
 @keyframes rgspin{to{transform:rotate(360deg);}}
-.hc{position:relative;z-index:4;max-width:840px;}
+.hc{position:relative;z-index:4;max-width:clamp(300px,55vw,620px);}
 .hew{display:flex;align-items:center;gap:1rem;font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;}
 .hew::before{content:'';width:34px;height:.5px;background:var(--gold);}
 .hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,8.5vw,7.5rem);font-weight:300;line-height:1.03;color:#fff;margin-bottom:1.3rem;}
@@ -496,7 +496,148 @@ footer{background:#060D18 !important;position:relative;overflow:hidden;}
 <section class="hero" id="home">
   <div id="hbg"></div><div class="hov"></div><div class="hgrid"></div>
   <div class="hft"></div><div class="hfb"></div>
-  <div class="rings"><div class="rg"></div><div class="rg"></div><div class="rg"></div><div class="rdot"></div></div>
+  
+  <!-- ══ 3D PROPERTY SHOWCASE ══════════════════════════════ -->
+  <div id="propShowcase" style="
+    position:absolute;right:clamp(2%,6vw,8%);top:50%;translate:0 -50%;
+    width:clamp(200px,32vw,360px);height:clamp(320px,55vh,480px);
+    pointer-events:none;z-index:3;
+    perspective:800px;
+  ">
+    <!-- Building blueprint SVG that draws itself -->
+    <div id="blueprintWrap" style="position:absolute;inset:0;opacity:0;animation:bpFadeIn .8s 2.8s forwards;">
+      <svg id="blueprintSvg" viewBox="0 0 360 480" style="width:100%;height:100%;overflow:visible;">
+        <!-- Grid lines -->
+        <g opacity=".12" stroke="#C9A84C" stroke-width=".5">
+          <line x1="0" y1="80" x2="360" y2="80"/><line x1="0" y1="160" x2="360" y2="160"/>
+          <line x1="0" y1="240" x2="360" y2="240"/><line x1="0" y1="320" x2="360" y2="320"/>
+          <line x1="0" y1="400" x2="360" y2="400"/>
+          <line x1="72" y1="0" x2="72" y2="480"/><line x1="144" y1="0" x2="144" y2="480"/>
+          <line x1="216" y1="0" x2="216" y2="480"/><line x1="288" y1="0" x2="288" y2="480"/>
+        </g>
+        <!-- Building outline drawn with dashoffset animation -->
+        <!-- Main structure -->
+        <path id="bp1" d="M60,400 L60,120 L180,60 L300,120 L300,400 Z" 
+          fill="none" stroke="#C9A84C" stroke-width="1.5" opacity=".7"
+          stroke-dasharray="900" stroke-dashoffset="900"
+          style="animation:drawLine 1.8s 3s cubic-bezier(.16,1,.3,1) forwards;"/>
+        <!-- Ground floor detail -->
+        <path id="bp2" d="M60,400 L300,400 M120,400 L120,320 L240,320 L240,400"
+          fill="none" stroke="#C9A84C" stroke-width="1.2" opacity=".65"
+          stroke-dasharray="500" stroke-dashoffset="500"
+          style="animation:drawLine 1.2s 4.2s cubic-bezier(.16,1,.3,1) forwards;"/>
+        <!-- Door -->
+        <path d="M155,400 L155,345 Q180,330 205,345 L205,400"
+          fill="none" stroke="#E2C06A" stroke-width="1.2" opacity=".7"
+          stroke-dasharray="200" stroke-dashoffset="200"
+          style="animation:drawLine .8s 5s cubic-bezier(.16,1,.3,1) forwards;"/>
+        <!-- Windows floor 1 -->
+        <g opacity="0" style="animation:winFade .5s 5.5s forwards;">
+          <rect x="80" y="330" width="28" height="24" fill="none" stroke="#C9A84C" stroke-width="1" opacity=".65"/>
+          <rect x="252" y="330" width="28" height="24" fill="none" stroke="#C9A84C" stroke-width="1" opacity=".65"/>
+          <line x1="94" y1="330" x2="94" y2="354"/><line x1="80" y1="342" x2="108" y2="342"/>
+          <line x1="266" y1="330" x2="266" y2="354"/><line x1="252" y1="342" x2="280" y2="342"/>
+        </g>
+        <!-- Windows floor 2 -->
+        <g opacity="0" style="animation:winFade .5s 5.9s forwards;">
+          <rect x="80" y="240" width="28" height="24" fill="none" stroke="#C9A84C" stroke-width="1" opacity=".65"/>
+          <rect x="166" y="240" width="28" height="24" fill="none" stroke="#C9A84C" stroke-width="1" opacity=".65"/>
+          <rect x="252" y="240" width="28" height="24" fill="none" stroke="#C9A84C" stroke-width="1" opacity=".65"/>
+        </g>
+        <!-- Windows floor 3 -->
+        <g opacity="0" style="animation:winFade .5s 6.2s forwards;">
+          <rect x="96" y="155" width="28" height="24" fill="none" stroke="#C9A84C" stroke-width="1" opacity=".65"/>
+          <rect x="236" y="155" width="28" height="24" fill="none" stroke="#C9A84C" stroke-width="1" opacity=".65"/>
+        </g>
+        <!-- Roof detail -->
+        <path d="M90,120 L180,70 L270,120" fill="none" stroke="#E2C06A" stroke-width="1" opacity=".55"
+          stroke-dasharray="250" stroke-dashoffset="250"
+          style="animation:drawLine .7s 4.6s forwards;"/>
+        <!-- Antenna -->
+        <line x1="180" y1="70" x2="180" y2="30" stroke="#E2C06A" stroke-width="1" opacity="0"
+          style="animation:winFade .4s 6.5s forwards;"/>
+        <circle cx="180" cy="27" r="3" fill="#E2C06A" opacity="0"
+          style="animation:winFade .4s 6.7s forwards;"/>
+        <!-- Measurement lines -->
+        <g opacity="0" style="animation:winFade .6s 7s forwards;" fill="#C9A84C" font-family="DM Sans" font-size="8" opacity=".5">
+          <line x1="30" y1="60" x2="30" y2="400" stroke="#C9A84C" stroke-width=".5" opacity=".4"/>
+          <line x1="26" y1="60" x2="34" y2="60" stroke="#C9A84C" stroke-width=".5" opacity=".4"/>
+          <line x1="26" y1="400" x2="34" y2="400" stroke="#C9A84C" stroke-width=".5" opacity=".4"/>
+          <text x="20" y="235" transform="rotate(-90 20 235)" text-anchor="middle" fill="#C9A84C" opacity=".45">HEIGHT</text>
+          <line x1="60" y1="430" x2="300" y2="430" stroke="#C9A84C" stroke-width=".5" opacity=".4"/>
+          <line x1="60" y1="426" x2="60" y2="434" stroke="#C9A84C" stroke-width=".5" opacity=".4"/>
+          <line x1="300" y1="426" x2="300" y2="434" stroke="#C9A84C" stroke-width=".5" opacity=".4"/>
+          <text x="180" y="446" text-anchor="middle" fill="#C9A84C" opacity=".45">WIDTH</text>
+        </g>
+        <!-- Glowing dot (pen tip) that moves along the path -->
+        <circle id="penDot" cx="60" cy="400" r="3" fill="#E2C06A" opacity=".9">
+          <animate attributeName="opacity" values="0;1;1;0" dur="3s" begin="3s" fill="freeze"/>
+        </circle>
+        <!-- Corner markers -->
+        <g opacity="0" stroke="#C9A84C" stroke-width=".8" fill="none" style="animation:winFade .4s 4.8s forwards;">
+          <path d="M55,115 L55,125 L65,125"/><path d="M295,115 L295,125 L285,125"/>
+          <path d="M55,395 L55,405 L65,405"/><path d="M295,395 L295,405 L285,405"/>
+        </g>
+        <!-- SISKIN Label -->
+        <text x="180" y="465" text-anchor="middle" font-family="Cormorant Garamond" font-size="10" fill="#C9A84C" opacity="0" letter-spacing="4"
+          style="animation:winFade .6s 7.2s forwards;">SISKIN PROJECTS · DESIGN BLUEPRINT</text>
+      </svg>
+    </div>
+
+    <!-- Floating property stat pills -->
+    <div id="statPills" style="position:absolute;inset:0;pointer-events:none;">
+      <!-- Pill 1 -->
+      <div style="
+        position:absolute;top:12%;right:-8%;
+        background:rgba(6,13,24,.82);backdrop-filter:blur(16px);
+        border:.5px solid rgba(201,168,76,.35);border-radius:30px;
+        padding:.5rem 1rem;display:flex;align-items:center;gap:.55rem;
+        opacity:0;animation:pillIn .6s 7.5s cubic-bezier(.34,1.56,.64,1) forwards;
+        box-shadow:0 8px 24px rgba(0,0,0,.3);
+      ">
+        <div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,rgba(201,168,76,.25),rgba(201,168,76,.08));display:flex;align-items:center;justify-content:center;font-size:.9rem;">🏠</div>
+        <div><div style="font-size:.62rem;color:rgba(200,195,185,.55);letter-spacing:.1em;text-transform:uppercase;">Residential</div><div style="font-family:'Cormorant Garamond',serif;font-size:.95rem;color:#F2EDE3;line-height:1.1;">Premium Homes</div></div>
+      </div>
+      <!-- Pill 2 -->
+      <div style="
+        position:absolute;bottom:28%;left:-10%;
+        background:rgba(6,13,24,.82);backdrop-filter:blur(16px);
+        border:.5px solid rgba(201,168,76,.35);border-radius:30px;
+        padding:.5rem 1rem;display:flex;align-items:center;gap:.55rem;
+        opacity:0;animation:pillIn .6s 7.9s cubic-bezier(.34,1.56,.64,1) forwards;
+        box-shadow:0 8px 24px rgba(0,0,0,.3);
+      ">
+        <div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,rgba(201,168,76,.25),rgba(201,168,76,.08));display:flex;align-items:center;justify-content:center;font-size:.9rem;">🏢</div>
+        <div><div style="font-size:.62rem;color:rgba(200,195,185,.55);letter-spacing:.1em;text-transform:uppercase;">Commercial</div><div style="font-family:'Cormorant Garamond',serif;font-size:.95rem;color:#F2EDE3;line-height:1.1;">Office Spaces</div></div>
+      </div>
+      <!-- Pill 3 — IVR rating badge -->
+      <div style="
+        position:absolute;bottom:12%;right:-5%;
+        background:linear-gradient(135deg,rgba(201,168,76,.18),rgba(201,168,76,.06));backdrop-filter:blur(16px);
+        border:.5px solid rgba(201,168,76,.5);border-radius:8px;
+        padding:.6rem 1rem;text-align:center;
+        opacity:0;animation:pillIn .6s 8.3s cubic-bezier(.34,1.56,.64,1) forwards;
+        box-shadow:0 8px 24px rgba(201,168,76,.15);
+      ">
+        <div style="font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,168,76,.6);margin-bottom:.15rem;">Credit Rating</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#C9A84C;font-weight:400;line-height:1;">IVR BB</div>
+        <div style="font-size:.52rem;color:rgba(200,195,185,.55);margin-top:.1rem;letter-spacing:.1em;">STABLE · 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+  @keyframes drawLine{to{stroke-dashoffset:0;}}
+  @keyframes bpFadeIn{to{opacity:.9;}}
+  @keyframes winFade{to{opacity:1;}}
+  @keyframes pillIn{from{opacity:0;transform:translateY(12px) scale(.88);}to{opacity:1;transform:translateY(0) scale(1);}}
+  /* Blueprint subtle float */
+  #blueprintWrap{animation:bpFadeIn .8s 2.8s forwards, bpFloat 6s 4s ease-in-out infinite;}
+  @keyframes bpFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+  /* Hide rings on mobile to save space */
+  @media(max-width:768px){#propShowcase{display:none;}}
+  </style>
+
   <div class="hc">
     <div class="hew rv">Premium Real Estate &mdash; Gurugram, India</div>
     <h1 class="rv d1">Redefining India's<br/><em>Real Estate,</em> Forever.</h1>
