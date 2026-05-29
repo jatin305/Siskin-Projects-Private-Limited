@@ -96,7 +96,7 @@ nav.sc2{height:62px;}
 .bg2{display:inline-flex;align-items:center;gap:.55rem;background:var(--gold);color:#0A0A0A !important;padding:.95rem 2.6rem;border-radius:var(--r);font-size:.8rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;transition:all .3s;position:relative;overflow:hidden;box-shadow:0 4px 24px rgba(201,168,76,.45),0 0 0 1px rgba(201,168,76,.6);}
 .bg2:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 36px rgba(201,168,76,.65),0 0 0 1px rgba(201,168,76,.9);}
 .bo{display:inline-flex;align-items:center;gap:.55rem;border:1.5px solid rgba(201,168,76,.85);color:var(--gold) !important;padding:.95rem 2.6rem;border-radius:var(--r);font-size:.8rem;font-weight:500;letter-spacing:.09em;text-transform:uppercase;transition:all .3s;box-shadow:0 0 16px rgba(201,168,76,.2),inset 0 0 12px rgba(201,168,76,.06);}
-.bo:hover{border-color:var(--gold2);color:#060D18 !important;background:var(--gold);transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,168,76,.5);}
+.bo:hover{border-color:var(--gold);color:var(--gold) !important;background:rgba(201,168,76,.08);transform:translateY(-2px);box-shadow:0 0 24px rgba(201,168,76,.25);}
 .ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.22);transform:scale(0);animation:rip .6s linear;pointer-events:none;}
 @keyframes rip{to{transform:scale(4.5);opacity:0;}}
 
@@ -723,6 +723,16 @@ body.cream-mode #why .sb,
 body.cream-mode #leadership .sb,
 body.cream-mode #contact .coinfo p{color:#3D3830 !important;}
 
+
+/* ═══ BUTTON HOVER FIX — never turn black ═══════════════ */
+.bg2:hover{background:var(--gold2) !important;color:#060D18 !important;transform:translateY(-2px);}
+.bo{color:var(--gold) !important;border:1.5px solid rgba(201,168,76,.7) !important;}
+.bo:hover{background:rgba(201,168,76,.1) !important;color:var(--gold2) !important;border-color:var(--gold2) !important;transform:translateY(-2px);box-shadow:0 0 28px rgba(201,168,76,.25);}
+.bo *{color:inherit !important;}
+/* CTA section ghost button — same style */
+.cta .bo{border-color:rgba(255,255,255,.45) !important;color:rgba(255,255,255,.9) !important;}
+.cta .bo:hover{border-color:#fff !important;color:#fff !important;background:rgba(255,255,255,.08) !important;}
+
 </style>
 </head>
 <body>
@@ -751,7 +761,37 @@ body.cream-mode #contact .coinfo p{color:#3D3830 !important;}
     <ul class="nlinks" id="navL">
       <li><a href="#about">About</a></li><li><a href="#services">Services</a></li>
       <li><a href="#why">Why Us</a></li><li><a href="#leadership">Leadership</a></li>
-      <li><a href="#investor" id="investorNavLink" onclick="openInvestorPage(event)">Investors</a></li><li><a href="#contact">Contact</a></li>
+      <li style="position:relative;" id="investorNavItem">
+      <a href="#investor" id="investorNavLink" onclick="return false;" style="display:flex;align-items:center;gap:.3rem;">
+        Investors <svg width="9" height="6" viewBox="0 0 9 6" fill="none" stroke="currentColor" stroke-width="1.5" style="transition:transform .3s;flex-shrink:0;"><path d="M1 1l3.5 4L8 1"/></svg>
+      </a>
+      <div id="investorDropdown" style="
+        position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(-8px);
+        background:rgba(6,13,24,.97);backdrop-filter:blur(24px);
+        border:.5px solid rgba(201,168,76,.22);border-radius:6px;
+        min-width:220px;padding:.5rem 0;
+        opacity:0;pointer-events:none;
+        transition:opacity .35s cubic-bezier(.16,1,.3,1),transform .35s cubic-bezier(.16,1,.3,1);
+        will-change:transform,opacity;
+        box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 0 .5px rgba(201,168,76,.1);
+        z-index:600;
+      ">
+        <div style="padding:.4rem 1rem .6rem;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,168,76,.5);border-bottom:.5px solid rgba(201,168,76,.1);margin-bottom:.3rem;">Regulatory Filings</div>
+        <a href="#" onclick="openInvestorPage(event)" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;color:rgba(220,215,205,.85);font-size:.8rem;transition:all .2s;" onmouseover="this.style.color='var(--gold)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.color='rgba(220,215,205,.85)';this.style.background='transparent'">Annual Reports <span style="color:rgba(201,168,76,.4);font-size:.7rem;">→</span></a>
+        <a href="#" onclick="openInvestorPage(event)" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;color:rgba(220,215,205,.85);font-size:.8rem;transition:all .2s;" onmouseover="this.style.color='var(--gold)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.color='rgba(220,215,205,.85)';this.style.background='transparent'">Financial Results <span style="color:rgba(201,168,76,.4);font-size:.7rem;">→</span></a>
+        <a href="#" onclick="openInvestorPage(event)" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;color:rgba(220,215,205,.85);font-size:.8rem;transition:all .2s;" onmouseover="this.style.color='var(--gold)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.color='rgba(220,215,205,.85)';this.style.background='transparent'">Board Meetings <span style="color:rgba(201,168,76,.4);font-size:.7rem;">→</span></a>
+        <a href="#" onclick="openInvestorPage(event)" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;color:rgba(220,215,205,.85);font-size:.8rem;transition:all .2s;" onmouseover="this.style.color='var(--gold)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.color='rgba(220,215,205,.85)';this.style.background='transparent'">General Meetings <span style="color:rgba(201,168,76,.4);font-size:.7rem;">→</span></a>
+        <a href="#" onclick="openInvestorPage(event)" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;color:rgba(220,215,205,.85);font-size:.8rem;transition:all .2s;" onmouseover="this.style.color='var(--gold)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.color='rgba(220,215,205,.85)';this.style.background='transparent'">Quarterly Compliance <span style="color:rgba(201,168,76,.4);font-size:.7rem;">→</span></a>
+        <a href="#" onclick="openInvestorPage(event)" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;color:rgba(220,215,205,.85);font-size:.8rem;transition:all .2s;" onmouseover="this.style.color='var(--gold)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.color='rgba(220,215,205,.85)';this.style.background='transparent'">Half-Yearly Filings <span style="color:rgba(201,168,76,.4);font-size:.7rem;">→</span></a>
+        <a href="#" onclick="openInvestorPage(event)" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;color:rgba(220,215,205,.85);font-size:.8rem;transition:all .2s;" onmouseover="this.style.color='var(--gold)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.color='rgba(220,215,205,.85)';this.style.background='transparent'">Event Disclosures <span style="color:rgba(201,168,76,.4);font-size:.7rem;">→</span></a>
+        <a href="#" onclick="openInvestorPage(event)" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;color:rgba(220,215,205,.85);font-size:.8rem;transition:all .2s;" onmouseover="this.style.color='var(--gold)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.color='rgba(220,215,205,.85)';this.style.background='transparent'">Codes &amp; Policies <span style="color:rgba(201,168,76,.4);font-size:.7rem;">→</span></a>
+        <div style="padding:.6rem 1rem .4rem;margin-top:.3rem;border-top:.5px solid rgba(201,168,76,.1);">
+          <button onclick="openInvestorPage(event)" style="width:100%;background:var(--gold);color:#060D18;border:none;padding:.55rem;border-radius:3px;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s;" onmouseover="this.style.background='var(--gold2)'" onmouseout="this.style.background='var(--gold)'">
+            Open Investor Page
+          </button>
+        </div>
+      </div>
+    </li><li><a href="#contact">Contact</a></li>
     </ul>
     <a href="#contact" class="ncta">Connect</a>
     <button class="nbg" id="burger"><span></span><span></span><span></span></button>
@@ -835,7 +875,7 @@ body.cream-mode #contact .coinfo p{color:#3D3830 !important;}
   <div class="ct" style="padding-top:clamp(4rem,8vw,7rem);padding-bottom:clamp(2rem,4vw,3rem);">
     <div class="rv" style="text-align:center;margin-bottom:clamp(2.5rem,5vw,4rem);">
       <div class="ew" style="justify-content:center;">Our Holistic Goal</div>
-      <h2 class="st" style="max-width:580px;margin:0 auto;">Real Estate at Heart:<br/><em>Creating Spaces, Building Wealth</em></h2>
+      <h2 class="st" style="max-width:580px;margin:0 auto;"><span style="color:#F2EDE3 !important;">Real Estate at Heart:</span><br/><em style="color:var(--gold);">Creating Spaces, Building Wealth</em></h2>
     </div>
   </div>
   <div class="vg">
@@ -908,17 +948,18 @@ body.cream-mode #contact .coinfo p{color:#3D3830 !important;}
         <div style="margin-bottom:1.4rem;"><div class="il3">Registrar &amp; Transfer Agent</div><div class="iv3">Beacon Investor Holdings Pvt. Ltd.<br/>Akshar Business Park, Vashi, Navi Mumbai 400703<br/>Ms. Sonal Bhosle — <a href="mailto:compliance@beaconrta.co.in">compliance@beaconrta.co.in</a></div></div>
         <div><div class="il3">Grievance Officer</div><div class="iv3">Ms. Manju, Company Secretary<br/><a href="mailto:siskinppl@outlook.com">siskinppl@outlook.com</a> &nbsp;&middot;&nbsp; <a href="tel:+919211160000">+91 92111 60000</a></div></div>
       </div>
-      <div class="rv d2">
-        <p style="font-size:.8rem;color:var(--faint);margin-bottom:1.2rem;line-height:1.7;">Access regulatory filings, financial disclosures, and compliance documents below.</p>
-        <ul class="invlinks">
-          <li><span class="inv-item">Annual Reports</span></li><li><span class="inv-item">Financial Results</span></li>
-          <li><span class="inv-item">Board Meetings</span></li><li><span class="inv-item">General Meetings</span></li>
-          <li><span class="inv-item">Quarterly Compliance</span></li><li><span class="inv-item">Annual Compliance</span></li>
-          <li><span class="inv-item">Half-Yearly Filings</span></li><li><span class="inv-item">Event Disclosures</span></li>
-          <li><span class="inv-item">Deviation Statements</span></li><li><span class="inv-item">Annual Return</span></li>
-          <li><span class="inv-item">Press Releases</span></li><li><span class="inv-item">Notice / Default</span></li>
-        </ul>
-        <div class="docs"><div class="il3">Codes &amp; Policies</div><p style="font-size:.78rem;color:var(--faint);">All corporate codes and governance policies available for download.</p><a href="#">Download All Documents &rarr;</a></div>
+      <div class="rv d2" style="display:flex;flex-direction:column;justify-content:center;gap:1.5rem;">
+        <div style="padding:1.5rem;border:.5px solid rgba(201,168,76,.2);border-radius:6px;background:rgba(255,255,255,.03);">
+          <div style="font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;">SEBI Compliance</div>
+          <p style="font-size:.88rem;color:rgba(220,215,205,.88);line-height:1.75;">Siskin Projects Private Limited operates under full SEBI-listed entity disclosure norms. All regulatory filings and compliance documents are maintained as per applicable provisions of the Companies Act 2013 and SEBI (LODR) Regulations 2015.</p>
+        </div>
+        <div style="padding:1.5rem;border:.5px solid rgba(201,168,76,.2);border-radius:6px;background:rgba(255,255,255,.03);">
+          <div style="font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;">Document Access</div>
+          <p style="font-size:.88rem;color:rgba(220,215,205,.88);line-height:1.75;margin-bottom:1rem;">All regulatory filings, financial disclosures, board meeting minutes, and governance documents are available through our Investor Relations portal.</p>
+          <button onclick="openInvestorPage(event)" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:#060D18;padding:.75rem 1.8rem;border-radius:3px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all .25s;" onmouseover="this.style.background='var(--gold2)'" onmouseout="this.style.background='var(--gold)'">
+            View All Documents →
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -954,7 +995,7 @@ body.cream-mode #contact .coinfo p{color:#3D3830 !important;}
             <span style="color:var(--gold);font-size:.65rem;letter-spacing:.15em;">MAIL</span>siskinppl@outlook.com
           </a>
           <div style="display:flex;align-items:center;gap:.7rem;color:rgba(220,215,205,0.75);font-size:.9rem;padding:.6rem 0;">
-            <span style="color:var(--gold);font-size:.65rem;letter-spacing:.15em;">VISIT</span>AIPL Business Club, 5th Floor, Gurgaon
+            <span style="color:var(--gold);font-size:.65rem;letter-spacing:.15em;">VISIT</span>AIPL Business Club, 5th Floor, Sector 62, Gurugram
           </div>
         </div>
       </div>
@@ -998,7 +1039,7 @@ body.cream-mode #contact .coinfo p{color:#3D3830 !important;}
         <div style="display:flex;flex-direction:column;gap:.75rem;">
           <div>
             <div style="font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(201,168,76,.5);margin-bottom:.2rem;">Office</div>
-            <div style="font-size:.84rem;color:rgba(185,178,168,0.8);line-height:1.6;">AIPL Business Club, 5th Floor<br/>Badshahpur, Gurgaon 122101</div>
+            <div style="font-size:.84rem;color:rgba(185,178,168,0.8);line-height:1.6;">AIPL Business Club, 5th Floor<br/>Sector 62, Golf Course Extension Road<br/>Gurugram, Haryana 122101</div>
           </div>
           <div>
             <div style="font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(201,168,76,.5);margin-bottom:.2rem;">Phone</div>
@@ -1472,6 +1513,40 @@ burger.addEventListener('click',()=>{const o=navL.classList.toggle('open');burge
 navL.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navL.classList.remove('open');burger.classList.remove('open');}));
 
 /* ── CONTACT FORM ─────────────────────────────────────────── */
+
+/* ── INVESTORS DROPDOWN ─────────────────────────────────── */
+(function(){
+  const item = document.getElementById('investorNavItem');
+  const dropdown = document.getElementById('investorDropdown');
+  const arrow = item ? item.querySelector('svg') : null;
+  if(!item||!dropdown) return;
+  let closeTimer;
+  function show(){
+    clearTimeout(closeTimer);
+    dropdown.style.opacity='1';
+    dropdown.style.transform='translateX(-50%) translateY(0)';
+    dropdown.style.pointerEvents='all';
+    if(arrow) arrow.style.transform='rotate(180deg)';
+  }
+  function hide(){
+    closeTimer=setTimeout(()=>{
+      dropdown.style.opacity='0';
+      dropdown.style.transform='translateX(-50%) translateY(-8px)';
+      dropdown.style.pointerEvents='none';
+      if(arrow) arrow.style.transform='rotate(0deg)';
+    }, 120);
+  }
+  item.addEventListener('mouseenter', show);
+  item.addEventListener('mouseleave', hide);
+  dropdown.addEventListener('mouseenter', show);
+  dropdown.addEventListener('mouseleave', hide);
+  // Touch support
+  item.querySelector('a').addEventListener('click', e=>{
+    e.preventDefault();
+    dropdown.style.opacity==='1' ? hide() : show();
+  });
+})();
+
 function handleSend(btn){const msg=document.getElementById('fmsg');msg.className='fmsg';btn.disabled=true;btn.textContent='Sending…';setTimeout(()=>{msg.textContent="Thank you! We'll be in touch within one business day.";msg.className='fmsg ok';btn.textContent='Message Sent ✓';},1300);}
 
 /* ── AUDIO ────────────────────────────────────────────────── */
