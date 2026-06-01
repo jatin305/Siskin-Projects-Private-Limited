@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
 /* ── TOKENS ── */
 :root{
@@ -128,13 +128,13 @@ h2.st em{font-style:italic;color:var(--gold);}
 .hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.02) 1px,transparent 1px);background-size:60px 60px;}
 .hft{position:absolute;top:0;left:0;width:100%;height:20%;background:linear-gradient(to bottom,#060D18,transparent);z-index:2;pointer-events:none;}
 .hfb{position:absolute;bottom:0;left:0;width:100%;height:45%;background:linear-gradient(to top,#060D18 10%,transparent);z-index:2;pointer-events:none;}
-.rings{position:absolute;right:clamp(3%,8vw,10%);top:50%;translate:0 -50%;width:clamp(180px,26vw,300px);aspect-ratio:1;pointer-events:none;z-index:2;}
-.rg{position:absolute;inset:0;border-radius:50%;border:.5px solid rgba(201,168,76,.16);animation:rgspin 18s linear infinite;}
+
+
 .rg:nth-child(2){inset:13%;animation-duration:13s;animation-direction:reverse;border-color:rgba(201,168,76,.08);}
 .rg:nth-child(3){inset:26%;animation-duration:24s;border-color:rgba(201,168,76,.05);}
-.rdot{position:absolute;top:50%;left:50%;width:7px;height:7px;background:var(--gold);border-radius:50%;transform:translate(-50%,-50%);box-shadow:var(--glow);}
-@keyframes rgspin{to{transform:rotate(360deg);}}
-.hc{position:relative;z-index:4;max-width:clamp(300px,55vw,620px);}
+
+}
+.hc{position:relative;z-index:4;max-width:860px;}
 .hew{display:flex;align-items:center;gap:1rem;font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;}
 .hew::before{content:'';width:34px;height:.5px;background:var(--gold);}
 .hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,8.5vw,7.5rem);font-weight:300;line-height:1.03;color:#fff;margin-bottom:1.3rem;}
@@ -200,7 +200,7 @@ h2.st em{font-style:italic;color:var(--gold);}
 .wi::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:linear-gradient(90deg,#A87A2C,transparent);transition:width .5s cubic-bezier(.16,1,.3,1);}
 .wi:hover{background:rgba(168,122,44,.04);}
 .wi:hover::after{width:100%;}
-.wn{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:rgba(168,122,44,.08);line-height:1;user-select:none;}
+.wn{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:rgba(168,122,44,.08);line-height:1;user-select:none;position:relative;}
 .wi h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2vw,1.4rem);font-weight:400;color:#1A1510;margin:.65rem 0 .45rem;}
 .wi p{font-size:.88rem;color:#5A5248;line-height:1.76;}
 #why .st{color:#12100C;}
@@ -404,6 +404,28 @@ footer{background:#060D18 !important;position:relative;overflow:hidden;}
 /* ── SCROLL REVEAL DEPTH ── */
 .rv,.rvl,.rvr{will-change:transform,opacity;}
 @media(prefers-reduced-motion:reduce){.rv,.rvl,.rvr{transition-duration:.3s !important;}}
+
+/* Leadership signature underline */
+.lname-wrap{position:relative;display:inline-block;}
+.lsig{position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:linear-gradient(90deg,#A87A2C,#E2C06A,rgba(201,168,76,0));transition:width .6s cubic-bezier(.16,1,.3,1);}
+.lc:hover .lsig{width:100%;}
+/* Property type badge */
+.ltype{display:inline-block;font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;padding:.2rem .55rem;border:.5px solid rgba(168,122,44,.3);border-radius:20px;color:#A87A2C;margin-bottom:.7rem;background:rgba(168,122,44,.04);}
+
+
+/* Service card value badge */
+.svc-badge{position:absolute;top:1rem;right:1rem;background:rgba(201,168,76,.18);border:.5px solid rgba(201,168,76,.5);color:#E2C06A;font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;padding:.3rem .7rem;border-radius:20px;backdrop-filter:blur(8px);z-index:3;opacity:0;transform:translateY(-4px);transition:all .3s .1s;}
+.svc:hover .svc-badge{opacity:1;transform:translateY(0);}
+
+
+/* ── DOC CARDS always clickable ── */
+.doc-card{ cursor:pointer !important; pointer-events:all !important; }
+.doc-card *{ pointer-events:none; }
+.doc-card button{ pointer-events:all !important; }
+/* ── INVESTOR PAGE always on top ── */
+#ipage{ z-index:4000 !important; }
+#docModal{ z-index:5000 !important; }
+#adminModal,#uploadModal{ z-index:6000 !important; }
 </style>
 </head>
 <body>
@@ -426,23 +448,162 @@ footer{background:#060D18 !important;position:relative;overflow:hidden;}
     <div><span class="iptoplogo">Siskin<span> Projects</span></span><span class="iptopsub">· Investor Relations</span></div>
     <button class="ipcls" onclick="closeIP()">✕ Close</button>
   </div>
+  <!-- ADMIN BADGE (top-right when logged in) -->
+  <div id="adminBadge" style="display:none;position:fixed;top:68px;right:calc(var(--pad) + 120px);z-index:25;background:rgba(34,120,60,.15);border:.5px solid rgba(46,139,87,.5);border-radius:20px;padding:.32rem .9rem;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:#5DCA9A;backdrop-filter:blur(8px);">
+    🔑 Admin Mode
+  </div>
+
   <div class="ipcontent">
-    <div class="iphero rv">
-      <div class="ew" style="color:#A87A2C;"><span style="width:22px;height:.5px;background:#A87A2C;display:inline-block;"></span>&nbsp;Investor Information</div>
-      <h1>Transparency You Can <em>Trust</em></h1>
-      <p>Siskin Projects Private Limited operates under full SEBI-listed entity disclosure norms. All filings, disclosures, and governance documents are maintained as per applicable regulations.</p>
+    <!-- ── HERO ── -->
+    <div class="iphero rv" style="position:relative;">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <div class="ew" style="color:#A87A2C;margin-bottom:.7rem;"><span style="width:22px;height:.5px;background:#A87A2C;display:inline-block;margin-right:.7rem;"></span>Investor Information</div>
+          <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.8rem);font-weight:300;color:#12100C;margin-bottom:.7rem;line-height:1.06;">Transparency You Can <em style="color:#A87A2C;font-style:italic;">Trust</em></h1>
+          <p style="font-size:.94rem;color:rgba(50,42,32,.82);max-width:560px;line-height:1.8;">Siskin Projects operates under full SEBI-listed entity disclosure norms. All filings, disclosures, and governance documents are maintained per applicable regulations.</p>
+        </div>
+        <!-- Admin login trigger -->
+        <button id="adminLoginBtn" onclick="showAdminLogin()" style="
+          display:flex;align-items:center;gap:.45rem;
+          background:none;border:.5px solid rgba(168,122,44,.28);
+          color:#A87A2C;padding:.42rem 1rem;border-radius:4px;
+          font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+          cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .25s;
+          flex-shrink:0;align-self:flex-start;margin-top:.3rem;
+        " onmouseover="this.style.background='rgba(168,122,44,.08)'" onmouseout="this.style.background='none'">
+          <svg width="11" height="13" viewBox="0 0 11 13" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="1" y="5" width="9" height="7" rx="1"/><path d="M3 5V3.5a2.5 2.5 0 015 0V5"/></svg>
+          Admin Login
+        </button>
+      </div>
+
+
     </div>
-    <div class="ipcards rv d1">
-      <div class="ipcard"><div class="ipcl">Credit Rating</div><div class="ipct">IVR BB / Stable</div><div class="ipcb">Infomerics Valuation and Rating Limited<br/>Senior Secured NCDs · January 2026</div></div>
-      <div class="ipcard"><div class="ipcl">Debenture Trustee</div><div class="ipct">Catalyst Trusteeship Ltd.</div><div class="ipcb">Peninsula Business Park, Lower Parel<br/>Mumbai — 400013<br/><a href="mailto:ComplianceCTLMumbai@ctltrustee.com">ComplianceCTLMumbai@ctltrustee.com</a></div></div>
-      <div class="ipcard"><div class="ipcl">Registrar &amp; Transfer Agent</div><div class="ipct">Beacon Investor Holdings Pvt. Ltd.</div><div class="ipcb">Akshar Business Park, Vashi<br/>Navi Mumbai — 400703<br/><a href="mailto:compliance@beaconrta.co.in">compliance@beaconrta.co.in</a></div></div>
-      <div class="ipcard"><div class="ipcl">Grievance Officer</div><div class="ipct">Ms. Manju</div><div class="ipcb">Company Secretary &amp; Compliance Officer<br/><a href="mailto:siskinppl@outlook.com">siskinppl@outlook.com</a><br/>+91 92111 60000</div></div>
+
+    <!-- ── KEY CONTACTS ── -->
+    <div class="rv d1" style="margin-bottom:2.5rem;">
+      <div style="font-size:.65rem;letter-spacing:.26em;text-transform:uppercase;color:#A87A2C;margin-bottom:1.3rem;display:flex;align-items:center;gap:.7rem;"><span style="width:20px;height:.5px;background:#A87A2C;display:inline-block;"></span>Key Contacts</div>
+      <div class="ipcards">
+        <div class="ipcard"><div class="ipcl">Credit Rating Agency</div><div class="ipct">Infomerics Valuation &amp; Rating Ltd.</div><div class="ipcb">Senior Secured Non-Convertible Debentures<br/>IVR BB / Stable — January 2026</div></div>
+        <div class="ipcard"><div class="ipcl">Debenture Trustee</div><div class="ipct">Catalyst Trusteeship Ltd.</div><div class="ipcb">Peninsula Business Park, Lower Parel<br/>Mumbai — 400013<br/><a href="mailto:ComplianceCTLMumbai@ctltrustee.com">ComplianceCTLMumbai@<br/>ctltrustee.com</a></div></div>
+        <div class="ipcard"><div class="ipcl">Registrar &amp; Transfer Agent</div><div class="ipct">Beacon Investor Holdings Pvt. Ltd.</div><div class="ipcb">Akshar Business Park, Vashi<br/>Navi Mumbai — 400703<br/><a href="mailto:compliance@beaconrta.co.in">compliance@beaconrta.co.in</a></div></div>
+        <div class="ipcard"><div class="ipcl">Grievance Officer</div><div class="ipct">Ms. Manju</div><div class="ipcb">Company Secretary &amp; Compliance Officer<br/><a href="mailto:siskinppl@outlook.com">siskinppl@outlook.com</a><br/><a href="tel:+919211160000">+91 92111 60000</a></div></div>
+      </div>
     </div>
+
+    <!-- ── DOCUMENT GRID ── -->
     <div class="rv d2">
-      <div class="doclabel"><span>— Regulatory Filings &amp; Documents</span><span class="doccount">13 Categories</span></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem;margin-bottom:1.5rem;">
+        <div>
+          <div style="font-size:.65rem;letter-spacing:.26em;text-transform:uppercase;color:#A87A2C;margin-bottom:.25rem;display:flex;align-items:center;gap:.7rem;"><span style="width:20px;height:.5px;background:#A87A2C;display:inline-block;"></span>Regulatory Filings &amp; Documents</div>
+          <p style="font-size:.82rem;color:rgba(50,42,32,.6);margin:0;">Click any document to view details or download</p>
+        </div>
+        <div style="display:flex;align-items:center;gap:.7rem;">
+          <div style="font-size:.68rem;letter-spacing:.1em;color:#A87A2C;border:.5px solid rgba(168,122,44,.28);padding:.32rem .85rem;border-radius:3px;">13 Categories</div>
+          <div id="adminUploadHint" style="display:none;font-size:.62rem;color:rgba(46,139,87,.8);letter-spacing:.1em;padding:.32rem .85rem;border:.5px solid rgba(46,139,87,.35);border-radius:3px;">Upload Mode Active</div>
+        </div>
+      </div>
       <div class="doc-grid" id="docGrid"></div>
     </div>
-    <div class="ipnote rv d3"><p><strong style="color:#A87A2C;">Note:</strong> All regulatory filings and financial documents will be available for download once the investor portal is live. For immediate access, contact <a href="mailto:siskinppl@outlook.com">siskinppl@outlook.com</a> or call <a href="tel:+919211160000">+91 92111 60000</a>.</p></div>
+
+    <!-- ── NOTE ── -->
+    <div class="ipnote rv d3">
+      <p><strong style="color:#A87A2C;">Note:</strong> All regulatory filings and financial documents will be available for download once the investor portal is live. Documents will be made available once uploaded by the admin.</p>
+    </div>
+  </div>
+
+  <!-- ══ ADMIN LOGIN MODAL ══════════════════════════════════ -->
+  <div id="adminModal" style="
+    position:fixed;inset:0;z-index:6000;
+    display:none;align-items:center;justify-content:center;
+    background:rgba(10,8,5,.65);backdrop-filter:blur(14px);
+  " onclick="if(event.target===this)hideAdminLogin()">
+    <div style="
+      background:#FFFFFF;border-radius:12px;
+      width:clamp(280px,90vw,420px);
+      box-shadow:0 28px 70px rgba(0,0,0,.2);
+      overflow:hidden;
+      transform:scale(.9) translateY(20px);
+      transition:transform .4s cubic-bezier(.16,1,.3,1);
+    " id="adminModalCard" onclick="event.stopPropagation()">
+      <!-- Header -->
+      <div style="padding:1.5rem 1.8rem;background:linear-gradient(135deg,#12100C,#1E1A12);text-align:center;">
+        <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,rgba(201,168,76,.2),rgba(201,168,76,.06));border:.5px solid rgba(201,168,76,.4);display:flex;align-items:center;justify-content:center;margin:0 auto .8rem;font-size:1.4rem;">🔐</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#F2EDE3;margin-bottom:.2rem;">Admin Access</div>
+        <div style="font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,168,76,.45);">Siskin Projects Portal</div>
+      </div>
+      <!-- Body -->
+      <div style="padding:1.8rem;">
+        <div style="margin-bottom:1.1rem;">
+          <label style="display:block;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:#6A6058;margin-bottom:.4rem;font-weight:500;">Admin Password</label>
+          <div style="position:relative;">
+            <input id="adminPwInput" type="password" placeholder="Enter admin password"
+              style="width:100%;padding:.78rem 2.8rem .78rem .9rem;border:.5px solid rgba(168,122,44,.25);border-radius:5px;font-size:.9rem;color:#1A1510;background:rgba(0,0,0,.02);font-family:'DM Sans',sans-serif;outline:none;transition:border-color .25s;"
+              onfocus="this.style.borderColor='rgba(168,122,44,.6)'" onblur="this.style.borderColor='rgba(168,122,44,.25)'"
+              onkeydown="if(event.key==='Enter')adminLogin()"/>
+            <button onclick="togglePw()" style="position:absolute;right:.8rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#A87A2C;font-size:.9rem;padding:.2rem;">👁</button>
+          </div>
+          <div id="adminErr" style="display:none;margin-top:.5rem;font-size:.78rem;color:#CC4444;padding:.4rem .7rem;background:rgba(220,60,60,.06);border-radius:4px;border:.5px solid rgba(220,60,60,.2);">Incorrect password. Please try again.</div>
+        </div>
+        <button onclick="adminLogin()" style="
+          width:100%;background:linear-gradient(135deg,#C9A84C,#A87A2C);
+          color:#fff;padding:.9rem;border:none;border-radius:5px;
+          font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:600;
+          letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
+          transition:opacity .25s;
+        " onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">Unlock Admin Access</button>
+        <div style="text-align:center;margin-top:1rem;">
+          <button onclick="hideAdminLogin()" style="background:none;border:none;font-size:.76rem;color:#8A8480;cursor:pointer;font-family:'DM Sans',sans-serif;">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PDF UPLOAD MODAL (Admin Only) ═══════════════════════ -->
+  <div id="uploadModal" style="
+    position:fixed;inset:0;z-index:6000;
+    display:none;align-items:center;justify-content:center;
+    background:rgba(10,8,5,.65);backdrop-filter:blur(14px);
+  " onclick="if(event.target===this)closeUpload()">
+    <div style="background:#FFFFFF;border-radius:12px;width:clamp(280px,90vw,500px);box-shadow:0 28px 70px rgba(0,0,0,.2);overflow:hidden;" onclick="event.stopPropagation()">
+      <div style="padding:1.3rem 1.7rem;background:linear-gradient(135deg,#F8F4EC,#F0E8D8);border-bottom:.5px solid rgba(168,122,44,.12);display:flex;align-items:center;justify-content:space-between;">
+        <div>
+          <div style="font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:#A87A2C;margin-bottom:.18rem;font-weight:500;">Admin Upload</div>
+          <div id="uploadDocTitle" style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:#12100C;"></div>
+        </div>
+        <button onclick="closeUpload()" style="background:none;border:none;cursor:pointer;color:#A87A2C;font-size:1.1rem;opacity:.6;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.6">✕</button>
+      </div>
+      <div style="padding:1.5rem 1.7rem;">
+        <!-- Drop zone -->
+        <div id="dropZone" style="
+          border:2px dashed rgba(168,122,44,.3);border-radius:8px;
+          padding:2.5rem 1.5rem;text-align:center;
+          background:rgba(248,244,236,.5);margin-bottom:1.2rem;
+          transition:border-color .25s,background .25s;cursor:pointer;
+        " onclick="document.getElementById('pdfFileInput').click()"
+          ondragover="event.preventDefault();this.style.borderColor='rgba(168,122,44,.65)';this.style.background='rgba(168,122,44,.06)'"
+          ondragleave="this.style.borderColor='rgba(168,122,44,.3)';this.style.background='rgba(248,244,236,.5)'"
+          ondrop="handleDrop(event)">
+          <div style="font-size:2.2rem;margin-bottom:.6rem;">📂</div>
+          <div style="font-size:.9rem;font-weight:500;color:#3A3028;margin-bottom:.25rem;">Drop PDF here or click to browse</div>
+          <div style="font-size:.76rem;color:#8A8480;">PDF files only · Max 50MB</div>
+          <input id="pdfFileInput" type="file" accept=".pdf" style="display:none;" onchange="handleFileSelect(event)"/>
+        </div>
+        <!-- File preview -->
+        <div id="filePreview" style="display:none;padding:.8rem 1rem;background:rgba(46,139,87,.06);border:.5px solid rgba(46,139,87,.25);border-radius:6px;margin-bottom:1.1rem;align-items:center;gap:.8rem;">
+          <span style="font-size:1.3rem;">📄</span>
+          <div style="flex:1;min-width:0;">
+            <div id="fileName" style="font-size:.86rem;font-weight:500;color:#1A5C32;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"></div>
+            <div id="fileSize" style="font-size:.72rem;color:#5DCA9A;margin-top:.1rem;"></div>
+          </div>
+          <button onclick="clearFile()" style="background:none;border:none;cursor:pointer;color:#CC4444;font-size:.9rem;flex-shrink:0;">✕</button>
+        </div>
+        <div style="display:flex;gap:.8rem;">
+          <button onclick="closeUpload()" style="flex:1;background:none;border:.5px solid rgba(168,122,44,.25);color:#A87A2C;padding:.78rem;border-radius:5px;font-family:'DM Sans',sans-serif;font-size:.74rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .2s;" onmouseover="this.style.background='rgba(168,122,44,.06)'" onmouseout="this.style.background='none'">Cancel</button>
+          <button id="uploadBtn" onclick="confirmUpload()" style="flex:2;background:linear-gradient(135deg,#C9A84C,#A87A2C);color:#fff;padding:.78rem;border:none;border-radius:5px;font-family:'DM Sans',sans-serif;font-size:.74rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;opacity:.4;transition:opacity .25s;" disabled>Save Document</button>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 </div>
 
@@ -451,7 +612,7 @@ footer{background:#060D18 !important;position:relative;overflow:hidden;}
   <div id="docModalCard">
     <div class="dmh"><div><div class="dmcat" id="dmcat"></div><div class="dmtitle" id="dmtitle"></div></div><button class="dmcls" onclick="closeDM()">✕</button></div>
     <div class="dmb">
-      <div class="dmpdf"><div class="dmpdfi">📄</div><div class="dmpdfh">Document Portal Coming Soon</div><p class="dmpdfp">PDFs will be available here once the portal is live. Contact us for immediate access.</p><a href="mailto:siskinppl@outlook.com" class="dmpdfbtn">Request Document →</a></div>
+      <div id="dmpdfArea"><div class="dmpdf"><div class="dmpdfi">📂</div><div class="dmpdfh">Document Coming Soon</div><p class="dmpdfp">PDFs will be available for download once uploaded. Contact us for immediate access.</p></div></div>
       <div class="dmdesc" id="dmdesc"></div>
     </div>
   </div>
@@ -498,146 +659,6 @@ footer{background:#060D18 !important;position:relative;overflow:hidden;}
   <div id="hbg"></div><div class="hov"></div><div class="hgrid"></div>
   <div class="hft"></div><div class="hfb"></div>
   
-  <!-- ══ 3D PROPERTY SHOWCASE ══════════════════════════════ -->
-  <div id="propShowcase" style="
-    position:absolute;right:clamp(2%,6vw,8%);top:50%;translate:0 -50%;
-    width:clamp(200px,32vw,360px);height:clamp(320px,55vh,480px);
-    pointer-events:none;z-index:3;
-    perspective:800px;
-  ">
-    <!-- Building blueprint SVG that draws itself -->
-    <div id="blueprintWrap" style="position:absolute;inset:0;opacity:0;animation:bpFadeIn .8s 2.8s forwards;">
-      <svg id="blueprintSvg" viewBox="0 0 360 480" style="width:100%;height:100%;overflow:visible;">
-        <!-- Grid lines -->
-        <g opacity=".12" stroke="#C9A84C" stroke-width=".5">
-          <line x1="0" y1="80" x2="360" y2="80"/><line x1="0" y1="160" x2="360" y2="160"/>
-          <line x1="0" y1="240" x2="360" y2="240"/><line x1="0" y1="320" x2="360" y2="320"/>
-          <line x1="0" y1="400" x2="360" y2="400"/>
-          <line x1="72" y1="0" x2="72" y2="480"/><line x1="144" y1="0" x2="144" y2="480"/>
-          <line x1="216" y1="0" x2="216" y2="480"/><line x1="288" y1="0" x2="288" y2="480"/>
-        </g>
-        <!-- Building outline drawn with dashoffset animation -->
-        <!-- Main structure -->
-        <path id="bp1" d="M60,400 L60,120 L180,60 L300,120 L300,400 Z" 
-          fill="none" stroke="#C9A84C" stroke-width="1.5" opacity=".7"
-          stroke-dasharray="900" stroke-dashoffset="900"
-          style="animation:drawLine 1.8s 3s cubic-bezier(.16,1,.3,1) forwards;"/>
-        <!-- Ground floor detail -->
-        <path id="bp2" d="M60,400 L300,400 M120,400 L120,320 L240,320 L240,400"
-          fill="none" stroke="#C9A84C" stroke-width="1.2" opacity=".65"
-          stroke-dasharray="500" stroke-dashoffset="500"
-          style="animation:drawLine 1.2s 4.2s cubic-bezier(.16,1,.3,1) forwards;"/>
-        <!-- Door -->
-        <path d="M155,400 L155,345 Q180,330 205,345 L205,400"
-          fill="none" stroke="#E2C06A" stroke-width="1.2" opacity=".7"
-          stroke-dasharray="200" stroke-dashoffset="200"
-          style="animation:drawLine .8s 5s cubic-bezier(.16,1,.3,1) forwards;"/>
-        <!-- Windows floor 1 -->
-        <g opacity="0" style="animation:winFade .5s 5.5s forwards;">
-          <rect x="80" y="330" width="28" height="24" fill="none" stroke="#C9A84C" stroke-width="1" opacity=".65"/>
-          <rect x="252" y="330" width="28" height="24" fill="none" stroke="#C9A84C" stroke-width="1" opacity=".65"/>
-          <line x1="94" y1="330" x2="94" y2="354"/><line x1="80" y1="342" x2="108" y2="342"/>
-          <line x1="266" y1="330" x2="266" y2="354"/><line x1="252" y1="342" x2="280" y2="342"/>
-        </g>
-        <!-- Windows floor 2 -->
-        <g opacity="0" style="animation:winFade .5s 5.9s forwards;">
-          <rect x="80" y="240" width="28" height="24" fill="none" stroke="#C9A84C" stroke-width="1" opacity=".65"/>
-          <rect x="166" y="240" width="28" height="24" fill="none" stroke="#C9A84C" stroke-width="1" opacity=".65"/>
-          <rect x="252" y="240" width="28" height="24" fill="none" stroke="#C9A84C" stroke-width="1" opacity=".65"/>
-        </g>
-        <!-- Windows floor 3 -->
-        <g opacity="0" style="animation:winFade .5s 6.2s forwards;">
-          <rect x="96" y="155" width="28" height="24" fill="none" stroke="#C9A84C" stroke-width="1" opacity=".65"/>
-          <rect x="236" y="155" width="28" height="24" fill="none" stroke="#C9A84C" stroke-width="1" opacity=".65"/>
-        </g>
-        <!-- Roof detail -->
-        <path d="M90,120 L180,70 L270,120" fill="none" stroke="#E2C06A" stroke-width="1" opacity=".55"
-          stroke-dasharray="250" stroke-dashoffset="250"
-          style="animation:drawLine .7s 4.6s forwards;"/>
-        <!-- Antenna -->
-        <line x1="180" y1="70" x2="180" y2="30" stroke="#E2C06A" stroke-width="1" opacity="0"
-          style="animation:winFade .4s 6.5s forwards;"/>
-        <circle cx="180" cy="27" r="3" fill="#E2C06A" opacity="0"
-          style="animation:winFade .4s 6.7s forwards;"/>
-        <!-- Measurement lines -->
-        <g opacity="0" style="animation:winFade .6s 7s forwards;" fill="#C9A84C" font-family="DM Sans" font-size="8" opacity=".5">
-          <line x1="30" y1="60" x2="30" y2="400" stroke="#C9A84C" stroke-width=".5" opacity=".4"/>
-          <line x1="26" y1="60" x2="34" y2="60" stroke="#C9A84C" stroke-width=".5" opacity=".4"/>
-          <line x1="26" y1="400" x2="34" y2="400" stroke="#C9A84C" stroke-width=".5" opacity=".4"/>
-          <text x="20" y="235" transform="rotate(-90 20 235)" text-anchor="middle" fill="#C9A84C" opacity=".45">HEIGHT</text>
-          <line x1="60" y1="430" x2="300" y2="430" stroke="#C9A84C" stroke-width=".5" opacity=".4"/>
-          <line x1="60" y1="426" x2="60" y2="434" stroke="#C9A84C" stroke-width=".5" opacity=".4"/>
-          <line x1="300" y1="426" x2="300" y2="434" stroke="#C9A84C" stroke-width=".5" opacity=".4"/>
-          <text x="180" y="446" text-anchor="middle" fill="#C9A84C" opacity=".45">WIDTH</text>
-        </g>
-        <!-- Glowing dot (pen tip) that moves along the path -->
-        <circle id="penDot" cx="60" cy="400" r="3" fill="#E2C06A" opacity=".9">
-          <animate attributeName="opacity" values="0;1;1;0" dur="3s" begin="3s" fill="freeze"/>
-        </circle>
-        <!-- Corner markers -->
-        <g opacity="0" stroke="#C9A84C" stroke-width=".8" fill="none" style="animation:winFade .4s 4.8s forwards;">
-          <path d="M55,115 L55,125 L65,125"/><path d="M295,115 L295,125 L285,125"/>
-          <path d="M55,395 L55,405 L65,405"/><path d="M295,395 L295,405 L285,405"/>
-        </g>
-        <!-- SISKIN Label -->
-        <text x="180" y="465" text-anchor="middle" font-family="Cormorant Garamond" font-size="10" fill="#C9A84C" opacity="0" letter-spacing="4"
-          style="animation:winFade .6s 7.2s forwards;">SISKIN PROJECTS · DESIGN BLUEPRINT</text>
-      </svg>
-    </div>
-
-    <!-- Floating property stat pills -->
-    <div id="statPills" style="position:absolute;inset:0;pointer-events:none;">
-      <!-- Pill 1 -->
-      <div style="
-        position:absolute;top:12%;right:-8%;
-        background:rgba(6,13,24,.82);backdrop-filter:blur(16px);
-        border:.5px solid rgba(201,168,76,.35);border-radius:30px;
-        padding:.5rem 1rem;display:flex;align-items:center;gap:.55rem;
-        opacity:0;animation:pillIn .6s 7.5s cubic-bezier(.34,1.56,.64,1) forwards;
-        box-shadow:0 8px 24px rgba(0,0,0,.3);
-      ">
-        <div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,rgba(201,168,76,.25),rgba(201,168,76,.08));display:flex;align-items:center;justify-content:center;font-size:.9rem;">🏠</div>
-        <div><div style="font-size:.62rem;color:rgba(200,195,185,.55);letter-spacing:.1em;text-transform:uppercase;">Residential</div><div style="font-family:'Cormorant Garamond',serif;font-size:.95rem;color:#F2EDE3;line-height:1.1;">Premium Homes</div></div>
-      </div>
-      <!-- Pill 2 -->
-      <div style="
-        position:absolute;bottom:28%;left:-10%;
-        background:rgba(6,13,24,.82);backdrop-filter:blur(16px);
-        border:.5px solid rgba(201,168,76,.35);border-radius:30px;
-        padding:.5rem 1rem;display:flex;align-items:center;gap:.55rem;
-        opacity:0;animation:pillIn .6s 7.9s cubic-bezier(.34,1.56,.64,1) forwards;
-        box-shadow:0 8px 24px rgba(0,0,0,.3);
-      ">
-        <div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,rgba(201,168,76,.25),rgba(201,168,76,.08));display:flex;align-items:center;justify-content:center;font-size:.9rem;">🏢</div>
-        <div><div style="font-size:.62rem;color:rgba(200,195,185,.55);letter-spacing:.1em;text-transform:uppercase;">Commercial</div><div style="font-family:'Cormorant Garamond',serif;font-size:.95rem;color:#F2EDE3;line-height:1.1;">Office Spaces</div></div>
-      </div>
-      <!-- Pill 3 — IVR rating badge -->
-      <div style="
-        position:absolute;bottom:12%;right:-5%;
-        background:linear-gradient(135deg,rgba(201,168,76,.18),rgba(201,168,76,.06));backdrop-filter:blur(16px);
-        border:.5px solid rgba(201,168,76,.5);border-radius:8px;
-        padding:.6rem 1rem;text-align:center;
-        opacity:0;animation:pillIn .6s 8.3s cubic-bezier(.34,1.56,.64,1) forwards;
-        box-shadow:0 8px 24px rgba(201,168,76,.15);
-      ">
-        <div style="font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,168,76,.6);margin-bottom:.15rem;">Credit Rating</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#C9A84C;font-weight:400;line-height:1;">IVR BB</div>
-        <div style="font-size:.52rem;color:rgba(200,195,185,.55);margin-top:.1rem;letter-spacing:.1em;">STABLE · 2026</div>
-      </div>
-    </div>
-  </div>
-
-  <style>
-  @keyframes drawLine{to{stroke-dashoffset:0;}}
-  @keyframes bpFadeIn{to{opacity:.9;}}
-  @keyframes winFade{to{opacity:1;}}
-  @keyframes pillIn{from{opacity:0;transform:translateY(12px) scale(.88);}to{opacity:1;transform:translateY(0) scale(1);}}
-  /* Blueprint subtle float */
-  #blueprintWrap{animation:bpFadeIn .8s 2.8s forwards, bpFloat 6s 4s ease-in-out infinite;}
-  @keyframes bpFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
-  /* Hide rings on mobile to save space */
-  @media(max-width:768px){#propShowcase{display:none;}}
-  </style>
 
   <div class="hc">
     <div class="hew rv">Premium Real Estate &mdash; Gurugram, India</div>
@@ -668,6 +689,33 @@ footer{background:#060D18 !important;position:relative;overflow:hidden;}
         <li>Quality construction as a non-negotiable standard</li>
         <li>Transparent dealings &amp; investor-first approach</li>
               </ul>
+    <!-- Gold construction timeline -->
+    <div class="rv d3" style="margin-top:2rem;padding-top:1.5rem;border-top:.5px solid rgba(168,122,44,.15);">
+      <div style="font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:#A87A2C;margin-bottom:1rem;font-weight:500;">Our Journey</div>
+      <div style="position:relative;padding-left:1.5rem;">
+        <!-- Vertical gold line that draws down -->
+        <div class="timeline-line" style="position:absolute;left:5px;top:4px;width:1.5px;background:linear-gradient(to bottom,#C9A84C,rgba(201,168,76,.1));height:0;transition:height 1.6s cubic-bezier(.16,1,.3,1);"></div>
+        <div class="tl-item" style="position:relative;margin-bottom:1.1rem;opacity:0;transform:translateX(-8px);transition:all .5s .2s cubic-bezier(.16,1,.3,1);">
+          <div style="position:absolute;left:-1.5rem;top:4px;width:10px;height:10px;border-radius:50%;background:#C9A84C;box-shadow:0 0 8px rgba(201,168,76,.5);"></div>
+          <div style="font-size:.72rem;font-weight:600;color:#12100C;letter-spacing:.04em;">Feb 2025 — Incorporated</div>
+          <div style="font-size:.78rem;color:#5A5248;margin-top:.1rem;">Siskin Projects established in Gurugram</div>
+        </div>
+        <div class="tl-item" style="position:relative;margin-bottom:1.1rem;opacity:0;transform:translateX(-8px);transition:all .5s .45s cubic-bezier(.16,1,.3,1);">
+          <div style="position:absolute;left:-1.5rem;top:4px;width:10px;height:10px;border-radius:50%;background:#C9A84C;box-shadow:0 0 8px rgba(201,168,76,.5);"></div>
+          <div style="font-size:.72rem;font-weight:600;color:#12100C;letter-spacing:.04em;">Jan 2026 — IVR BB Rated</div>
+          <div style="font-size:.78rem;color:#5A5248;margin-top:.1rem;">Infomerics credit rating — Stable outlook</div>
+        </div>
+        <div class="tl-item" style="position:relative;opacity:0;transform:translateX(-8px);transition:all .5s .7s cubic-bezier(.16,1,.3,1);">
+          <div style="position:absolute;left:-1.5rem;top:4px;width:10px;height:10px;border-radius:50%;border:1.5px solid #C9A84C;background:transparent;animation:tlPulse 1.8s ease-in-out infinite;"></div>
+          <div style="font-size:.72rem;font-weight:600;color:#A87A2C;letter-spacing:.04em;">2026 — Growing</div>
+          <div style="font-size:.78rem;color:#5A5248;margin-top:.1rem;">Expanding portfolio across premium markets</div>
+        </div>
+      </div>
+    </div>
+    <style>
+    @keyframes tlPulse{0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,.4);}50%{box-shadow:0 0 0 6px rgba(201,168,76,.0);}}
+    </style>
+
     </div>
   </div></div>
 </section>
@@ -681,10 +729,10 @@ footer{background:#060D18 !important;position:relative;overflow:hidden;}
     </div>
   </div>
   <div class="sg">
-    <div class="svc rv d1"><div class="sci" style="background-image:url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=900&q=85')"></div><div class="scov"></div><div class="scc"><div class="sct">01</div><h3>Residential Development</h3><p>Premium apartments, villas &amp; gated communities designed for modern living across India's fastest-growing cities.</p></div></div>
-    <div class="svc rv d2"><div class="sci" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=85')"></div><div class="scov"></div><div class="scc"><div class="sct">02</div><h3>Commercial &amp; Office Spaces</h3><p>Grade-A office parks, retail destinations &amp; mixed-use developments built for business success.</p></div></div>
-    <div class="svc rv d3"><div class="sci" style="background-image:url('https://images.unsplash.com/photo-1464938050520-ef2270bb8ce8?w=900&q=85')"></div><div class="scov"></div><div class="scc"><div class="sct">03</div><h3>Plotted &amp; Township Projects</h3><p>Strategically located plotted developments &amp; integrated townships with world-class amenities.</p></div></div>
-    <div class="svc rv d4"><div class="sci" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=900&q=85')"></div><div class="scov"></div><div class="scc"><div class="sct">04</div><h3>Investment &amp; Advisory</h3><p>Expert guidance on real estate investment, feasibility, project structuring &amp; portfolio strategy.</p></div></div>
+    <div class="svc rv d1"><div class="svc-badge">High Demand</div><div class="sci" style="background-image:url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=900&q=85')"></div><div class="scov"></div><div class="scc"><div class="sct">01</div><h3>Residential Development</h3><p>Premium apartments, villas &amp; gated communities designed for modern living across India's fastest-growing cities.</p></div></div>
+    <div class="svc rv d2"><div class="svc-badge">Grade A</div><div class="sci" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=85')"></div><div class="scov"></div><div class="scc"><div class="sct">02</div><h3>Commercial &amp; Office Spaces</h3><p>Grade-A office parks, retail destinations &amp; mixed-use developments built for business success.</p></div></div>
+    <div class="svc rv d3"><div class="svc-badge">RERA Listed</div><div class="sci" style="background-image:url('https://images.unsplash.com/photo-1464938050520-ef2270bb8ce8?w=900&q=85')"></div><div class="scov"></div><div class="scc"><div class="sct">03</div><h3>Plotted &amp; Township Projects</h3><p>Strategically located plotted developments &amp; integrated townships with world-class amenities.</p></div></div>
+    <div class="svc rv d4"><div class="svc-badge">Expert Advisory</div><div class="sci" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=900&q=85')"></div><div class="scov"></div><div class="scc"><div class="sct">04</div><h3>Consultancy</h3><p>Expert guidance on real estate investment, feasibility, project structuring &amp; portfolio strategy.</p></div></div>
   </div>
 </section>
 
@@ -694,10 +742,28 @@ footer{background:#060D18 !important;position:relative;overflow:hidden;}
     <div class="why-head">
       <div class="rv"><div class="ew">Why Siskin</div><h2 class="st">Built on <em>Trust,</em><br/>Delivered with Excellence</h2><p class="sb" style="color:#3D3830;margin-top:.7rem;">Every development reflects our commitment to design, quality construction, and returns that endure across market cycles.</p></div>
       <div class="wg">
-        <div class="wi rv d1"><div class="wn">01</div><h3>End-to-End Delivery</h3><p>From land identification to occupancy certificate — a single accountable team managing your project with zero compromise.</p></div>
-        <div class="wi rv d2"><div class="wn">02</div><h3>Premium Construction Quality</h3><p>Best-in-class materials, certified contractors, and rigorous quality checks at every stage of construction.</p></div>
-        <div class="wi rv d3"><div class="wn">03</div><h3>Transparent &amp; Compliant</h3><p>RERA registered. SEBI compliant. Every rupee accounted for — investor protection is foundational, not optional.</p></div>
-        <div class="wi rv d4"><div class="wn">04</div><h3>Rated &amp; Trusted</h3><p>IVR BB / Stable credit rating from Infomerics — a regulated, investor-grade developer you can rely on.</p></div>
+        <div class="wi rv d1"><div class="wn" style="position:relative;display:inline-block;">
+        01
+        <svg class="wi-ring rv d1" viewBox="0 0 80 80" style="position:absolute;top:-8px;left:-8px;width:75px;height:75px;opacity:0;transform:rotate(-90deg);">
+          <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(201,168,76,.22)" stroke-width="1"/>
+          <circle class="wi-arc" cx="40" cy="40" r="34" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"
+            stroke-dasharray="213" stroke-dashoffset="213"
+            style="transition:stroke-dashoffset 1.4s cubic-bezier(.16,1,.3,1),opacity .4s;opacity:0;"/>
+        </svg>
+      </div><h3>End-to-End Delivery</h3><p>From land identification to occupancy certificate — a single accountable team managing your project with zero compromise.</p></div>
+        <div class="wi rv d2"><div class="wn" style="position:relative;display:inline-block;">
+        02
+        <svg class="wi-ring rv d2" viewBox="0 0 80 80" style="position:absolute;top:-8px;left:-8px;width:75px;height:75px;opacity:0;transform:rotate(-90deg);">
+          <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(201,168,76,.22)" stroke-width="1"/>
+          <circle class="wi-arc" cx="40" cy="40" r="34" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"
+            stroke-dasharray="213" stroke-dashoffset="213"
+            style="transition:stroke-dashoffset 1.4s cubic-bezier(.16,1,.3,1),opacity .4s;opacity:0;"/>
+        </svg>
+      </div><h3>Premium Construction Quality</h3><p>Best-in-class materials, certified contractors, and rigorous quality checks at every stage of construction.</p></div>
+        <div class="wi rv d3"><div class="wn" style="position:relative;display:inline-block;">
+        03
+        
+        
       </div>
     </div>
   </div>
@@ -711,6 +777,37 @@ footer{background:#060D18 !important;position:relative;overflow:hidden;}
       <h2 class="st" style="max-width:580px;margin:0 auto;color:#F2EDE3;">Real Estate at Heart:<br/><em>Creating Spaces, Building Wealth</em></h2>
     </div>
   </div>
+
+  <!-- Compass rose watermark -->
+  <div style="position:absolute;top:2rem;right:5%;width:clamp(100px,15vw,180px);opacity:.06;pointer-events:none;z-index:1;animation:compassSpin 30s linear infinite;">
+    <svg viewBox="0 0 200 200" style="width:100%;height:100%;">
+      <circle cx="100" cy="100" r="90" fill="none" stroke="#C9A84C" stroke-width=".5"/>
+      <circle cx="100" cy="100" r="70" fill="none" stroke="#C9A84C" stroke-width=".5"/>
+      <circle cx="100" cy="100" r="4" fill="#C9A84C"/>
+      <!-- Cardinal points -->
+      <polygon points="100,10 93,100 100,90 107,100" fill="#C9A84C"/>
+      <polygon points="100,190 93,100 100,110 107,100" fill="#C9A84C" opacity=".5"/>
+      <polygon points="10,100 100,93 90,100 100,107" fill="#C9A84C" opacity=".5"/>
+      <polygon points="190,100 100,93 110,100 100,107" fill="#C9A84C" opacity=".5"/>
+      <!-- Degree marks -->
+      <g stroke="#C9A84C" stroke-width=".5">
+        <line x1="100" y1="15" x2="100" y2="25"/><line x1="100" y1="175" x2="100" y2="185"/>
+        <line x1="15" y1="100" x2="25" y2="100"/><line x1="175" y1="100" x2="185" y2="100"/>
+        <line x1="136" y1="27" x2="130" y2="36"/><line x1="64" y1="27" x2="70" y2="36"/>
+        <line x1="136" y1="173" x2="130" y2="164"/><line x1="64" y1="173" x2="70" y2="164"/>
+        <line x1="173" y1="64" x2="164" y2="70"/><line x1="173" y1="136" x2="164" y2="130"/>
+        <line x1="27" y1="64" x2="36" y2="70"/><line x1="27" y1="136" x2="36" y2="130"/>
+      </g>
+      <text x="100" y="8" text-anchor="middle" fill="#C9A84C" font-size="8" font-family="DM Sans">N</text>
+      <text x="100" y="198" text-anchor="middle" fill="#C9A84C" font-size="8" font-family="DM Sans">S</text>
+      <text x="6" y="103" text-anchor="middle" fill="#C9A84C" font-size="8" font-family="DM Sans">W</text>
+      <text x="196" y="103" text-anchor="middle" fill="#C9A84C" font-size="8" font-family="DM Sans">E</text>
+    </svg>
+  </div>
+  <style>
+  @keyframes compassSpin{to{transform:rotate(360deg);}}
+  #vision{position:relative;}
+  </style>
   <div class="vg">
     <div class="vp rvl"><div class="vic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div><div class="ew">Our Vision</div><h3>Inspire &amp; Elevate</h3><p>To inspire aspirational living and elevate real estate standards across India — creating communities where people truly flourish.</p></div>
     <div class="vp rvr"><div class="vic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div class="ew">Our Mission</div><h3>Delivering Dream Spaces</h3><p>To be the most trusted real estate developer in India — delivering homes and offices that exceed expectations and create generational wealth.</p></div>
@@ -722,46 +819,32 @@ footer{background:#060D18 !important;position:relative;overflow:hidden;}
   <div class="ct">
     <div class="ldr-top rv"><div class="ew">Leadership</div><h2 class="st">The <em>People</em> Behind the Projects</h2><p class="sb">Our leadership brings decades of combined experience in construction, real estate, finance, and corporate governance.</p></div>
     <div class="ldr-r1">
-      <div class="lc rv d1"><div class="lname">Mr. Daljeet Singh</div><div class="lrole">Director</div><div class="lsep"></div><p class="lbio">Guiding force with 27 years in real estate. Punjab University graduate with international education in Australia. Pioneer in transforming Commercial Real Estate by setting high standards of construction, facilities management and delivery.</p></div>
-      <div class="lc rv d2"><div class="lname">Mr. Harinder Singh</div><div class="lrole">Director</div><div class="lsep"></div><p class="lbio">Punjab University graduate with 22 years hands-on experience in construction. Meticulous eye for detail and quality at every stage — from conceptualization through final delivery. A keen learner who stays at the forefront of the construction industry.</p></div>
-      <div class="lc rv d3"><div class="lname">Mr. Gurdeep Singh</div><div class="lrole">Director</div><div class="lsep"></div><p class="lbio">Astute procurement professional responsible for project procurement and execution. Sharp negotiation skills form the backbone of the Projects Team — ensuring best quality product at the most competitive price, project after project.</p></div>
+      <div class="lc rv d1"><div class="ltype">Real Estate</div><div class="lname-wrap"><div class="lname">Mr. Daljeet Singh</div><div class="lsig"></div></div><div class="lrole">Director</div><div class="lsep"></div><p class="lbio">Guiding force with 27 years in real estate. Punjab University graduate with international education in Australia. Pioneer in transforming Commercial Real Estate by setting high standards of construction, facilities management and delivery.</p></div>
+      <div class="lc rv d2"><div class="ltype">Construction</div><div class="lname-wrap"><div class="lname">Mr. Harinder Singh</div><div class="lsig"></div></div><div class="lrole">Director</div><div class="lsep"></div><p class="lbio">Punjab University graduate with 22 years hands-on experience in construction. Meticulous eye for detail and quality at every stage — from conceptualization through final delivery. A keen learner who stays at the forefront of the construction industry.</p></div>
+      <div class="lc rv d3"><div class="ltype">Procurement</div><div class="lname-wrap"><div class="lname">Mr. Gurdeep Singh Arora</div><div class="lsig"></div></div><div class="lrole">Director</div><div class="lsep"></div><p class="lbio">Astute procurement professional responsible for project procurement and execution. Sharp negotiation skills form the backbone of the Projects Team — ensuring best quality product at the most competitive price, project after project.</p></div>
     </div>
     <div class="ldr-r2">
-      <div class="lc rv d4"><div class="lname">Mr. Himanshu Khurana</div><div class="lrole">Chief Financial Officer</div><div class="lsep"></div><p class="lbio">Qualified Chartered Accountant with a master's degree in commerce. Over 15 years of professional experience in finance, accounting, and corporate financial strategy. Steers the company's financial governance with precision and integrity.</p></div>
-      <div class="lc rv d4"><div class="lname">Ms. Manju</div><div class="lrole">Company Secretary &amp; Compliance</div><div class="lsep"></div><p class="lbio">Associate Member of ICSI, holding a bachelor's degree in commerce and law. Over 5 years of experience in corporate secretarial and compliance functions — ensuring full regulatory adherence and SEBI-compliant disclosure norms.</p></div>
+      <div class="lc rv d4"><div class="ltype">Finance</div><div class="lname-wrap"><div class="lname">Mr. Himanshu Khurana</div><div class="lsig"></div></div><div class="lrole">Chief Financial Officer</div><div class="lsep"></div><p class="lbio">Qualified Chartered Accountant with a master's degree in commerce. Over 15 years of professional experience in finance, accounting, and corporate financial strategy. Steers the company's financial governance with precision and integrity.</p></div>
+      <div class="lc rv d4"><div class="ltype">Compliance</div><div class="lname-wrap"><div class="lname">Ms. Manju</div><div class="lsig"></div></div><div class="lrole">Company Secretary &amp; Compliance</div><div class="lsep"></div><p class="lbio">Associate Member of ICSI, holding a bachelor's degree in commerce and law. Over 5 years of experience in corporate secretarial and compliance functions — ensuring full regulatory adherence and SEBI-compliant disclosure norms.</p></div>
     </div>
   </div>
 </section>
 
-<!-- INVESTOR -->
-<section class="sec" id="investor">
-  <div class="ct">
-    <div class="rv"><div class="ew">Investor Information</div><h2 class="st" style="color:#F2EDE3;">Transparency You Can<br/><em>Trust</em></h2></div>
-    <div class="invg">
-      <div class="gc rv d1">
-        <div style="margin-bottom:1.4rem;"><div class="il">Credit Rating</div><div class="iv">Infomerics Valuation and Rating Limited<br/>Senior Secured Non-Convertible Debentures</div><div class="rpill">IVR BB / Stable — Jan 2026</div></div>
-        <div style="margin-bottom:1.4rem;"><div class="il">Debenture Trustee</div><div class="iv">Catalyst Trusteeship Limited<br/>Peninsula Business Park, Lower Parel, Mumbai 400013<br/><a href="mailto:ComplianceCTLMumbai@ctltrustee.com">ComplianceCTLMumbai@ctltrustee.com</a></div></div>
-        <div style="margin-bottom:1.4rem;"><div class="il">Registrar &amp; Transfer Agent</div><div class="iv">Beacon Investor Holdings Pvt. Ltd.<br/>Akshar Business Park, Vashi, Navi Mumbai 400703<br/><a href="mailto:compliance@beaconrta.co.in">compliance@beaconrta.co.in</a></div></div>
-        <div><div class="il">Grievance Officer</div><div class="iv">Ms. Manju, Company Secretary<br/><a href="mailto:siskinppl@outlook.com">siskinppl@outlook.com</a> &nbsp;·&nbsp; <a href="tel:+919211160000">+91 92111 60000</a></div></div>
-      </div>
-      <div class="rv d2" style="display:flex;flex-direction:column;gap:1.2rem;justify-content:center;">
-        <div style="padding:1.4rem;border:.5px solid rgba(201,168,76,.18);border-radius:6px;background:rgba(255,255,255,.03);">
-          <div class="il">SEBI Compliance</div>
-          <p style="font-size:.88rem;color:rgba(230,224,214,.9);line-height:1.78;">Siskin Projects operates under full SEBI-listed entity disclosure norms. All regulatory filings are maintained as per the Companies Act 2013 and SEBI (LODR) Regulations 2015.</p>
-        </div>
-        <div style="padding:1.4rem;border:.5px solid rgba(201,168,76,.18);border-radius:6px;background:rgba(255,255,255,.03);">
-          <div class="il">Document Access</div>
-          <p style="font-size:.88rem;color:rgba(230,224,214,.9);line-height:1.78;margin-bottom:1rem;">All regulatory filings, financial disclosures, board meeting minutes, and governance documents are available through our Investor Relations portal.</p>
-          <button onclick="openIP(event,null)" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:#060D18;padding:.72rem 1.7rem;border-radius:3px;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:background .25s;" onmouseover="this.style.background='var(--gold2)'" onmouseout="this.style.background='var(--gold)'">View All Documents →</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- CTA -->
 <section class="cta">
   <div class="ctabg"></div><div class="ctaov"></div>
+  <!-- Gold key animation -->
+  <div style="position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);opacity:.25;pointer-events:none;z-index:3;">
+    <svg viewBox="0 0 200 40" width="180" style="overflow:visible;">
+      <!-- Animated line sweep -->
+      <line x1="0" y1="20" x2="200" y2="20" stroke="#C9A84C" stroke-width=".5" opacity=".4"/>
+      <circle cx="0" cy="20" r="3" fill="#C9A84C" opacity=".6"><animate attributeName="cx" from="0" to="200" dur="3s" repeatCount="indefinite"/></circle>
+      <text x="100" y="15" text-anchor="middle" font-family="Cormorant Garamond" font-size="9" fill="#C9A84C" opacity=".55" letter-spacing="6">SISKIN · PROJECTS · GURUGRAM</text>
+    </svg>
+  </div>
+
   <div class="ctac rv">
     <div class="ew" style="justify-content:center;">Get Started</div>
     <h2>Ready to Own Your <em>Dream Space?</em></h2>
@@ -1010,130 +1093,430 @@ var closeTimer;
 invNav.addEventListener('mouseenter',function(){clearTimeout(closeTimer);invNav.classList.add('open');});
 invNav.addEventListener('mouseleave',function(){closeTimer=setTimeout(function(){invNav.classList.remove('open');},140);});
 
-/* INVESTOR PAGE */
-var docGroups=[
-  {title:'Annual Reports',icon:'📊',content:'Annual reports for FY 2024-25 will be published following audit completion. Contact siskinppl@outlook.com for interim financial updates.'},
-  {title:'Financial Results',icon:'💰',content:'Quarterly and annual financial results are disclosed per SEBI listing obligations. Available upon request pending portal launch.'},
-  {title:'Board Meetings',icon:'🏛️',content:'Board meeting notices, agendas, and minutes maintained per Companies Act 2013. Available for inspection at registered office.'},
-  {title:'General Meetings',icon:'👥',content:'AGM notices and EGM communications dispatched to all debenture holders per regulatory timelines.'},
-  {title:'Quarterly Compliance',icon:'📋',content:'Quarterly compliance reports filed with BSE/NSE as applicable under SEBI (LODR) Regulations 2015.'},
-  {title:'Annual Compliance',icon:'✅',content:'Annual compliance certificates issued by Company Secretary confirming adherence to all applicable provisions.'},
-  {title:'Half-Yearly Filings',icon:'📆',content:'Half-yearly financial results and compliance filings submitted per SEBI circular requirements.'},
-  {title:'Event Disclosures',icon:'📣',content:'Material events and price-sensitive information disclosed within prescribed timelines under SEBI regulations.'},
-  {title:'Deviation Statements',icon:'📉',content:'Statements on deviation/variation in use of funds raised through NCDs disclosed quarterly.'},
-  {title:'Annual Return',icon:'🔄',content:'Annual return (MGT-7) filed with MCA within 60 days of AGM. Available per Section 92 of Companies Act.'},
-  {title:'Press Releases',icon:'📰',content:'Official press releases published for material corporate announcements.'},
-  {title:'Notice / Default',icon:'⚠️',content:'Any notices related to payment default or covenant breach disclosed immediately per SEBI LODR obligations.'},
-  {title:'Codes & Policies',icon:'📜',content:'Code of Conduct, Whistle Blower Policy, Related Party Transaction Policy — available at registered office or via siskinppl@outlook.com.'},
-];
+/* ══ INVESTOR PAGE + ADMIN ══════════════════════════ */
+var ADMIN_PASS = 'SISKIN@Admin2025';
+var isAdmin = false;
+var uploadTargetIdx = -1;
+var uploadedFile = null;
 
-function openIP(e,target){
+function openIP(e, target){
   if(e){e.preventDefault();e.stopPropagation();}
-  invNav.classList.remove('open');
-  var pg=document.getElementById('ipage');
-  pg.style.display='flex';
-  requestAnimationFrame(function(){requestAnimationFrame(function(){pg.style.opacity='1';pg.style.pointerEvents='all';});});
-  document.body.style.overflow='hidden';
+  document.getElementById('invNav').classList.remove('open');
+  var pg = document.getElementById('ipage');
+  pg.style.display = 'flex';
+  requestAnimationFrame(function(){requestAnimationFrame(function(){
+    pg.style.opacity = '1'; pg.style.pointerEvents = 'all';
+  });});
+  document.body.style.overflow = 'hidden';
   buildDocGrid();
   if(target){
     setTimeout(function(){
-      var cards=document.querySelectorAll('.doc-card');
-      for(var i=0;i<cards.length;i++){
-        var tEl=cards[i].querySelector('.doc-title');
-        if(tEl&&tEl.textContent===target){
-          var idx=parseInt(cards[i].getAttribute('data-idx'));
-          cards[i].scrollIntoView({behavior:'smooth',block:'center'});
-          cards[i].style.borderColor='rgba(168,122,44,.65)';
-          cards[i].style.boxShadow='0 0 0 3px rgba(168,122,44,.2)';
-          setTimeout(function(){openDM(idx);},450);
-          setTimeout((function(c){return function(){c.style.borderColor='';c.style.boxShadow='';};})(cards[i]),1500);
+      var cards = document.querySelectorAll('.doc-card');
+      for(var i = 0; i < cards.length; i++){
+        var tEl = cards[i].querySelector('.doc-title');
+        if(tEl && tEl.textContent === target){
+          var idx = parseInt(cards[i].getAttribute('data-idx'));
+          cards[i].scrollIntoView({behavior:'smooth', block:'center'});
+          cards[i].style.borderColor = 'rgba(168,122,44,.65)';
+          setTimeout(function(){openDM(idx);}, 450);
+          setTimeout((function(c){return function(){c.style.borderColor='';};})(cards[i]), 1500);
           break;
         }
       }
-    },700);
+    }, 700);
   }
 }
-
 function closeIP(){
-  var pg=document.getElementById('ipage');
-  pg.style.opacity='0';pg.style.pointerEvents='none';
-  setTimeout(function(){pg.style.display='none';document.body.style.overflow='';},500);
+  var pg = document.getElementById('ipage');
+  pg.style.opacity = '0'; pg.style.pointerEvents = 'none';
+  setTimeout(function(){pg.style.display = 'none'; document.body.style.overflow = '';}, 500);
 }
 
-function buildDocGrid(){
-  var g=document.getElementById('docGrid');
-  if(!g||g.children.length>0)return;
-  for(var i=0;i<docGroups.length;i++){
-    (function(doc,idx){
-      var c=document.createElement('div');
-      c.className='doc-card';c.setAttribute('data-idx',idx);
-      c.innerHTML='<div class="doc-arrow">↗</div><div class="doc-icon">'+doc.icon+'</div><div class="doc-title">'+doc.title+'</div><div class="doc-tag">View Details</div>';
-      c.addEventListener('click',function(){openDM(idx);});
-      g.appendChild(c);
-      c.style.opacity='0';c.style.transform='translateY(14px)';
-      setTimeout(function(){c.style.transition='opacity .4s ease,transform .4s cubic-bezier(.16,1,.3,1),border-color .3s,box-shadow .3s';c.style.opacity='1';c.style.transform='translateY(0)';},35+idx*28);
-    })(docGroups[i],i);
+/* Admin login */
+function showAdminLogin(){
+  var m = document.getElementById('adminModal');
+  var c = document.getElementById('adminModalCard');
+  m.style.display = 'flex';
+  document.getElementById('adminErr').style.display = 'none';
+  document.getElementById('adminPwInput').value = '';
+  requestAnimationFrame(function(){requestAnimationFrame(function(){
+    c.style.transform = 'scale(1) translateY(0)';
+  });});
+  setTimeout(function(){document.getElementById('adminPwInput').focus();}, 300);
+}
+function hideAdminLogin(){
+  var m = document.getElementById('adminModal');
+  var c = document.getElementById('adminModalCard');
+  c.style.transform = 'scale(.9) translateY(20px)';
+  setTimeout(function(){m.style.display = 'none';}, 380);
+}
+function togglePw(){
+  var inp = document.getElementById('adminPwInput');
+  inp.type = inp.type === 'password' ? 'text' : 'password';
+}
+function adminLogin(){
+  var pw = document.getElementById('adminPwInput').value;
+  if(pw === ADMIN_PASS){
+    isAdmin = true;
+    hideAdminLogin();
+    document.getElementById('adminBadge').style.display = 'block';
+    document.getElementById('adminUploadHint').style.display = 'block';
+    document.getElementById('adminLoginBtn').style.display = 'none';
+    var g = document.getElementById('docGrid');
+    g.innerHTML = '';
+    buildDocGrid();
+  } else {
+    document.getElementById('adminErr').style.display = 'block';
   }
 }
 
+/* PDF storage */
+var docGroups = [
+  {title:'Annual Reports', icon:'📊', content:'Annual reports for FY 2024-25 will be published following audit completion. Contact siskinppl@outlook.com for interim financial updates.'},
+  {title:'Financial Results', icon:'💰', content:'Quarterly and annual financial results are disclosed per SEBI listing obligations. Available upon request pending portal launch.'},
+  {title:'Board Meetings', icon:'🏛️', content:'Board meeting notices, agendas, and minutes maintained per Companies Act 2013. Available for inspection at registered office.'},
+  {title:'General Meetings', icon:'👥', content:'AGM notices and EGM communications dispatched to all debenture holders per regulatory timelines.'},
+  {title:'Quarterly Compliance', icon:'📋', content:'Quarterly compliance reports filed under SEBI (LODR) Regulations 2015.'},
+  {title:'Annual Compliance', icon:'✅', content:'Annual compliance certificates issued by Company Secretary confirming adherence to all applicable provisions.'},
+  {title:'Half-Yearly Filings', icon:'📆', content:'Half-yearly financial results and compliance filings submitted per SEBI circular requirements.'},
+  {title:'Event Disclosures', icon:'📣', content:'Material events and price-sensitive information disclosed per SEBI regulations.'},
+  {title:'Deviation Statements', icon:'📉', content:'Statements on deviation in use of NCD funds, if any, disclosed quarterly.'},
+  {title:'Annual Return', icon:'🔄', content:'Annual return (MGT-7) filed with MCA within 60 days of AGM per Section 92.'},
+  {title:'Press Releases', icon:'📰', content:'Official press releases for material corporate announcements.'},
+  {title:'Notice / Default', icon:'⚠️', content:'Notices related to payment default disclosed immediately per SEBI LODR.'},
+  {title:'Codes & Policies', icon:'📜', content:'Code of Conduct, Whistle Blower Policy, Related Party Transaction Policy — available at registered office or via siskinppl@outlook.com.'},
+];
+
+function getPdfKey(idx){ return 'siskin_pdf_' + idx; }
+function hasPdf(idx){ try{ return !!localStorage.getItem(getPdfKey(idx)); }catch(e){ return false; } }
+function getPdfInfo(idx){ try{ var v = localStorage.getItem(getPdfKey(idx)); return v ? JSON.parse(v) : null; }catch(e){ return null; } }
+function savePdf(idx, name, dataUrl){ try{ localStorage.setItem(getPdfKey(idx), JSON.stringify({name:name, data:dataUrl, date:new Date().toLocaleDateString()})); return true; }catch(e){ return false; } }
+function removePdf(idx){ try{ localStorage.removeItem(getPdfKey(idx)); }catch(e){} }
+
+/* Build doc grid using safe DOM methods */
+function buildDocGrid(){
+  var g = document.getElementById('docGrid');
+  if(!g || g.children.length > 0) return;
+  for(var i = 0; i < docGroups.length; i++){
+    (function(doc, idx){
+      var hasPDF = hasPdf(idx);
+      var card = document.createElement('div');
+      card.className = 'doc-card';
+      card.setAttribute('data-idx', idx);
+
+      // Arrow
+      var arrow = document.createElement('div');
+      arrow.className = 'doc-arrow';
+      arrow.textContent = '↗';
+      card.appendChild(arrow);
+
+      // Green dot if PDF uploaded
+      if(hasPDF){
+        var dot = document.createElement('div');
+        dot.style.cssText = 'position:absolute;top:.7rem;left:.7rem;width:7px;height:7px;border-radius:50%;background:#2E8B57;box-shadow:0 0 6px rgba(46,139,87,.5);';
+        dot.title = 'PDF Available';
+        card.appendChild(dot);
+      }
+
+      // Icon
+      var icon = document.createElement('div');
+      icon.className = 'doc-icon';
+      icon.style.marginTop = isAdmin ? '.3rem' : '.1rem';
+      icon.textContent = doc.icon;
+      card.appendChild(icon);
+
+      // Title
+      var title = document.createElement('div');
+      title.className = 'doc-title';
+      title.textContent = doc.title;
+      card.appendChild(title);
+
+      // Tag
+      var tag = document.createElement('div');
+      tag.className = 'doc-tag';
+      if(hasPDF){
+        tag.style.color = '#2E8B57';
+        tag.textContent = 'PDF Available';
+      } else {
+        tag.textContent = 'View Details';
+      }
+      card.appendChild(tag);
+
+      // Admin upload button
+      if(isAdmin){
+        var btn = document.createElement('button');
+        btn.style.cssText = 'display:flex;align-items:center;gap:.3rem;margin-top:.6rem;padding:.38rem .7rem;background:' + (hasPDF ? 'rgba(46,139,87,.1)' : 'rgba(168,122,44,.08)') + ';border:.5px solid ' + (hasPDF ? 'rgba(46,139,87,.3)' : 'rgba(168,122,44,.25)') + ';border-radius:4px;font-size:.58rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:' + (hasPDF ? '#2E8B57' : '#A87A2C') + ';cursor:pointer;font-family:DM Sans,sans-serif;width:100%;justify-content:center;';
+        btn.textContent = hasPDF ? '📄 Replace PDF' : '⬆ Upload PDF';
+        btn.addEventListener('click', function(e){ e.stopPropagation(); openUpload(e, idx); });
+        card.appendChild(btn);
+      }
+
+      card.addEventListener('click', function(e){
+        if(e.target.tagName !== 'BUTTON') openDM(idx);
+      });
+      g.appendChild(card);
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(14px)';
+      setTimeout(function(){
+        card.style.transition = 'opacity .4s ease, transform .4s cubic-bezier(.16,1,.3,1), border-color .3s, box-shadow .3s';
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, 35 + idx * 28);
+    })(docGroups[i], i);
+  }
+}
+
+/* Doc modal */
 function openDM(idx){
-  var doc=docGroups[idx];if(!doc)return;
-  document.getElementById('dmcat').textContent='Document '+(idx+1)+' of '+docGroups.length;
-  document.getElementById('dmtitle').textContent=doc.title;
-  document.getElementById('dmdesc').textContent=doc.content;
-  var m=document.getElementById('docModal'),c=document.getElementById('docModalCard');
-  m.style.pointerEvents='all';c.style.transform='scale(.88) translateY(22px)';
-  requestAnimationFrame(function(){requestAnimationFrame(function(){m.style.opacity='1';c.style.transform='scale(1) translateY(0)';});});
-}
+  var doc = docGroups[idx]; if(!doc) return;
+  document.getElementById('dmcat').textContent = 'Document ' + (idx+1) + ' of ' + docGroups.length;
+  document.getElementById('dmtitle').textContent = doc.title;
+  document.getElementById('dmdesc').textContent = doc.content;
+  var area = document.getElementById('dmpdfArea');
+  var info = getPdfInfo(idx);
+  area.innerHTML = '';
+  if(info){
+    var wrapper = document.createElement('div');
+    wrapper.style.cssText = 'text-align:center;padding:1.5rem;';
+    wrapper.innerHTML = '<div style="font-size:2rem;margin-bottom:.5rem;">📄</div>' +
+      '<div style="font-size:.9rem;font-weight:500;color:#1A5C32;margin-bottom:.2rem;">' + info.name + '</div>' +
+      '<div style="font-size:.72rem;color:#5DCA9A;margin-bottom:1.2rem;">Uploaded: ' + info.date + '</div>';
+    var dlBtn = document.createElement('a');
+    dlBtn.href = info.data;
+    dlBtn.download = info.name;
+    dlBtn.style.cssText = 'display:inline-block;background:linear-gradient(135deg,#2E8B57,#1A6B3A);color:#fff;padding:.65rem 1.8rem;border-radius:4px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;';
+    dlBtn.textContent = '⬇ Download PDF';
+    wrapper.appendChild(dlBtn);
+    if(isAdmin){
+      var delBtn = document.createElement('div');
+      delBtn.style.cssText = 'margin-top:.9rem;';
+      var delBtnEl = document.createElement('button');
+      delBtnEl.style.cssText = 'background:none;border:.5px solid rgba(220,60,60,.35);color:#CC4444;padding:.35rem .9rem;border-radius:4px;font-size:.62rem;cursor:pointer;font-family:DM Sans,sans-serif;letter-spacing:.08em;text-transform:uppercase;';
+      delBtnEl.textContent = 'Remove PDF';
+      delBtnEl.addEventListener('click', function(){ if(confirm('Remove PDF for "' + doc.title + '"?')){ removePdf(idx); closeDM(); var g=document.getElementById('docGrid');g.innerHTML='';buildDocGrid(); } });
+      delBtn.appendChild(delBtnEl);
+      wrapper.appendChild(delBtn);
+    }
+    area.appendChild(wrapper);
+  } else {
+    var dmpdf = document.createElement('div');
+    dmpdf.className = 'dmpdf';
+    dmpdf.innerHTML = '<div class="dmpdfi">📂</div><div class="dmpdfh">Document Coming Soon</div><p class="dmpdfp">This document will be available for download once uploaded. Contact us for immediate access.</p>';
+    var actionBtn;
+    if(isAdmin){
+      actionBtn = document.createElement('button');
+      actionBtn.style.cssText = 'display:inline-block;background:#A87A2C;color:#fff;padding:.62rem 1.5rem;border-radius:4px;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border:none;font-family:DM Sans,sans-serif;';
+      actionBtn.textContent = '⬆ Upload PDF';
+      actionBtn.addEventListener('click', function(){ closeDM(); openUpload(null, idx); });
+    } else {
 
+    }
+    dmpdf.appendChild(actionBtn);
+    area.appendChild(dmpdf);
+  }
+  var m = document.getElementById('docModal'), c = document.getElementById('docModalCard');
+  m.style.pointerEvents = 'all';
+  c.style.transform = 'scale(.88) translateY(22px)';
+  requestAnimationFrame(function(){requestAnimationFrame(function(){
+    m.style.opacity = '1';
+    c.style.transform = 'scale(1) translateY(0)';
+  });});
+}
 function closeDM(){
-  var m=document.getElementById('docModal'),c=document.getElementById('docModalCard');
-  m.style.opacity='0';c.style.transform='scale(.9) translateY(14px)';
-  setTimeout(function(){m.style.pointerEvents='none';},380);
+  var m = document.getElementById('docModal'), c = document.getElementById('docModalCard');
+  m.style.opacity = '0'; c.style.transform = 'scale(.9) translateY(14px)';
+  setTimeout(function(){m.style.pointerEvents = 'none';}, 380);
 }
-document.getElementById('docModal').addEventListener('click',function(e){if(e.target===this)closeDM();});
-addEventListener('keydown',function(e){if(e.key==='Escape'){closeDM();closeIP();}});
+document.getElementById('docModal').addEventListener('click', function(e){ if(e.target === this) closeDM(); });
 
-/* ENVELOPE CONTACT */
-var formOpen=false,submitted=false;
+/* PDF Upload */
+function openUpload(e, idx){
+  if(e) e.stopPropagation();
+  uploadTargetIdx = idx; uploadedFile = null;
+  document.getElementById('uploadDocTitle').textContent = docGroups[idx].title;
+  clearFile();
+  document.getElementById('uploadModal').style.display = 'flex';
+}
+function closeUpload(){
+  document.getElementById('uploadModal').style.display = 'none';
+  uploadedFile = null; uploadTargetIdx = -1;
+}
+function handleFileSelect(e){ var f = e.target.files[0]; if(f) processFile(f); }
+function handleDrop(e){
+  e.preventDefault();
+  var f = e.dataTransfer.files[0];
+  if(f && f.type === 'application/pdf') processFile(f);
+  var dz = document.getElementById('dropZone');
+  dz.style.borderColor = 'rgba(168,122,44,.3)';
+  dz.style.background = 'rgba(248,244,236,.5)';
+}
+function processFile(f){
+  if(!f){ return; }
+  if(f.type !== 'application/pdf'){ alert('Please select a PDF file only.'); return; }
+  if(f.size > 50*1024*1024){ alert('File too large. Max 50MB.'); return; }
+  uploadedFile = f;
+  var fp = document.getElementById('filePreview');
+  if(fp){ fp.style.display = 'flex'; }
+  var fn = document.getElementById('fileName');
+  var fs = document.getElementById('fileSize');
+  if(fn) fn.textContent = f.name;
+  if(fs) fs.textContent = (f.size/1024).toFixed(1) + ' KB';
+  var btn = document.getElementById('uploadBtn');
+  if(btn){ btn.disabled = false; btn.style.opacity = '1'; }
+}
+function clearFile(){
+  uploadedFile = null;
+  document.getElementById('filePreview').style.display = 'none';
+  document.getElementById('pdfFileInput').value = '';
+  var btn = document.getElementById('uploadBtn');
+  btn.disabled = true; btn.style.opacity = '.4';
+}
+function confirmUpload(){
+  if(!uploadedFile || uploadTargetIdx < 0) return;
+  var btn = document.getElementById('uploadBtn');
+  btn.textContent = 'Saving…'; btn.style.opacity = '.7';
+  var reader = new FileReader();
+  reader.onload = function(e){
+    var ok = savePdf(uploadTargetIdx, uploadedFile.name, e.target.result);
+    if(ok){ closeUpload(); var g=document.getElementById('docGrid');g.innerHTML='';buildDocGrid(); }
+    else { alert('Could not save. Storage may be full.'); }
+    btn.textContent = 'Save Document'; btn.style.opacity = '1';
+  };
+  reader.readAsDataURL(uploadedFile);
+}
+
+addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){ closeDM(); closeIP(); closeUpload(); hideAdminLogin(); }
+});
+
+/* ══ ENVELOPE CONTACT FORM ══════════════════════════════ */
+var formOpen = false, submitted = false;
+
 function openForm(){
-  if(submitted||formOpen)return;formOpen=true;
-  var flap=document.getElementById('eflap'),seal=document.getElementById('eseal'),env=document.getElementById('env'),fw=document.getElementById('formWrap'),hint=document.getElementById('ehint');
-  flap.style.transform='rotateX(-170deg)';seal.style.transform='translate(-50%,-35%) scale(0)';seal.style.opacity='0';
-  env.style.animation='none';
-  setTimeout(function(){env.style.opacity='0';env.style.transform='translateY(-18px) scale(.92)';env.style.transition='all .5s cubic-bezier(.16,1,.3,1)';setTimeout(function(){env.style.display='none';},420);},260);
-  setTimeout(function(){fw.style.display='block';requestAnimationFrame(function(){requestAnimationFrame(function(){fw.style.opacity='1';fw.style.transform='translateY(0) scale(1)';fw.style.pointerEvents='all';});});fw.scrollIntoView({behavior:'smooth',block:'center'});},360);
-  if(hint)hint.style.opacity='0';
+  if(submitted || formOpen) return;
+  formOpen = true;
+  var flap = document.getElementById('eflap');
+  var seal = document.getElementById('eseal');
+  var env  = document.getElementById('env');
+  var fw   = document.getElementById('formWrap');
+  var hint = document.getElementById('ehint');
+  if(flap) flap.style.transform = 'rotateX(-170deg)';
+  if(seal){ seal.style.transform = 'translate(-50%,-35%) scale(0)'; seal.style.opacity = '0'; }
+  if(env){ env.style.animation = 'none'; }
+  setTimeout(function(){
+    if(env){ env.style.opacity = '0'; env.style.transform = 'translateY(-18px) scale(.92)'; env.style.transition = 'all .5s cubic-bezier(.16,1,.3,1)'; }
+    setTimeout(function(){ if(env) env.style.display = 'none'; }, 420);
+  }, 260);
+  setTimeout(function(){
+    if(!fw) return;
+    fw.style.display = 'block';
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){
+      fw.style.opacity = '1'; fw.style.transform = 'translateY(0) scale(1)'; fw.style.pointerEvents = 'all';
+    }); });
+    fw.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 360);
+  if(hint) hint.style.opacity = '0';
 }
+
 function closeForm(e){
-  if(e)e.stopPropagation();
-  var fw=document.getElementById('formWrap'),env=document.getElementById('env'),flap=document.getElementById('eflap'),seal=document.getElementById('eseal'),hint=document.getElementById('ehint');
-  fw.style.opacity='0';fw.style.transform='translateY(28px) scale(.96)';fw.style.pointerEvents='none';
-  setTimeout(function(){fw.style.display='none';env.style.display='block';env.style.animation='efloat 4s ease-in-out infinite';requestAnimationFrame(function(){requestAnimationFrame(function(){env.style.opacity='1';env.style.transform='translateY(0) scale(1)';env.style.transition='all .5s cubic-bezier(.16,1,.3,1)';flap.style.transform='rotateX(0deg)';seal.style.transform='translate(-50%,-35%) scale(1)';seal.style.opacity='1';if(hint)hint.style.opacity='.7';});});},320);
-  formOpen=false;
+  if(e) e.stopPropagation();
+  var fw   = document.getElementById('formWrap');
+  var env  = document.getElementById('env');
+  var flap = document.getElementById('eflap');
+  var seal = document.getElementById('eseal');
+  var hint = document.getElementById('ehint');
+  if(fw){ fw.style.opacity = '0'; fw.style.transform = 'translateY(28px) scale(.96)'; fw.style.pointerEvents = 'none'; }
+  setTimeout(function(){
+    if(fw) fw.style.display = 'none';
+    if(env){ env.style.display = 'block'; env.style.animation = 'efloat 4s ease-in-out infinite'; }
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){
+      if(env){ env.style.opacity='1'; env.style.transform='translateY(0) scale(1)'; env.style.transition='all .5s cubic-bezier(.16,1,.3,1)'; }
+      if(flap) flap.style.transform = 'rotateX(0deg)';
+      if(seal){ seal.style.transform='translate(-50%,-35%) scale(1)'; seal.style.opacity='1'; }
+      if(hint) hint.style.opacity = '.7';
+    }); });
+  }, 320);
+  formOpen = false;
 }
+
+/* EmailJS config */
+var EJ_SERVICE = 'service_5iumzmo';
+var EJ_TEMPLATE = 'template_siskin'; /* Replace with your EmailJS template ID */
+var EJ_KEY = 'YOUR_PUBLIC_KEY';      /* Replace with your EmailJS public key */
+
 function submitForm(){
-  var fn=document.getElementById('ff'),fe=document.getElementById('fe');
-  fn.style.borderColor=fn.value.trim()?'rgba(168,122,44,.2)':'rgba(220,60,60,.55)';
-  fe.style.borderColor=fe.value.trim()?'rgba(168,122,44,.2)':'rgba(220,60,60,.55)';
-  if(!fn.value.trim()||!fe.value.trim())return;
-  submitted=true;
-  var btn=document.getElementById('fsbtn');btn.textContent='Sending…';btn.disabled=true;
-  var fw=document.getElementById('formWrap'),env=document.getElementById('env'),tw=document.getElementById('thankWrap'),flap=document.getElementById('eflap'),seal=document.getElementById('eseal');
-  setTimeout(function(){fw.style.transition='all .6s cubic-bezier(.4,0,.2,1)';fw.style.transform='translateY(38px) scale(.65) rotateX(20deg)';fw.style.opacity='0';fw.style.transformOrigin='center bottom';},280);
-  setTimeout(function(){fw.style.display='none';env.style.display='block';env.style.opacity='1';env.style.transform='scale(1)';env.style.animation='none';env.style.transition='all .4s cubic-bezier(.16,1,.3,1)';},880);
-  setTimeout(function(){flap.style.transform='rotateX(0deg)';seal.style.transform='translate(-50%,-35%) scale(1.2)';seal.style.transition='transform .5s cubic-bezier(.34,1.56,.64,1)';},1080);
-  setTimeout(function(){seal.style.animation='sealShake .5s ease';seal.style.transform='translate(-50%,-35%) scale(1)';},1580);
-  setTimeout(function(){seal.innerHTML='✓';seal.style.background='linear-gradient(135deg,#2E8B57,#1A6B3A)';seal.style.borderColor='rgba(46,139,87,.65)';},2000);
-  setTimeout(function(){env.style.transition='all .6s cubic-bezier(.4,0,.2,1)';env.style.transform='translateY(-28px) scale(.85)';env.style.opacity='0';},2650);
-  setTimeout(function(){env.style.display='none';tw.style.display='block';requestAnimationFrame(function(){requestAnimationFrame(function(){tw.style.opacity='1';tw.style.transform='translateY(0) scale(1)';tw.style.pointerEvents='all';setTimeout(function(){document.getElementById('sentStamp').style.transform='scale(1)';},100);setTimeout(function(){var l=document.getElementById('tl1');l.style.opacity='1';l.style.transform='translateY(0)';},320);setTimeout(function(){var l=document.getElementById('tl2');l.style.opacity='1';l.style.transform='translateY(0)';},520);setTimeout(function(){document.getElementById('tl3').style.opacity='1';},980);tw.scrollIntoView({behavior:'smooth',block:'center'});});});},3150);
+  var fn = document.getElementById('ff');
+  var fe = document.getElementById('fe');
+  if(!fn || !fe) return;
+  fn.style.borderColor = fn.value.trim() ? 'rgba(168,122,44,.2)' : 'rgba(220,60,60,.55)';
+  fe.style.borderColor = fe.value.trim() ? 'rgba(168,122,44,.2)' : 'rgba(220,60,60,.55)';
+  if(!fn.value.trim() || !fe.value.trim()) return;
+  submitted = true;
+  var btn = document.getElementById('fsbtn');
+  if(btn){ btn.textContent = 'Sending…'; btn.disabled = true; }
+  /* Send via EmailJS */
+  try {
+    var lnEl = document.querySelector('#formWrap input[placeholder="Kumar"]');
+    var phEl = document.querySelector('#formWrap input[type="tel"]');
+    var enqEl = document.querySelector('#formWrap select');
+    var msgEl = document.querySelector('#formWrap textarea');
+    emailjs.init(EJ_KEY);
+    emailjs.send(EJ_SERVICE, EJ_TEMPLATE, {
+      from_name: fn.value.trim() + (lnEl && lnEl.value ? ' ' + lnEl.value.trim() : ''),
+      from_email: fe.value.trim(),
+      phone: phEl ? phEl.value.trim() : '',
+      enquiry: enqEl ? enqEl.value : '',
+      message: msgEl ? msgEl.value.trim() : '',
+      to_name: 'Siskin Projects'
+    }).catch(function(err){ console.warn('EmailJS error:', err); });
+  } catch(e){ console.warn('EmailJS not loaded:', e); }
+  var fw   = document.getElementById('formWrap');
+  var env  = document.getElementById('env');
+  var tw   = document.getElementById('thankWrap');
+  var flap = document.getElementById('eflap');
+  var seal = document.getElementById('eseal');
+  setTimeout(function(){
+    if(fw){ fw.style.transition='all .6s cubic-bezier(.4,0,.2,1)'; fw.style.transform='translateY(38px) scale(.65) rotateX(20deg)'; fw.style.opacity='0'; fw.style.transformOrigin='center bottom'; }
+  }, 280);
+  setTimeout(function(){
+    if(fw) fw.style.display = 'none';
+    if(env){ env.style.display='block'; env.style.opacity='1'; env.style.transform='scale(1)'; env.style.animation='none'; env.style.transition='all .4s cubic-bezier(.16,1,.3,1)'; }
+  }, 880);
+  setTimeout(function(){
+    if(flap) flap.style.transform = 'rotateX(0deg)';
+    if(seal){ seal.style.transform='translate(-50%,-35%) scale(1.2)'; seal.style.transition='transform .5s cubic-bezier(.34,1.56,.64,1)'; }
+  }, 1080);
+  setTimeout(function(){
+    if(seal){ seal.style.animation='sealShake .5s ease'; seal.style.transform='translate(-50%,-35%) scale(1)'; }
+  }, 1580);
+  setTimeout(function(){
+    if(seal){ seal.innerHTML='✓'; seal.style.background='linear-gradient(135deg,#2E8B57,#1A6B3A)'; seal.style.borderColor='rgba(46,139,87,.65)'; }
+  }, 2000);
+  setTimeout(function(){
+    if(env){ env.style.transition='all .6s cubic-bezier(.4,0,.2,1)'; env.style.transform='translateY(-28px) scale(.85)'; env.style.opacity='0'; }
+  }, 2650);
+  setTimeout(function(){
+    if(env) env.style.display = 'none';
+    if(!tw) return;
+    tw.style.display = 'block';
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){
+      tw.style.opacity='1'; tw.style.transform='translateY(0) scale(1)'; tw.style.pointerEvents='all';
+      var s = document.getElementById('sentStamp'); if(s) setTimeout(function(){ s.style.transform='scale(1)'; }, 100);
+      var l1 = document.getElementById('tl1'); if(l1) setTimeout(function(){ l1.style.opacity='1'; l1.style.transform='translateY(0)'; }, 320);
+      var l2 = document.getElementById('tl2'); if(l2) setTimeout(function(){ l2.style.opacity='1'; l2.style.transform='translateY(0)'; }, 520);
+      var l3 = document.getElementById('tl3'); if(l3) setTimeout(function(){ l3.style.opacity='1'; }, 980);
+      tw.scrollIntoView({ behavior:'smooth', block:'center' });
+    }); });
+  }, 3150);
 }
 
-/* RIPPLE */
-document.querySelectorAll('.bg,.bgs,.ncta,.ddbtn').forEach(function(btn){btn.style.position='relative';btn.style.overflow='hidden';btn.addEventListener('click',function(e){var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),size=Math.max(rect.width,rect.height);r.style.cssText='width:'+size+'px;height:'+size+'px;left:'+(e.clientX-rect.left-size/2)+'px;top:'+(e.clientY-rect.top-size/2)+'px;';this.appendChild(r);setTimeout(function(){r.remove();},700);});});
+/* ══ SEALSHAKE + RESPONSIVE CSS ════════════════════════ */
+(function(){
+  var ss = document.createElement('style');
+  ss.textContent = '@keyframes sealShake{0%,100%{transform:translate(-50%,-35%) rotate(0)}20%{transform:translate(-50%,-35%) rotate(-8deg)}40%{transform:translate(-50%,-35%) rotate(8deg)}60%{transform:translate(-50%,-35%) rotate(-4deg)}80%{transform:translate(-50%,-35%) rotate(4deg)}}@media(max-width:640px){.svc-head{grid-template-columns:1fr!important;}.why-head{grid-template-columns:1fr!important;}}';
+  document.head.appendChild(ss);
+})();
 
-/* ANIM CSS */
-var ss=document.createElement('style');ss.textContent='@keyframes sealShake{0%,100%{transform:translate(-50%,-35%) rotate(0)}20%{transform:translate(-50%,-35%) rotate(-8deg)}40%{transform:translate(-50%,-35%) rotate(8deg)}60%{transform:translate(-50%,-35%) rotate(-4deg)}80%{transform:translate(-50%,-35%) rotate(4deg)}}@media(max-width:640px){.svc-head{grid-template-columns:1fr!important;}.why-head{grid-template-columns:1fr!important;}}';document.head.appendChild(ss);
 </script>
 </body>
 </html>
