@@ -498,7 +498,7 @@ footer{background:#060D18 !important;position:relative;overflow:hidden;}
           <p style="font-size:.82rem;color:rgba(50,42,32,.6);margin:0;">Click any document to view details or download</p>
         </div>
         <div style="display:flex;align-items:center;gap:.7rem;">
-          <div id="catCountBadge" style="font-size:.68rem;letter-spacing:.1em;color:#A87A2C;border:.5px solid rgba(168,122,44,.28);padding:.32rem .85rem;border-radius:3px;">45 Categories</div>
+          <div id="catCountBadge" style="font-size:.68rem;letter-spacing:.1em;color:#A87A2C;border:.5px solid rgba(168,122,44,.28);padding:.32rem .85rem;border-radius:3px;">13 Categories</div>
           <div id="adminUploadHint" style="display:none;font-size:.62rem;color:rgba(46,139,87,.8);letter-spacing:.1em;padding:.32rem .85rem;border:.5px solid rgba(46,139,87,.35);border-radius:3px;">Upload Mode Active</div><div id="uploadCountBadge" style="display:none;font-size:.62rem;color:rgba(46,139,87,.8);letter-spacing:.1em;padding:.32rem .85rem;border:.5px solid rgba(46,139,87,.35);border-radius:3px;"></div>
         </div>
       </div>
@@ -635,7 +635,7 @@ footer{background:#060D18 !important;position:relative;overflow:hidden;}
           <svg id="invArrow" width="9" height="6" viewBox="0 0 9 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l3.5 4L8 1"/></svg>
         </a>
         <div id="invDrop">
-          <div class="ddlabel">45 Document Categories</div>
+          <div class="ddlabel">Regulatory Filings</div>
           <div class="ddi" onclick="openIP(event,'Annual Reports')">Annual Reports <span>→</span></div>
           <div class="ddi" onclick="openIP(event,'Financial Results')">Financial Results <span>→</span></div>
           <div class="ddi" onclick="openIP(event,'Board Meetings')">Board Meetings <span>→</span></div>
@@ -1174,57 +1174,19 @@ function adminLogin(){
 
 /* PDF storage */
 var docGroups = [
-  /* ── Annual & Financial Reports ── */
-  {title:'Annual Report 2024-25', icon:'📊', content:'Audited annual report for FY 2024-25 including Balance Sheet, P&L, Directors Report, and Auditors Report.'},
-  {title:'Annual Report 2023-24', icon:'📊', content:'Audited annual report for FY 2023-24.'},
-  {title:'Q1 Financial Results', icon:'💰', content:'Unaudited financial results for Q1 (April–June) as per SEBI LODR Reg. 33.'},
-  {title:'Q2 Financial Results', icon:'💰', content:'Unaudited financial results for Q2 (July–September) as per SEBI LODR Reg. 33.'},
-  {title:'Q3 Financial Results', icon:'💰', content:'Unaudited financial results for Q3 (October–December) as per SEBI LODR Reg. 33.'},
-  {title:'Q4 & Annual Financial Results', icon:'💰', content:'Audited financial results for Q4 and full year as per SEBI LODR Reg. 33.'},
-  {title:'Half-Yearly Financial Results (H1)', icon:'📆', content:'Unaudited half-yearly results for April–September per SEBI LODR.'},
-  {title:'Half-Yearly Financial Results (H2)', icon:'📆', content:'Audited half-yearly results for October–March per SEBI LODR.'},
-  /* ── Board & General Meetings ── */
-  {title:'Board Meeting - Q1 Notice', icon:'🏛️', content:'Notice of Board Meeting for consideration and approval of Q1 results.'},
-  {title:'Board Meeting - Q2 Notice', icon:'🏛️', content:'Notice of Board Meeting for consideration and approval of Q2 results.'},
-  {title:'Board Meeting - Q3 Notice', icon:'🏛️', content:'Notice of Board Meeting for consideration and approval of Q3 results.'},
-  {title:'Board Meeting - Q4 Notice', icon:'🏛️', content:'Notice of Board Meeting for consideration and approval of Q4/Annual results.'},
-  {title:'Board Meeting Outcome - Q1', icon:'🏛️', content:'Outcome of Board Meeting held for Q1 results.'},
-  {title:'Board Meeting Outcome - Q2', icon:'🏛️', content:'Outcome of Board Meeting held for Q2 results.'},
-  {title:'Board Meeting Outcome - Q3', icon:'🏛️', content:'Outcome of Board Meeting held for Q3 results.'},
-  {title:'Board Meeting Outcome - Q4', icon:'🏛️', content:'Outcome of Board Meeting held for Q4/Annual results.'},
-  {title:'Annual General Meeting (AGM)', icon:'👥', content:'Notice, agenda, proxy form, and minutes of the Annual General Meeting.'},
-  {title:'Extraordinary General Meeting (EGM)', icon:'👥', content:'Notice and outcome of Extraordinary General Meeting, if any.'},
-  /* ── Compliance Filings ── */
-  {title:'Q1 Compliance Report', icon:'📋', content:'Quarterly compliance report under Reg. 27 of SEBI LODR for Q1.'},
-  {title:'Q2 Compliance Report', icon:'📋', content:'Quarterly compliance report under Reg. 27 of SEBI LODR for Q2.'},
-  {title:'Q3 Compliance Report', icon:'📋', content:'Quarterly compliance report under Reg. 27 of SEBI LODR for Q3.'},
-  {title:'Q4 Compliance Report', icon:'📋', content:'Quarterly compliance report under Reg. 27 of SEBI LODR for Q4.'},
-  {title:'Annual Compliance Certificate', icon:'✅', content:'Annual compliance certificate by PCS/CS confirming SEBI LODR adherence.'},
-  {title:'Secretarial Audit Report', icon:'✅', content:'Secretarial audit report under Section 204 of the Companies Act 2013.'},
-  {title:'Internal Audit Report', icon:'✅', content:'Internal audit report submitted to the Audit Committee.'},
-  /* ── NCD & Debenture Documents ── */
-  {title:'NCD Trust Deed', icon:'📜', content:'Executed trust deed between Siskin Projects and Catalyst Trusteeship Limited.'},
-  {title:'NCD Listing Agreement', icon:'📜', content:'Listing agreement filed with BSE/NSE for listed non-convertible debentures.'},
-  {title:'Debenture Trustee Report', icon:'📜', content:'Annual report by Catalyst Trusteeship Limited to debenture holders.'},
-  {title:'Deviation Statement - Q1', icon:'📉', content:'Statement of deviation/variation in use of NCD proceeds for Q1.'},
-  {title:'Deviation Statement - Q2', icon:'📉', content:'Statement of deviation/variation in use of NCD proceeds for Q2.'},
-  {title:'Deviation Statement - Q3', icon:'📉', content:'Statement of deviation/variation in use of NCD proceeds for Q3.'},
-  {title:'Deviation Statement - Q4', icon:'📉', content:'Statement of deviation/variation in use of NCD proceeds for Q4.'},
-  /* ── Disclosures & Events ── */
-  {title:'Credit Rating Report', icon:'⭐', content:'Credit rating rationale issued by Infomerics — IVR BB/Stable for Senior Secured NCDs.'},
-  {title:'Material Event Disclosures', icon:'📣', content:'Disclosures of material events/information per Reg. 30 of SEBI LODR.'},
-  {title:'Related Party Transactions', icon:'🔗', content:'Statement of Related Party Transactions on half-yearly basis per Reg. 23.'},
-  {title:'Shareholding Pattern', icon:'📈', content:'Shareholding pattern filed on quarterly basis per Reg. 31 of SEBI LODR.'},
-  {title:'Annual Return (MGT-7)', icon:'🔄', content:'Annual return filed with MCA within 60 days of AGM under Section 92.'},
-  {title:'Press Releases', icon:'📰', content:'Official press releases for material corporate announcements.'},
-  {title:'Notice of Default', icon:'⚠️', content:'Notices related to payment default, if any, per SEBI LODR Reg. 50.'},
-  /* ── Policies & Governance ── */
-  {title:'Code of Conduct', icon:'📋', content:'Code of Conduct for Board Members and Senior Management Personnel.'},
-  {title:'Whistle Blower Policy', icon:'🔔', content:'Vigil mechanism/whistle blower policy per Section 177 of Companies Act.'},
-  {title:'Related Party Transaction Policy', icon:'📄', content:'Policy for dealing with related party transactions per Reg. 23 SEBI LODR.'},
-  {title:'Nomination & Remuneration Policy', icon:'📄', content:'Policy on nomination and remuneration of directors and KMPs.'},
-  {title:'Risk Management Policy', icon:'🛡️', content:'Risk management framework and policy as adopted by the Board.'},
-  {title:'Archival Policy', icon:'📁', content:'Policy for preservation and archival of documents per SEBI LODR.'},
+  {title:'Annual Reports',     icon:'📊', content:'Annual reports for FY 2024-25 will be published following audit completion.'},
+  {title:'Financial Results',  icon:'💰', content:'Quarterly and annual financial results disclosed per SEBI listing obligations.'},
+  {title:'Board Meetings',     icon:'🏛️', content:'Board meeting notices, agendas, and minutes maintained per Companies Act 2013.'},
+  {title:'General Meetings',   icon:'👥', content:'AGM notices and EGM communications dispatched to all debenture holders per regulatory timelines.'},
+  {title:'Quarterly Compliance',icon:'📋', content:'Quarterly compliance reports filed under SEBI (LODR) Regulations 2015.'},
+  {title:'Annual Compliance',  icon:'✅', content:'Annual compliance certificates issued by Company Secretary.'},
+  {title:'Half-Yearly Filings',icon:'📆', content:'Half-yearly financial results and compliance filings per SEBI requirements.'},
+  {title:'Event Disclosures',  icon:'📣', content:'Material events and price-sensitive information disclosed per SEBI regulations.'},
+  {title:'Deviation Statements',icon:'📉', content:'Statements on deviation in use of NCD funds, disclosed quarterly.'},
+  {title:'Annual Return',      icon:'🔄', content:'Annual return (MGT-7) filed with MCA within 60 days of AGM per Section 92.'},
+  {title:'Press Releases',     icon:'📰', content:'Official press releases for material corporate announcements.'},
+  {title:'Notice / Default',   icon:'⚠️', content:'Notices related to payment default disclosed immediately per SEBI LODR.'},
+  {title:'Codes & Policies',   icon:'📜', content:'Code of Conduct, Whistle Blower Policy, Related Party Transaction Policy — available at registered office.'},
 ];
 
 /* ── Multi-PDF Storage (IndexedDB for large files + localStorage fallback) ── */
@@ -1408,24 +1370,36 @@ document.getElementById('docModal').addEventListener('click', function(e){ if(e.
 
 /* PDF Upload */
 function openUpload(e, idx){
-  if(e) e.stopPropagation();
-  uploadTargetIdx = idx; uploadedFile = null;
-  document.getElementById('uploadDocTitle').textContent = docGroups[idx].title;
+  if(e){ e.preventDefault(); e.stopPropagation(); }
+  uploadTargetIdx = idx;
+  uploadedFile = null;
+  var titleEl = document.getElementById('uploadDocTitle');
+  if(titleEl) titleEl.textContent = docGroups[idx] ? docGroups[idx].title : '';
   clearFile();
-  document.getElementById('uploadModal').style.display = 'flex';
+  /* Reset file input so same file can be re-selected */
+  var fi = document.getElementById('pdfFileInput');
+  if(fi) fi.value = '';
+  var um = document.getElementById('uploadModal');
+  if(um) um.style.display = 'flex';
 }
 function closeUpload(){
-  document.getElementById('uploadModal').style.display = 'none';
-  uploadedFile = null; uploadTargetIdx = -1;
+  var um = document.getElementById('uploadModal');
+  if(um) um.style.display = 'none';
+  uploadedFile = null;
+  uploadTargetIdx = -1;
+  clearFile();
 }
 function handleFileSelect(e){ var f = e.target.files[0]; if(f) processFile(f); }
 function handleDrop(e){
-  e.preventDefault();
-  var f = e.dataTransfer.files[0];
-  if(f && f.type === 'application/pdf') processFile(f);
+  e.preventDefault(); e.stopPropagation();
+  var files = e.dataTransfer.files;
   var dz = document.getElementById('dropZone');
-  dz.style.borderColor = 'rgba(168,122,44,.3)';
-  dz.style.background = 'rgba(248,244,236,.5)';
+  if(dz){ dz.style.borderColor = 'rgba(168,122,44,.3)'; dz.style.background = 'rgba(248,244,236,.5)'; }
+  if(files && files.length > 0){
+    var f = files[0];
+    if(f.type === 'application/pdf'){ processFile(f); }
+    else { alert('Please drop a PDF file only.'); }
+  }
 }
 function processFile(f){
   if(!f){ return; }
@@ -1449,24 +1423,38 @@ function clearFile(){
   btn.disabled = true; btn.style.opacity = '.4';
 }
 function confirmUpload(){
-  if(!uploadedFile || uploadTargetIdx < 0) return;
+  if(!uploadedFile || uploadTargetIdx < 0){ 
+    alert('Please select a PDF file first.'); return; 
+  }
+  var savedIdx = uploadTargetIdx;
+  var savedFile = uploadedFile;
   var btn = document.getElementById('uploadBtn');
-  btn.textContent = 'Saving…'; btn.style.opacity = '.7';
+  if(btn){ btn.textContent = 'Saving…'; btn.disabled = true; btn.style.opacity = '.7'; }
   var reader = new FileReader();
-  reader.onload = function(e){
-    var ok = savePdf(uploadTargetIdx, uploadedFile.name, e.target.result);
-    if(ok){ 
-      closeUpload(); 
-      var g=document.getElementById('docGrid');
-      if(g){ g.innerHTML=''; buildDocGrid(); }
-      var n=countPdfs(); 
-      var badge=document.getElementById('uploadCountBadge'); 
-      if(badge){ badge.style.display='block'; badge.textContent=n+' PDF uploaded'; }
+  reader.onload = function(ev){
+    var ok = savePdf(savedIdx, savedFile.name, ev.target.result);
+    if(ok){
+      /* Reset state BEFORE closing so next upload starts fresh */
+      uploadTargetIdx = -1;
+      uploadedFile = null;
+      closeUpload();
+      /* Rebuild grid to show new PDF status */
+      var g = document.getElementById('docGrid');
+      if(g){ g.innerHTML = ''; buildDocGrid(); }
+      /* Update count badge */
+      var n = countPdfs();
+      var badge = document.getElementById('uploadCountBadge');
+      if(badge){ badge.style.display = 'block'; badge.textContent = n + ' PDF uploaded'; }
+    } else {
+      alert('Storage full. Try a smaller PDF or remove an existing one.');
+      if(btn){ btn.textContent = 'Save Document'; btn.disabled = false; btn.style.opacity = '1'; }
     }
-    else { alert('Could not save. Storage may be full.'); }
-    btn.textContent = 'Save Document'; btn.style.opacity = '1';
   };
-  reader.readAsDataURL(uploadedFile);
+  reader.onerror = function(){
+    alert('Error reading file. Please try again.');
+    if(btn){ btn.textContent = 'Save Document'; btn.disabled = false; btn.style.opacity = '1'; }
+  };
+  reader.readAsDataURL(savedFile);
 }
 
 addEventListener('keydown', function(e){
